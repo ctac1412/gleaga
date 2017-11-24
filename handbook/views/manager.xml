@@ -1,0 +1,57 @@
+<odoo>
+  <data>
+
+    <record model="ir.ui.view" id="manager_tree">
+      <field name="name">tech_directory.manager.tree</field>
+      <field name="model">tech_directory.manager</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="phone"/>
+          <field name="E_mail"/>
+          <field name="client_id">
+
+        </field>
+        </tree>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="manager_form">
+      <field name="name">tech_directory.manager.form</field>
+      <field name="model">tech_directory.manager</field>
+      <field name="arch" type="xml">
+
+        <form string="manager">
+          <sheet>
+            <label for="manager_fill" string = "Заполнить случайными данными" class="oe_edit_only btn btn-sm btn-primary"/>
+            <field name="manager_fill" invisible="1"/>
+            <group>
+
+              <field name="name"/>
+              <field name="phone"/>
+              <field name="E_mail"/>
+              <field name="client_id">
+              <tree>
+                <field name="name"/>
+                <field name="phone"/>
+
+              </tree>
+            </field>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="tech_directory.show_manager">
+      <field name="name">manager</field>
+      <field name="res_model">tech_directory.manager</field>
+      <field name="view_mode">tree,form</field>
+      <field name="view_id" ref="manager_tree"></field>
+      <field name="res_id" ref="manager_form"></field>
+    </record>
+
+    <menuitem name="manager" id="tech_directory.manager" parent="tech_directory.menu_root" action="tech_directory.show_manager"/>
+
+  </data>
+</odoo>

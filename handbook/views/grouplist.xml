@@ -1,0 +1,48 @@
+<odoo>
+  <data>
+
+    <record model="ir.ui.view" id="grouplist_tree">
+      <field name="name">grouplist.tree</field>
+      <field name="model">tech_directory.grouplist</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+            <field name="reglament_ids"/>
+            <field name="reglament_main_id" />
+        </tree>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="grouplist_form">
+      <field name="name">grouplist.form</field>
+      <field name="model">tech_directory.grouplist</field>
+      <field name="priority" eval="8" />
+      <field name="arch" type="xml">
+        <form string="Таблица групп">
+          <field name="check_id" invisible="1"/>
+      <sheet>
+          <group>
+              <field name="name"/>
+              <field name="reglament_ids" />
+              <field name="reglament_main_id" attrs="{'invisible': [('check_id', '=', False)]}" domain="[('group_id', '=',id)]" />
+            </group>
+        </sheet>
+        </form>
+      </field>
+    </record>
+
+
+
+      <record model="ir.actions.act_window" id="tech_directory.show_grouplist">
+          <field name="name">Grouplist</field>
+          <field name="res_model">tech_directory.grouplist</field>
+          <field name="view_mode">tree,form</field>
+          <field name="view_id" ref="grouplist_tree"></field>
+          <field name="res_id" ref="grouplist_form"></field>
+        </record>
+
+
+    <menuitem name="grouplist" id="tech_directory.grouplist" parent="tech_directory.menu_root" action="tech_directory.show_grouplist"/>
+
+  </data>
+</odoo>

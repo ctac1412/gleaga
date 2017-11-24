@@ -1,0 +1,72 @@
+<odoo>
+  <data>
+
+    <record model="ir.ui.view" id="client_tree">
+      <field name="name">tech_directory.client.tree</field>
+      <field name="model">tech_directory.client</field>
+      <field name="arch" type="xml">
+        <tree >
+          <field name="name"/>
+          <field name="phone"/>
+          <field name="client_code"/>
+          <field name="E_mail"/>
+          <field name="contact_person"/>
+          <field name="independent_client"/>
+          <field name="manager_ids"/>
+          <field name="manager_gk"/>
+        </tree>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="client_form">
+      <field name="name">tech_directory.client.form</field>
+      <field name="model">tech_directory.client</field>
+      <field name="arch" type="xml">
+        <form string="client">
+          <sheet>
+            <label for="client_my_button_fill" string = "Заполнить случайными данными" class="oe_edit_only btn btn-sm btn-primary"/>
+            <field name="client_my_button_fill" invisible="1"/>
+            <group>
+              <field name="name"/>
+              <field name="phone"/>
+              <field name="client_code"/>
+              <field name="E_mail"  widget="email" />
+              <field name="contact_person"/>
+              <field name="independent_client"/>
+              <field name="manager_ids">
+                <tree>
+                    <field name='name'/>
+                    <field name='phone'/>
+                    <field name='E_mail'/>
+               </tree>
+              </field>
+              <field name="manager_gk">
+              <tree>
+                  <field name='name'/>
+              </tree>
+               </field>
+
+              <field name="contractor_ids" domain="[('client_id', '=',False )]" widget="many2many" >
+                    <tree>
+                        <field name='factory_name'/>
+                        <field name='factory_other_comment'/>
+                   </tree>
+              </field>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="tech_directory.show_client">
+      <field name="name">client</field>
+      <field name="res_model">tech_directory.client</field>
+      <field name="view_mode">tree,form</field>
+      <field name="view_id" ref="client_tree"></field>
+      <field name="res_id" ref="client_form"></field>
+    </record>
+
+    <menuitem name="client" id="tech_directory.client" parent="tech_directory.menu_root" action="tech_directory.show_client"/>
+
+  </data>
+</odoo>

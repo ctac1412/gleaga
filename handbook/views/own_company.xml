@@ -1,0 +1,138 @@
+<odoo>
+  <data>
+
+    <record model="ir.ui.view" id="own_company_tree2">
+      <field name="name">tech_directory.own_company.tree</field>
+      <field name="model">tech_directory.own_company</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="signature"/>
+        </tree>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="own_company_tree">
+      <field name="name">tech_directory.own_company.tree</field>
+      <field name="model">tech_directory.own_company</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="short_org_name"/>
+          <field name="company_type"/>
+          <field name="ogrn"/>
+          <field name="signature"/>
+        </tree>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="post_company_tree">
+      <field name="name">tech_directory.own_company.tree</field>
+      <field name="model">tech_directory.own_company</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="short_org_name"/>
+          <field name="company_type"/>
+        </tree>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="own_company_form">
+      <field name="name">tech_directory.own_company.form</field>
+      <field name="model">tech_directory.own_company</field>
+      <field name="arch" type="xml">
+        <form string="own_company">
+          <sheet>
+            <label for="own_company_my_button_fill" string="Заполнить случайными данными" class="oe_edit_only btn btn-sm btn-primary"/>
+            <field name="own_company_my_button_fill" invisible="1"/>
+            <group>
+              <group string="Контактная информация:">
+                <field name="active_user"/>
+                <field name="import_code"/>
+                <field name="manager_roleImPad"/>
+                <field name="manager_fioImPad"/>
+                <field name="manager_fioRdPad"/>
+                <field name="type_of_document"/>
+                <field name="phone1"/>
+              </group>
+              <group string="Настройки:">
+                <group >
+                  <field name="company_type" widget='radio' options="{'horizontal': true}"/>
+                  <field name="type_os"/>
+                  <field name="type_lab"/>
+                </group>
+
+                <group string="Прайс листы:" attrs="{'invisible':[('company_type', '!=', 'postavshic')]}">
+                  <field name="price_list_ids" nolabel="1"/>
+                </group>
+
+              </group>
+
+            </group>
+            <group string="Реквизиты:">
+              <group >
+                <field name="full_org_name"/>
+                <field name="short_org_name"/>
+                <field name="ogrn"/>
+                <field name="signature"/>
+                <field name="juredical_address"/>
+                <field name="mail_address"/>
+                <field name="phone2"/>
+                <field name="fax"/>
+                <field name="E_mail"/>
+                <field name="inn"/>
+              </group>
+              <group >
+                <field name="kpp"/>
+                <field name="ogrn_ogrnip"/>
+                <field name="okpo"/>
+                <field name="okved"/>
+                <field name="checking_accound"/>
+                <field name="bank"/>
+                <field name="cor_account"/>
+                <field name="bik"/>
+              </group>
+
+            </group>
+            <div class="o_horizontal_separator"></div>
+
+            <group string="Регламенты:">
+              <field name="reglament">
+                <tree>
+                  <field name='name' widget="many2many_checkboxes"/>
+                </tree>
+              </field>
+            </group>
+
+            <group string="Доп.Услуги:">
+              <field name="extra_service_ids"></field>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="tech_directory.show_post_company">
+      <field name="name">Поставщик</field>
+      <field name="res_model">tech_directory.own_company</field>
+      <field name="view_mode">tree,form</field>
+      <field name="context">{'default_company_type':'postavshic'}</field>
+      <field name="domain">[('company_type', 'in',['postavshic'])]</field>
+      <field name="res_id" ref="own_company_form"></field>
+      <field name="view_id" ref="post_company_tree"></field>
+    </record>
+
+    <record model="ir.actions.act_window" id="tech_directory.show_own_company">
+      <field name="name">Свои юр.лица</field>
+      <field name="res_model">tech_directory.own_company</field>
+      <field name="view_mode">tree,form</field>
+      <field name="context">{'default_company_type':'svoe_ur_lico'}</field>
+      <field name="domain">[('company_type', 'in',['svoe_ur_lico'])]</field>
+      <field name="view_id" ref="own_company_tree"></field>
+      <field name="res_id" ref="own_company_form"></field>
+
+    </record>
+
+    <menuitem name="own_company" id="tech_directory.post_company" parent="tech_directory.menu_root" action="tech_directory.show_own_company"/>
+    <menuitem name="post_company" id="tech_directory.own_company" parent="tech_directory.menu_root" action="tech_directory.show_post_company"/>
+
+  </data>
+</odoo>

@@ -1,0 +1,50 @@
+<odoo>
+  <data>
+
+    <record model="ir.ui.view" id="doc_package_tree">
+      <field name="name">tech_directory.doc_package.tree</field>
+      <field name="model">tech_directory.doc_package</field>
+      <field name="arch" type="xml">
+        <tree  editable="bottom">
+          <field name="name"/>
+          <field name="type_komplekt"/>
+          <field name="type_dogovora"/>
+          <field name="prilojenia"/>
+          <field name="comment"/>
+          <field name="status"/>
+        </tree>
+
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="doc_package_form">
+      <field name="name">tech_directory.doc_package.form</field>
+      <field name="model">tech_directory.doc_package</field>
+      <field name="arch" type="xml">
+        <form string="doc_package">
+          <sheet>
+            <group>
+              <field name="name"/>
+              <field name="type_komplekt"/>
+              <field name="type_dogovora"/>
+              <field name="prilojenia"/>
+              <field name="comment"/>
+              <field name="status"/>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="tech_directory.show_doc_package">
+      <field name="name">doc_package</field>
+      <field name="res_model">tech_directory.doc_package</field>
+      <field name="view_mode">tree,form</field>
+      <field name="view_id" ref="doc_package_tree"></field>
+      <field name="res_id" ref="doc_package_form"></field>
+    </record>
+
+    <menuitem name="doc_package" id="tech_directory.doc_package" parent="tech_directory.menu_root" action="tech_directory.show_doc_package"/>
+
+  </data>
+</odoo>
