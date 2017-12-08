@@ -1,0 +1,42 @@
+<odoo>
+  <data>
+
+    <record model="ir.ui.view" id="reglament_tree">
+      <field name="name">my_docs.reglament.tree</field>
+      <field name="model">my_docs.reglament</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="number"/>
+          <field name="group_id"/>
+        </tree>
+      </field>
+    </record>
+    <record model="ir.ui.view" id="reglament_form">
+      <field name="name">my_docs.reglament.form</field>
+      <field name="model">my_docs.reglament</field>
+      <field name="arch" type="xml">
+        <form string="Card reglament">
+          <sheet>
+            <group>
+              <field name="name"/>
+              <field name="number"/>
+              <field name="group_id"/>
+              </group>
+        </sheet>
+        </form>
+      </field>
+    </record>
+
+  <record model="ir.actions.act_window" id="my_docs.show_reglament">
+      <field name="name">reglament</field>
+      <field name="res_model">my_docs.reglament</field>
+      <field name="view_mode">tree,form</field>
+      <field name="view_id" ref="reglament_tree"></field>
+      <field name="res_id" ref="reglament_form"></field>
+    </record>
+
+
+
+  </data>
+</odoo>

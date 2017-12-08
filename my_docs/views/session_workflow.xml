@@ -1,0 +1,80 @@
+<odoo>
+    <data>
+      <!-- ('draft', 'Draft'), ('new', 'New'), ('await_expert', 'await_expert'), ('await_client', 'await_client'), ('End', 'End'), -->
+      <!-- Create transitions -->
+      <!-- From Draft to new state -->
+        <record model="workflow" id="wkf_session">
+            <field name="name">task sessions workflow</field>
+            <field name="osv">my_docs.task</field>
+            <field name="on_create">True</field>
+        </record>
+
+        <record model="workflow.activity" id="draft">
+            <field name="name">Draft</field>
+            <field name="wkf_id" ref="wkf_session"/>
+            <field name="flow_start" eval="True"/>
+            <field name="kind">function</field>
+            <field name="action">action_draft()</field>
+        </record>
+        <record model="workflow.activity" id="new">
+            <field name="name">new</field>
+            <field name="wkf_id" ref="wkf_session"/>
+            <field name="kind">function</field>
+            <field name="action">action_new()</field>
+        </record>
+        <record model="workflow.activity" id="await_expert">
+            <field name="name">await_expert</field>
+            <field name="wkf_id" ref="wkf_session"/>
+            <field name="kind">function</field>
+            <field name="action">action_await_expert()</field>
+        </record>
+        <record model="workflow.activity" id="await_client">
+            <field name="name">await_client</field>
+            <field name="wkf_id" ref="wkf_session"/>
+            <field name="kind">function</field>
+            <field name="action">action_await_client()</field>
+        </record>
+        <record model="workflow.activity" id="end">
+            <field name="name">end</field>
+            <field name="wkf_id" ref="wkf_session"/>
+            <field name="kind">function</field>
+            <field name="action">action_end()</field>
+        </record>
+
+        <record model="workflow.transition" id="draft_new">
+            <field name="act_from" ref="draft"/>
+            <field name="act_to" ref="new"/>
+            <field name="signal">new</field>
+        </record>
+        <record model="workflow.transition" id="new_await_expert">
+            <field name="act_from" ref="new"/>
+            <field name="act_to" ref="await_expert"/>
+            <field name="signal">await_expert</field>
+        </record>
+        <record model="workflow.transition" id="await_expert_await_client">
+            <field name="act_from" ref="await_expert"/>
+            <field name="act_to" ref="await_client"/>
+            <field name="signal">await_client</field>
+        </record>
+        <record model="workflow.transition" id="await_client_await_expert">
+            <field name="act_from" ref="await_client"/>
+            <field name="act_to" ref="await_expert"/>
+            <field name="signal">await_expert</field>
+        </record>
+        <record model="workflow.transition" id="await_client_end">
+            <field name="act_from" ref="await_client"/>
+            <field name="act_to" ref="end"/>
+            <field name="signal">end</field>
+        </record>
+        <record model="workflow.transition" id="await_expert_end">
+            <field name="act_from" ref="await_expert"/>
+            <field name="act_to" ref="end"/>
+            <field name="signal">end</field>
+        </record>
+        <record model="workflow.transition" id="end_new">
+            <field name="act_from" ref="end"/>
+            <field name="act_to" ref="new"/>
+            <field name="signal">new</field>
+        </record>
+    </data>
+</odoo>

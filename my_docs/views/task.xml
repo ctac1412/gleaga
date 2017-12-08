@@ -1,0 +1,148 @@
+<odoo>
+  <data>
+
+    <record model="ir.ui.view" id="task_tree">
+      <field name="name">my_docs.task.tree</field>
+      <field name="model">my_docs.task</field>
+      <field name="arch" type="xml">
+        <tree >
+          <field name="type_mail"/>
+          <field name="state"/>
+          <field name="sender"/>
+
+        </tree>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="task_form">
+      <field name="name">my_docs.task.form</field>
+      <field name="model">my_docs.task</field>
+      <field name="arch" type="xml">
+        <form string="task">
+          <header>
+            <div >
+                  <button name="new" type="workflow" string="new" states="draft,end" class="oe_highlight oe_edit_only"/>
+                  <button name="await_expert" type="workflow" string="Await expert" states="new,await_client" class="oe_highlight oe_edit_only"/>
+                  <button name="await_client" type="workflow" string="Await client" states="await_expert" class="oe_highlight oe_edit_only"/>
+                  <button name="end" type="workflow" string="End" states="await_client,await_expert" class="oe_highlight oe_edit_only"/>
+              <field name="state" widget="statusbar"  clickable="True" statusbar_visible="new,await_expert,await_client"/>
+            </div>
+
+          </header>
+          <sheet>
+            <div class="oe_button_box" name="button_box">
+              <button name="toggle_active" type="object" class="oe_stat_button" icon="fa-check">
+                <field name="active" widget="boolean_button" options='{"terminology": "archive"}'/>
+              </button>
+              <button name="toggle_client_enter" type="object" class="oe_stat_button" icon="fa-check">
+                <field name="client_enter" widget="boolean_button" options="{'terminology':{
+
+                'string_true': 'verify',
+
+                'hover_true': 'verify',
+
+                'string_false': 'Unverify',
+
+                'hover_false': 'Unverify'
+
+             }}"/> 
+              </button>
+                <!-- <field name="client_enter"/> -->
+            </div>
+
+                <!-- <div class="oe_button_box" name="button_box">
+                  <button name="toggle_active" type="object" class="oe_stat_button" icon="fa-archive" attrs="{'invisible': [('active', '=', True), ('probability', '&lt;', 100)]}">
+                      <field name="active" widget="boolean_button" options="{&quot;terminology&quot;: &quot;archive&quot;}"/>
+                  </button>
+                  <button class="oe_stat_button" type="object" context="{'partner_id': partner_id}" name="action_schedule_meeting" icon="fa-calendar">
+                      <div class="o_stat_info">
+                          <field name="meeting_count" class="o_stat_value"/>
+                          <span class="o_stat_text" attrs="{'invisible': [('meeting_count', '&lt;', 2)]}"> Meetings</span>
+                          <span class="o_stat_text" attrs="{'invisible': [('meeting_count', '&gt;', 1)]}"> Meeting</span>
+                      </div>
+                  </button>
+              </div> -->
+              <!--
+            <div class="oe_button_box" name="button_box">
+                <button class="oe_stat_button" name="button_journal_entries"
+                        string="Journal Items" type="object"
+                        groups="account.group_account_manager"
+                        attrs="{'invisible':[('move_line_ids','=',[])]}" icon="fa-bars"/>
+                <field name="move_line_ids" invisible="1"/>
+                <button class="oe_stat_button" name="button_invoices"
+                        string="Invoices" type="object"
+                        attrs="{'invisible':[('has_invoices','=',False)]}" icon="fa-bars"/>
+                <field name="has_invoices" invisible="1"/>
+
+
+
+            </div>
+            <div class="oe_button_box" name="button_box">
+              <button name="toggle_client" type="object" class="oe_stat_button" icon="fa-check">
+-->
+
+
+
+            <!-- <button name="toggle_active" type="object" class="oe_stat_button" icon="fa-check">
+              <field name="expert_enter" widget="boolean_button"/>
+            </button> -->
+            <group>
+              <field name="sender"/>
+              <field name="type_mail"/>
+
+              <field name="applicant"/>
+              <field name="ProductType" widget='radio' options="{'horizontal': true}"/>
+              <field name="ProductInfo"/>
+              <field name="ProductIdentification"/>
+              <field name="ShippingDocumentation"/>
+              <field name="Part"/>
+              <field name="Invoice"/>
+              <field name="DeliveryContract"/>
+              <field name="tnved_ids"/>
+              <field name="ProductIdentificationOther"/>
+              <field name="DocumentValidity"/>
+              <field name="AcceptanceReason"/>
+              <field name="shema"/>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="my_docs.show_task">
+      <field name="name">task</field>
+      <field name="res_model">my_docs.task</field>
+      <field name="view_mode">tree,form</field>
+      <field name="view_id" ref="task_tree"></field>
+      <field name="res_id" ref="task_form"></field>
+    </record>
+
+    <record model="ir.actions.act_window" id="my_docs.mail_in">
+      <field name="name">task mail_in</field>
+      <field name="res_model">my_docs.task</field>
+      <field name="view_mode">tree,form</field>
+      <field name="context">{'default_type_mail':'in'}</field>
+      <field name="domain">[('type_mail', '=','in')]</field>
+      <field name="view_id" ref="task_tree"></field>
+      <field name="res_id" ref="task_form"></field>
+    </record>
+
+    <record model="ir.actions.act_window" id="my_docs.mail_out">
+      <field name="name">task mail_out</field>
+      <field name="res_model">my_docs.task</field>
+      <field name="view_mode">tree,form</field>
+      <field name="view_id" ref="task_tree"></field>
+      <field name="res_id" ref="task_form"></field>
+      <field name="context">{'default_type_mail':'out'}</field>
+      <field name="domain">[('type_mail', '=','out')]</field>
+    </record>
+
+    <record model="ir.actions.act_window" id="my_docs.mail_all">
+      <field name="name">task mail_in</field>
+      <field name="res_model">my_docs.task</field>
+      <field name="view_mode">tree,form</field>
+      <field name="view_id" ref="task_tree"></field>
+      <field name="res_id" ref="task_form"></field>
+    </record>
+  </data>
+</odoo>
