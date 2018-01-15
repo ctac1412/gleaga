@@ -1,0 +1,55 @@
+<odoo>
+  <data>
+
+    <record model="ir.ui.view" id="partner_tree">
+      <field name="name">my_docs.partner.tree</field>
+      <field name="model">my_docs.partner</field>
+      <field name="arch" type="xml">
+        <tree>
+            <field name="rek_name"/>
+        </tree>
+      </field>
+    </record>
+    <record model="ir.ui.view" id="partner_form">
+      <field name="name">my_docs.partner.form</field>
+      <field name="model">my_docs.partner</field>
+      <field name="arch" type="xml">
+        <form string="Card partner">
+          <sheet>
+            <group>
+              <field name="country_id"/>
+              <field name="region_id"/>
+              <field name="address"/>
+              <field name="address_is_same"/>
+
+              <field name="country_real_id"/>
+              <field name="region_real_id"/>
+              <field name="address_real"/>
+
+              <field name="name_im_pad"/>
+              <field name="name_rd_pad"/>
+              <field name="dolznhost_im_pad_id"/>
+              <field name="dolznhost_rd_pad"/>
+
+              <field name="rek_name"/>
+              <field name="rek_phone"/>
+              <field name="rek_fax"/>
+              <field name="rek_email"/>
+              <field name="rek_inn"/>
+              <field name="rek_ogrn"/>
+
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="my_docs.show_partner">
+      <field name="name">partner</field>
+      <field name="res_model">my_docs.partner</field>
+      <field name="view_mode">tree,form</field>
+      <field name="view_id" ref="partner_tree"></field>
+    </record>
+
+  </data>
+</odoo>

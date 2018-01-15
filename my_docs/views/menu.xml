@@ -14,6 +14,7 @@
     <menuitem id="menu_lc_mail_in" name="mail_in" parent="menu_lc" sequence="0" action="my_docs.mail_in"/>
     <menuitem id="menu_lc_mail_out" name="mail_out" parent="menu_lc" sequence="1" action="my_docs.mail_out"/>
     <menuitem id="menu_lc_mail_all" name="mail_all" parent="menu_lc" sequence="2" action="my_docs.mail_all"/>
+    <menuitem id="menu_partner" name="partner" parent="menu_lc" sequence="3" action="my_docs.show_partner"/>
 
   </data>
 </odoo>

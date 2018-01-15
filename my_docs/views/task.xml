@@ -20,13 +20,19 @@
       <field name="arch" type="xml">
         <form string="task">
           <header>
-            <div >
-                  <button name="new" type="workflow" string="new" states="draft,end" class="oe_highlight oe_edit_only"/>
-                  <button name="await_expert" type="workflow" string="Await expert" states="new,await_client" class="oe_highlight oe_edit_only"/>
-                  <button name="await_client" type="workflow" string="Await client" states="await_expert" class="oe_highlight oe_edit_only"/>
-                  <button name="end" type="workflow" string="End" states="await_client,await_expert" class="oe_highlight oe_edit_only"/>
-              <field name="state" widget="statusbar"  clickable="True" statusbar_visible="new,await_expert,await_client"/>
-            </div>
+            <!-- <div >
+              <button name="new" type="workflow" string="new" states="draft,end" class="oe_highlight oe_edit_only"/>
+              <button name="await_expert" type="workflow" string="Await expert" states="new,await_client" class="oe_highlight oe_edit_only"/>
+              <button name="await_client" type="workflow" string="Await client" states="await_expert" class="oe_highlight oe_edit_only"/>
+              <button name="end" type="workflow" string="End" states="await_client,await_expert" class="oe_highlight oe_edit_only"/>
+              <field name="state" widget="statusbar"  statusbar_visible="new,await_expert,await_client"/>
+            </div> -->
+            <button name="state_new" type="object" string="new" class="oe_highlight oe_edit_only"/>
+            <button name="state_await_expert" type="object" string="Await expert" class="oe_highlight oe_edit_only"/>
+            <button name="state_await_client" type="object" string="Await client"  class="oe_highlight oe_edit_only"/>
+            <button name="state_end" type="object" string="End" class="oe_highlight oe_edit_only"/>
+            <field name="state" widget="statusbar"  statusbar_visible="new,await_expert,await_client"/>
+
 
           </header>
           <sheet>
@@ -35,62 +41,62 @@
                 <field name="active" widget="boolean_button" options='{"terminology": "archive"}'/>
               </button>
               <button name="toggle_client_enter" type="object" class="oe_stat_button" icon="fa-check">
-                <field name="client_enter" widget="boolean_button" options="{'terminology':{
+                <field
+                  name="client_enter"
+                  widget="boolean_button"
+                  options="{'terminology':{
 
-                'string_true': 'verify',
+                'string_true': 'Enter for client',
 
-                'hover_true': 'verify',
+                'hover_true': 'Disable for client',
 
-                'string_false': 'Unverify',
+                'string_false': 'Disable client',
 
-                'hover_false': 'Unverify'
+                'hover_false': 'Enter for client'
 
-             }}"/> 
+             }}"/>
               </button>
-                <!-- <field name="client_enter"/> -->
+              <button name="toggle_expert_enter" type="object" class="oe_stat_button" icon="fa-check">
+                <field
+                  name="expert_enter"
+                  widget="boolean_button"
+                  options="{'terminology':{
+
+                'string_true': 'Enter for expert',
+
+                'hover_true': 'Disable for expert',
+
+                'string_false': 'Disable expert',
+
+                'hover_false': 'Enter for expert'
+
+             }}"/>
+              </button>
+
+
+              <!-- <field name="client_enter"/> -->
             </div>
 
-                <!-- <div class="oe_button_box" name="button_box">
-                  <button name="toggle_active" type="object" class="oe_stat_button" icon="fa-archive" attrs="{'invisible': [('active', '=', True), ('probability', '&lt;', 100)]}">
-                      <field name="active" widget="boolean_button" options="{&quot;terminology&quot;: &quot;archive&quot;}"/>
-                  </button>
-                  <button class="oe_stat_button" type="object" context="{'partner_id': partner_id}" name="action_schedule_meeting" icon="fa-calendar">
-                      <div class="o_stat_info">
-                          <field name="meeting_count" class="o_stat_value"/>
-                          <span class="o_stat_text" attrs="{'invisible': [('meeting_count', '&lt;', 2)]}"> Meetings</span>
-                          <span class="o_stat_text" attrs="{'invisible': [('meeting_count', '&gt;', 1)]}"> Meeting</span>
-                      </div>
-                  </button>
-              </div> -->
-              <!--
-            <div class="oe_button_box" name="button_box">
-                <button class="oe_stat_button" name="button_journal_entries"
-                        string="Journal Items" type="object"
-                        groups="account.group_account_manager"
-                        attrs="{'invisible':[('move_line_ids','=',[])]}" icon="fa-bars"/>
-                <field name="move_line_ids" invisible="1"/>
-                <button class="oe_stat_button" name="button_invoices"
-                        string="Invoices" type="object"
-                        attrs="{'invisible':[('has_invoices','=',False)]}" icon="fa-bars"/>
-                <field name="has_invoices" invisible="1"/>
+            <!-- <div class="oe_button_box" name="button_box"> <button name="toggle_active" type="object" class="oe_stat_button" icon="fa-archive" attrs="{'invisible': [('active', '=', True), ('probability', '&lt;', 100)]}"> <field name="active"
+            widget="boolean_button" options="{&quot;terminology&quot;: &quot;archive&quot;}"/> </button> <button class="oe_stat_button" type="object" context="{'partner_id': partner_id}" name="action_schedule_meeting" icon="fa-calendar"> <div
+            class="o_stat_info"> <field name="meeting_count" class="o_stat_value"/> <span class="o_stat_text" attrs="{'invisible': [('meeting_count', '&lt;', 2)]}"> Meetings</span> <span class="o_stat_text" attrs="{'invisible': [('meeting_count', '&gt;', 1)]}">
+            Meeting</span> </div> </button> </div> -->
+            <!-- <div class="oe_button_box" name="button_box"> <button class="oe_stat_button" name="button_journal_entries" string="Journal Items" type="object" groups="account.group_account_manager" attrs="{'invisible':[('move_line_ids','=',[])]}"
+            icon="fa-bars"/> <field name="move_line_ids" invisible="1"/> <button class="oe_stat_button" name="button_invoices" string="Invoices" type="object" attrs="{'invisible':[('has_invoices','=',False)]}" icon="fa-bars"/> <field name="has_invoices"
+            invisible="1"/> </div> <div class="oe_button_box" name="button_box"> <button name="toggle_client" type="object" class="oe_stat_button" icon="fa-check"> -->
 
-
-
-            </div>
-            <div class="oe_button_box" name="button_box">
-              <button name="toggle_client" type="object" class="oe_stat_button" icon="fa-check">
--->
-
-
-
-            <!-- <button name="toggle_active" type="object" class="oe_stat_button" icon="fa-check">
-              <field name="expert_enter" widget="boolean_button"/>
-            </button> -->
+            <!-- <button name="toggle_active" type="object" class="oe_stat_button" icon="fa-check"> <field name="expert_enter" widget="boolean_button"/> </button> -->
             <group>
               <field name="sender"/>
               <field name="type_mail"/>
 
-              <field name="applicant"/>
+              <field name="ApplicantType"/>
+              <field name="Applicant_partner_id"/>
+              <field name="ApplicantInfo"/>
+              <field name="Manufacturer_partner_id"/>
+              <field name="ManufacturerInfo"/>
+
+
               <field name="ProductType" widget='radio' options="{'horizontal': true}"/>
               <field name="ProductInfo"/>
               <field name="ProductIdentification"/>
@@ -102,8 +108,16 @@
               <field name="ProductIdentificationOther"/>
               <field name="DocumentValidity"/>
               <field name="AcceptanceReason"/>
-              <field name="shema"/>
+              <field name="ProductLocation"/>
+
+              <field name="shema_id"/>
             </group>
+          </sheet>
+          <sheet>
+            <div class="oe_chatter">
+              <field name="message_follower_ids" widget="mail_followers"/>
+              <field name="message_ids" widget="mail_thread"/>
+            </div>
           </sheet>
         </form>
       </field>

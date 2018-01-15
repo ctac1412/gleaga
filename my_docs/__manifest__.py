@@ -15,8 +15,9 @@
     'data': [
         'views/task.xml',
         'views/reglament.xml',
+        'views/partner.xml',
         'views/menu.xml',
-        'views/session_workflow.xml',
+
 
         # 'data/client_grouplist.csv'
     ],
