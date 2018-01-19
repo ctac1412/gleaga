@@ -1,2 +1,2 @@
 # -*- coding: utf-8 -*-
-from . import task, tnved, reglament, partner
+from . import  tnved, reglament, partner ,task,wizards

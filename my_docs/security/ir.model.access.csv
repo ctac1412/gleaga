@@ -1,2 +1,12 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_client_client,client.client,model_client_client,,1,0,0,0
+access_my_docs_country_group_user,my_docs.country,model_my_docs_country,base.group_user,1,1,1,1
+access_my_docs_country_region_group_user,my_docs.country_region,model_my_docs_country_region,base.group_user,1,1,1,1
+access_my_docs_type_ip_group_user,my_docs.type_ip,model_my_docs_type_ip,base.group_user,1,1,1,1
+access_my_docs_partner_group_user,my_docs.partner,model_my_docs_partner,base.group_user,1,1,1,1
+access_my_docs_partner_local_group_user,my_docs.partner_local,model_my_docs_partner_local,base.group_user,1,1,1,1
+access_my_docs_reglament_group_user,my_docs.reglament,model_my_docs_reglament,base.group_user,1,1,1,1
+access_my_docs_schema_group_user,my_docs.schema,model_my_docs_schema,base.group_user,1,1,1,1
+access_my_docs_task_group_user,my_docs.task,model_my_docs_task,base.group_user,1,1,1,1
+access_my_docs_tnved_group_user,my_docs.tnved,model_my_docs_tnved,base.group_user,1,1,1,1
+access_my_docs_set_expert_wizard_group_user,my_docs.set_expert_wizard,model_my_docs_set_expert_wizard,base.group_user,1,1,1,1
+access_my_docs_new_task_group_user,my_docs.new_task,model_my_docs_new_task,base.group_user,1,1,1,1

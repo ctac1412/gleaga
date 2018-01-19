@@ -1,0 +1,36 @@
+<odoo>
+  <data>
+
+    <record model="ir.rule" id="task_employ_rule">
+      <field name="name">All task for employ </field>
+      <field name="model_id" ref="model_my_docs_task" />
+      <field name="domain_force">['|',('create_uid','=', user.id),('expert_id','in',[user.id])]</field>
+      <field name="groups" eval="[(4, ref('group_user_employ') )]" />
+    </record>
+
+    <record model="ir.rule" id="task_manager_rule">
+      <field name="name">All task for super_manager </field>
+      <field name="model_id" ref="model_my_docs_task" />
+      <field name="domain_force">['|',('getter_company_id','in', user.company_ids.ids),('sender_company_id','in', user.company_ids.ids)]</field>
+      <field name="groups" eval="[(4, ref('group_user_manager') )]" />
+    </record>
+
+    <!-- <record model="ir.rule" id="user_admin_of_company_rule">
+      <field name="name">All task for super_manager </field>
+      <field name="model_id" ref="model_my_docs_task" />
+      <field name="domain_force">['|',('getter_company_id','=', user.company_id.id),('sender_company_id','=', user.company_id.id)]</field>
+      <field name="groups" eval="[(4, ref('group_user_manager') )]" />
+    </record> -->
+
+
+
+    <!-- <record model="ir.rule" id="client_manager_expert_rule">
+      <field name="name">Our client for manager</field>
+      <field name="model_id" ref="model_handlbook_client" />
+      <field name="domain_force">['|',('create_uid','=', user.id),('manager_gk','in',[user.id])]</field>
+      <field name="groups" eval="[(4, ref('group_user_manager') )]" />
+    </record> -->
+
+
+  </data>
+</odoo>

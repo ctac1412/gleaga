@@ -1,39 +1,72 @@
 <odoo>
   <data>
+    <record id="create_my_docs_task" model="ir.actions.act_window">
+      <field name="name">Create an Opportunity</field>
+      <field name="res_model">my_docs.task</field>
+      <field name="view_type">form</field>
+      <field name="view_mode">form</field>
+      <field name="target">new</field>
+    </record>
 
-    <record model="ir.ui.view" id="task_tree">
-      <field name="name">my_docs.task.tree</field>
+    <record model="ir.ui.view" id="kanban_my_docs_task">
+      <field name="name">my_docs.task.kanban</field>
       <field name="model">my_docs.task</field>
       <field name="arch" type="xml">
-        <tree >
-          <field name="type_mail"/>
-          <field name="state"/>
-          <field name="sender"/>
+        <kanban  default_group_by="state" class="o_kanban_small_column o_opportunity_kanban" on_create="my_docs.create_my_docs_task" >
 
-        </tree>
+
+          <field name="state"/>
+          <field name="expert_id"/>
+          <field name="reglament_ids"/>
+          <field name="id"/>
+
+          <templates>
+            <t t-name="kanban-box" >
+             <div t-attf-class="oe_kanban_global_click">
+                                <div class="o_dropdown_kanban dropdown" >
+
+                                    <a class="dropdown-toggle btn" data-toggle="dropdown" href="#" >
+                                        <span class="fa fa-bars fa-lg"/>
+                                    </a>
+                                    <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                                      <t t-if="widget.editable"><li><a type="edit">Edit</a></li></t>
+
+                                        <li><a type="delete">Delete</a></li>
+
+                                    </ul>
+                                </div>
+                                <div class="oe_kanban_content">
+
+
+                                    <div>Отправитель: <field name="sender_company_id"/></div>
+                                    <div>Регламенты: <field name="reglament_ids"/></div>
+                                    <div>Эксперт: <field name="expert_id"/></div>
+                                    <div class="oe_clear"/>
+                                </div>
+                            </div>
+            </t>
+          </templates>
+        </kanban>
       </field>
     </record>
+
+
 
     <record model="ir.ui.view" id="task_form">
       <field name="name">my_docs.task.form</field>
       <field name="model">my_docs.task</field>
       <field name="arch" type="xml">
+
         <form string="task">
           <header>
-            <!-- <div >
-              <button name="new" type="workflow" string="new" states="draft,end" class="oe_highlight oe_edit_only"/>
-              <button name="await_expert" type="workflow" string="Await expert" states="new,await_client" class="oe_highlight oe_edit_only"/>
-              <button name="await_client" type="workflow" string="Await client" states="await_expert" class="oe_highlight oe_edit_only"/>
-              <button name="end" type="workflow" string="End" states="await_client,await_expert" class="oe_highlight oe_edit_only"/>
-              <field name="state" widget="statusbar"  statusbar_visible="new,await_expert,await_client"/>
-            </div> -->
+            <!-- <div > <button name="new" type="workflow" string="new" states="draft,end" class="oe_highlight oe_edit_only"/> <button name="await_expert" type="workflow" string="Await expert" states="new,await_client" class="oe_highlight oe_edit_only"/> <button
+            name="await_client" type="workflow" string="Await client" states="await_expert" class="oe_highlight oe_edit_only"/> <button name="end" type="workflow" string="End" states="await_client,await_expert" class="oe_highlight oe_edit_only"/> <field
+            name="state" widget="statusbar" statusbar_visible="new,await_expert,await_client"/> </div> -->
             <button name="state_new" type="object" string="new" class="oe_highlight oe_edit_only"/>
             <button name="state_await_expert" type="object" string="Await expert" class="oe_highlight oe_edit_only"/>
-            <button name="state_await_client" type="object" string="Await client"  class="oe_highlight oe_edit_only"/>
+            <button name="state_await_client" type="object" string="Await client" class="oe_highlight oe_edit_only"/>
             <button name="state_end" type="object" string="End" class="oe_highlight oe_edit_only"/>
-            <field name="state" widget="statusbar"  statusbar_visible="new,await_expert,await_client"/>
-
-
+            <field name="state" widget="statusbar" statusbar_visible="new,await_expert,await_client"/>
           </header>
           <sheet>
             <div class="oe_button_box" name="button_box">
@@ -45,15 +78,10 @@
                   name="client_enter"
                   widget="boolean_button"
                   options="{'terminology':{
-
                 'string_true': 'Enter for client',
-
                 'hover_true': 'Disable for client',
-
                 'string_false': 'Disable client',
-
                 'hover_false': 'Enter for client'
-
              }}"/>
               </button>
               <button name="toggle_expert_enter" type="object" class="oe_stat_button" icon="fa-check">
@@ -61,57 +89,62 @@
                   name="expert_enter"
                   widget="boolean_button"
                   options="{'terminology':{
-
                 'string_true': 'Enter for expert',
-
                 'hover_true': 'Disable for expert',
-
                 'string_false': 'Disable expert',
-
                 'hover_false': 'Enter for expert'
-
              }}"/>
               </button>
-
-
-              <!-- <field name="client_enter"/> -->
             </div>
-
-            <!-- <div class="oe_button_box" name="button_box"> <button name="toggle_active" type="object" class="oe_stat_button" icon="fa-archive" attrs="{'invisible': [('active', '=', True), ('probability', '&lt;', 100)]}"> <field name="active"
-            widget="boolean_button" options="{&quot;terminology&quot;: &quot;archive&quot;}"/> </button> <button class="oe_stat_button" type="object" context="{'partner_id': partner_id}" name="action_schedule_meeting" icon="fa-calendar"> <div
-            class="o_stat_info"> <field name="meeting_count" class="o_stat_value"/> <span class="o_stat_text" attrs="{'invisible': [('meeting_count', '&lt;', 2)]}"> Meetings</span> <span class="o_stat_text" attrs="{'invisible': [('meeting_count', '&gt;', 1)]}">
-            Meeting</span> </div> </button> </div> -->
-            <!-- <div class="oe_button_box" name="button_box"> <button class="oe_stat_button" name="button_journal_entries" string="Journal Items" type="object" groups="account.group_account_manager" attrs="{'invisible':[('move_line_ids','=',[])]}"
-            icon="fa-bars"/> <field name="move_line_ids" invisible="1"/> <button class="oe_stat_button" name="button_invoices" string="Invoices" type="object" attrs="{'invisible':[('has_invoices','=',False)]}" icon="fa-bars"/> <field name="has_invoices"
-            invisible="1"/> </div> <div class="oe_button_box" name="button_box"> <button name="toggle_client" type="object" class="oe_stat_button" icon="fa-check"> -->
-
-            <!-- <button name="toggle_active" type="object" class="oe_stat_button" icon="fa-check"> <field name="expert_enter" widget="boolean_button"/> </button> -->
             <group>
-              <field name="sender"/>
-              <field name="type_mail"/>
-
-              <field name="ApplicantType"/>
-              <field name="Applicant_partner_id"/>
-              <field name="ApplicantInfo"/>
-              <field name="Manufacturer_partner_id"/>
-              <field name="ManufacturerInfo"/>
 
 
-              <field name="ProductType" widget='radio' options="{'horizontal': true}"/>
-              <field name="ProductInfo"/>
-              <field name="ProductIdentification"/>
+              <field name="expert_id"/>
+              <field name="getter_company_id"/>
+              <field name="sender_company_id"/>
+
+              <field name="type_task"/>
+
+              <field name="id"/>
+            </group>
+
+          </sheet>
+          <sheet attrs="{'invisible': [('id','=',False)]}">
+            <label for="task_my_button_fill" string="Заполнить случайными данными" class="oe_edit_only btn btn-sm btn-primary"/>
+            <field name="task_my_button_fill" invisible="1"/>
+
+            <group string="Данные заявки">
+              <group string="Заявитель" colspan='4'>
+                <field name="ApplicantType" widget='radio' options="{'horizontal': true}"/>
+                <field name="Applicant_partner_id" domain="[('id','in',[Applicant_partner_id,Manufacturer_partner_id])]"/>
+                <field name="ApplicantInfo"/>
+                <field name="ApplicantInFace"/>
+              </group>
+              <group string="Изготовитель" colspan='4'>
+                <field name="Manufacturer_partner_id" domain="[('id','in',[Applicant_partner_id,Manufacturer_partner_id])]"/>
+                <field name="ManufacturerInfo"/>
+                <field name="ProductLocation" widget='radio' options="{'horizontal': true}"/>
+              </group>
+              <group string="Продукция" colspan='4'>
+                <field name="ProductType" widget='radio' options="{'horizontal': true}"/>
+                <field name="ProductInfo"/>
+                <field name="ProductIdentification"/>
+                <field name="Part"/>
+                <field name="Invoice"/>
+                <field name="shema_id"/>
+                <field name="reglament_ids"/>
+                <field name="tnved_ids"/>
+              </group>
+            </group>
+
+            <group string="Прочее">
               <field name="ShippingDocumentation"/>
-              <field name="Part"/>
-              <field name="Invoice"/>
               <field name="DeliveryContract"/>
-              <field name="tnved_ids"/>
               <field name="ProductIdentificationOther"/>
               <field name="DocumentValidity"/>
               <field name="AcceptanceReason"/>
-              <field name="ProductLocation"/>
-
-              <field name="shema_id"/>
             </group>
+
           </sheet>
           <sheet>
             <div class="oe_chatter">
@@ -123,40 +156,39 @@
       </field>
     </record>
 
-    <record model="ir.actions.act_window" id="my_docs.show_task">
+    <record model="ir.actions.act_window" id="my_docs.show_expert_mail_in_all">
       <field name="name">task</field>
       <field name="res_model">my_docs.task</field>
+      <field name="view_mode">kanban</field>
+    </record>
+
+    <record model="ir.actions.act_window" id="my_docs.show_task">
+      <field name="name">task222222</field>
+      <field name="res_model">my_docs.task</field>
       <field name="view_mode">tree,form</field>
-      <field name="view_id" ref="task_tree"></field>
-      <field name="res_id" ref="task_form"></field>
     </record>
 
     <record model="ir.actions.act_window" id="my_docs.mail_in">
       <field name="name">task mail_in</field>
       <field name="res_model">my_docs.task</field>
       <field name="view_mode">tree,form</field>
-      <field name="context">{'default_type_mail':'in'}</field>
-      <field name="domain">[('type_mail', '=','in')]</field>
-      <field name="view_id" ref="task_tree"></field>
-      <field name="res_id" ref="task_form"></field>
+      <!-- <field name="context">{'default_':'in'}</field> -->
+      <!-- <field name="domain">[('', '=','in')]</field> -->
     </record>
 
     <record model="ir.actions.act_window" id="my_docs.mail_out">
       <field name="name">task mail_out</field>
       <field name="res_model">my_docs.task</field>
       <field name="view_mode">tree,form</field>
-      <field name="view_id" ref="task_tree"></field>
-      <field name="res_id" ref="task_form"></field>
-      <field name="context">{'default_type_mail':'out'}</field>
-      <field name="domain">[('type_mail', '=','out')]</field>
+      <!-- <field name="context">{'default_':'out'}</field> -->
+      <!-- <field name="domain">[('', '=','out')]</field> -->
     </record>
 
     <record model="ir.actions.act_window" id="my_docs.mail_all">
-      <field name="name">task mail_in</field>
+      <field name="name">task mail_ALLLL</field>
       <field name="res_model">my_docs.task</field>
       <field name="view_mode">tree,form</field>
-      <field name="view_id" ref="task_tree"></field>
-      <field name="res_id" ref="task_form"></field>
     </record>
+
   </data>
 </odoo>

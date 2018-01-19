@@ -6,15 +6,21 @@
     <menuitem id="menu_reglament" name="reglament" parent="my_docs.menu_root" action="my_docs.show_reglament"/>
 
 
-
-
-
+<!-- 
+    <menuitem id="menu_partner" name="my_docs_lc" parent="my_docs.menu_root" sequence="1"/> -->
 
     <menuitem id="menu_lc" name="my_docs_lc" parent="my_docs.menu_root" sequence="1"/>
-    <menuitem id="menu_lc_mail_in" name="mail_in" parent="menu_lc" sequence="0" action="my_docs.mail_in"/>
+
+    <!-- <menuitem id="menu_lc_mail_in" name="mail_in" parent="menu_lc" sequence="0" action="my_docs.mail_in"/>
+
     <menuitem id="menu_lc_mail_out" name="mail_out" parent="menu_lc" sequence="1" action="my_docs.mail_out"/>
     <menuitem id="menu_lc_mail_all" name="mail_all" parent="menu_lc" sequence="2" action="my_docs.mail_all"/>
-    <menuitem id="menu_partner" name="partner" parent="menu_lc" sequence="3" action="my_docs.show_partner"/>
 
+    <menuitem id="menu_lc_expert_mail_in_all" name="expert_mail_in_all" parent="menu_lc" sequence="1" action="my_docs.show_expert_mail_in_all"/>
+
+    <menuitem id="menu_partner" name="partner" parent="menu_lc" sequence="3" action="my_docs.show_partner"/>
+    <menuitem id="menu_partner_local" name="partner_local" parent="menu_lc" sequence="5" action="my_docs.show_partner_local"/>
+
+    <menuitem id="menu_lc_new_task" name="new_task" parent="menu_lc" sequence="9" action="my_docs.show_new_task"/> -->
   </data>
 </odoo>
