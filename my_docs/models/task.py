@@ -2,16 +2,136 @@
 
 from odoo import models, fields, api
 from rddata import *
+from odoo.exceptions import UserError, RedirectWarning, ValidationError
+import datetime
 
 class task(models.Model):
     _name = 'my_docs.task'
     _rec_name = 'name'
     _inherit = ['mail.thread']
+
+    task_parent_id = fields.Many2one(
+        comodel_name="my_docs.task"
+    )
+    task_child_id = fields.Many2one(
+        comodel_name="my_docs.task"
+    )
+
+    @api.multi
+    def copy_to_child(self):
+        new_vals={}
+        for r in self:
+            child = r.task_child_id
+            if child:
+                child.ShippingDocumentation = r.ShippingDocumentation
+                child.ManufacturerInfo = r.ManufacturerInfo
+                child.DeliveryContract = r.DeliveryContract
+                child.ProductType = r.ProductType
+                child.AcceptanceReason = r.AcceptanceReason
+                child.ProductIdentification = r.ProductIdentification
+                child.reglament_ids = r.reglament_ids
+                child.ApplicantInfo = r.ApplicantInfo
+                child.supplement_free_form_ids = r.supplement_free_form_ids
+                child.ProductInfo = r.ProductInfo
+                child.Part = r.Part
+                child.DocumentValidity = r.DocumentValidity
+                child.ApplicantType = r.ApplicantType
+                child.tnved_ids = r.tnved_ids
+                child.ProductIdentificationOther = r.ProductIdentificationOther
+                child.shema_id = r.shema_id
+                child.ProductLocation = r.ProductLocation
+                child.Applicant_partner_id = r.Applicant_partner_id
+                child.Manufacturer_partner_id = r.Manufacturer_partner_id
+                child.Invoice = r.Invoice
+
+    @api.multi
+    def copy_to_parent(self):
+        new_vals={}
+        for r in self:
+            parent = r.task_parent_id
+            if parent:
+                parent.ShippingDocumentation = r.ShippingDocumentation
+                parent.ManufacturerInfo = r.ManufacturerInfo
+                parent.DeliveryContract = r.DeliveryContract
+                parent.ProductType = r.ProductType
+                parent.AcceptanceReason = r.AcceptanceReason
+                parent.ProductIdentification = r.ProductIdentification
+                parent.reglament_ids = r.reglament_ids
+                parent.ApplicantInfo = r.ApplicantInfo
+                parent.supplement_free_form_ids = r.supplement_free_form_ids
+                parent.ProductInfo = r.ProductInfo
+                parent.Part = r.Part
+                parent.DocumentValidity = r.DocumentValidity
+                parent.ApplicantType = r.ApplicantType
+                parent.tnved_ids = r.tnved_ids
+                parent.ProductIdentificationOther = r.ProductIdentificationOther
+                parent.shema_id = r.shema_id
+                parent.ProductLocation = r.ProductLocation
+                parent.Applicant_partner_id = r.Applicant_partner_id
+                parent.Manufacturer_partner_id = r.Manufacturer_partner_id
+                parent.Invoice = r.Invoice
+
+    @api.multi
+    def resent(self):
+        for r in self:
+            default={
+            'name':'Replicate of ' + r.name,
+            'sender_expert_id':self.env.user.id,
+            'sender_company_id':self.env.user.company_id.id,
+            'getter_expert_id':[],
+            'getter_company_id':[],
+            'task_parent_id' :r.id,
+            }
+
+            res = r.copy(default=default)
+            r.write({'task_child_id':res.id})
+            return {
+            'type': 'ir.actions.act_window',
+            'view_type': 'form',
+            'view_mode': 'form',
+            'target': 'current',
+            'res_model':'my_docs.task',
+            'res_id': res.id,
+            }
+        # return res
+
+    @api.multi
+    def _is_user_company_getter_company(self):
+        for r in self:
+            r.is_user_company_getter_company = self.env.user.company_id.id == r.getter_company_id.id
+
+    is_user_company_getter_company =fields.Boolean(compute="_is_user_company_getter_company")
+
+    @api.multi
+    def write(self, vals):
+        print 'm00900------------------------------------------write'
+        new_recodrs=[]
+        block_list=['task_log_ids','state','message_follower_ids','supplement_free_form_ids','getter_company_id','getter_expert_id']
+
+        for i in vals:
+            if  i not in block_list and getattr(self,i) != vals[i]  :
+                new_recodrs.append((0,0,{'task_id':self.id, 'name':i, 'value_before':getattr(self,i), 'value_after':vals[i], 'change_user':self.env.user.name}))
+        if new_recodrs : vals['task_log_ids'] = new_recodrs
+
+        super(task, self).write(vals)
+        print 'm00901------------------------------------------write'
+        return True
+
+    def set_new_expert(self):
+        view_id = self.env.ref('my_docs.set_expert_wizard_form').id
+        return {
+        'type': 'ir.actions.act_window',
+        'view_type': 'form',
+        'view_mode': 'form',
+        'target': 'new',
+        'res_model':'my_docs.set_expert_wizard',
+        'view_id': view_id,
+        'context': {'default_task_id':self.id}
+        }
+
     def generate_adress(self, record,vid_partner):
-        print 'm0011111------------------------------------------'
         for r in record:
             res = []
-
             def _manufacturer_adress_generator():
                 if not r.address_is_same and r.address != r.address_real:
                     if r.type_of_partner in ['urlico', 'fizlico', 'foreign']:
@@ -56,7 +176,7 @@ class task(models.Model):
 
             def _ogrn_generator():
                 if r.type_of_partner in ['urlico', 'fizlico', 'foreign']:
-                    if r.country_id.code == 'KZ':
+                    if r.country_id.code == '_kz':
                         return u'бизнес-идентификационный номер: ' + r.ogrn
                     elif r.country_id.code in ['BY', 'AR']:
                         return u'учетный номер плательщика: ' + r.ogr
@@ -67,7 +187,7 @@ class task(models.Model):
                     else:
                         return u'основной государственный регистрационный номер: ' + r.ogrn
                 elif r.type_of_partner in ['ip']:
-                    if r.country_id.code == 'KZ':
+                    if r.country_id.code == '_kz':
                         # индивидуальный Идентификационный Номер
                         return u'бизнес-идентификационный номер: ' + r.ogrn
                     elif r.country_id.code in ['BY']:
@@ -137,21 +257,19 @@ class task(models.Model):
     @api.multi
     @api.onchange("ApplicantType")
     def _onchange_ApplicantType(self):
-        print 'm00001------------------------------------------'
         if self.ApplicantType == "Manufacturer":
             self.Manufacturer_partner_id = self.Applicant_partner_id
 
     @api.multi
     @api.onchange("Applicant_partner_id","Manufacturer_partner_id")
     def _onchange_applicant(self):
-        print 'm00002------------------------------------------'
         if self.Applicant_partner_id:
             self.ApplicantInfo = self.generate_adress(self.Applicant_partner_id,vid_partner='applicant')
-            self.ApplicantInFace = self.Applicant_partner_id.fio_head_rod_pad + " " +  self.Applicant_partner_id.head_role_rod_pad
+            self.ApplicantInFace = self.Applicant_partner_id.head_role_rod_pad + " " +  self.Applicant_partner_id.fio_head_rod_pad
 
         if self.Manufacturer_partner_id:
             self.ManufacturerInfo = self.generate_adress(self.Manufacturer_partner_id,vid_partner='manufacturer')
-            if self.Manufacturer_partner_id.country_id.code in ['RU','KZ','AR','BY','KY'] and self.Applicant_partner_id.country_id.code in ['RU','KZ','AR','BY','KY'] and self.Manufacturer_partner_id.country_id.code == self.Applicant_partner_id.country_id.code:
+            if self.Manufacturer_partner_id.country_id.code in ['RU','_kz','AR','BY','KY'] and self.Applicant_partner_id.country_id.code in ['RU','_kz','AR','BY','KY'] and self.Manufacturer_partner_id.country_id.code == self.Applicant_partner_id.country_id.code:
                 self.ProductLocation = "Local"
             else:
                 self.ProductLocation = "Foreign"
@@ -165,11 +283,17 @@ class task(models.Model):
                 re.ProductInfo = d['production']
 
     type_task = fields.Selection(selection=[(
-        'ss', 'ss'), ('ds', 'ds'), ('request', 'request')])
+        'ss', 'ss'), ('ds', 'ds'), ('request', 'request')],default='ds')
 
 
-    expert_id = fields.Many2one(
-        comodel_name="res.users"
+
+    getter_expert_id = fields.Many2one(
+        comodel_name="res.users",
+    )
+
+    sender_expert_id = fields.Many2one(
+        comodel_name="res.users",
+        default=lambda self: self.env.user
     )
 
     getter_company_id = fields.Many2one(
@@ -179,7 +303,6 @@ class task(models.Model):
         comodel_name="res.company",
         default=lambda self: self.env.user.company_id
     )
-
 
     state = fields.Selection([
         ('draft', 'Draft'),
@@ -192,40 +315,41 @@ class task(models.Model):
     def open(self):
         print 'm0011111------------------------------------------'
         print self.id
-    @api.model
-    def read_group(self, domain, fields, groupby, offset=0, limit=None, orderby=False, lazy=True):
-        """ Override read_group to always display all states. """
-        if groupby and groupby[0] == "state":
-            # Default result structure
-            states = [
-                ('draft', 'Draft'),
-                ('new', 'New'),
-                ('await_expert', 'await_expert'),
-                ('await_client', 'await_client'),
-                ('end', 'End')
-            ]
 
-            read_group_all_states = [{
-                '__context': {'group_by': groupby[1:]},
-                '__domain': domain + [('state', '=', state_value)],
-                'state': state_value,
-                'state_count': 0,
-            } for state_value, state_name in states]
-            # Get standard results
-            read_group_res = super(task, self).read_group(domain, fields, groupby, offset=offset, limit=limit, orderby=orderby)
-            # Update standard results with default results
-            result = []
-            for state_value, state_name in states:
-                res = filter(lambda x: x['state'] == state_value, read_group_res)
-                if not res:
-                    res = filter(lambda x: x['state'] == state_value, read_group_all_states)
-                if state_value == 'cancel':
-                    res[0]['__fold'] = True
-                res[0]['state'] = [state_value, state_name]
-                result.append(res[0])
-            return result
-        else:
-            return super(task, self).read_group(domain, fields, groupby, offset=offset, limit=limit, orderby=orderby)
+    # @api.model
+    # def read_group(self, domain, fields, groupby, offset=0, limit=None, orderby=False, lazy=True):
+    #     """ Override read_group to always display all states. """
+    #     if groupby and groupby[0] == "state":
+    #         # Default result structure
+    #         states = [
+    #             ('draft', 'Draft'),
+    #             ('new', 'New'),
+    #             ('await_expert', 'await_expert'),
+    #             ('await_client', 'await_client'),
+    #             ('end', 'End')
+    #         ]
+    #
+    #         read_group_all_states = [{
+    #             '__context': {'group_by': groupby[1:]},
+    #             '__domain': domain + [('state', '=', state_value)],
+    #             'state': state_value,
+    #             'state_count': 0,
+    #         } for state_value, state_name in states]
+    #         # Get standard results
+    #         read_group_res = super(task, self).read_group(domain, fields, groupby, offset=offset, limit=limit, orderby=orderby)
+    #         # Update standard results with default results
+    #         result = []
+    #         for state_value, state_name in states:
+    #             res = filter(lambda x: x['state'] == state_value, read_group_res)
+    #             if not res:
+    #                 res = filter(lambda x: x['state'] == state_value, read_group_all_states)
+    #             if state_value == 'cancel':
+    #                 res[0]['__fold'] = True
+    #             res[0]['state'] = [state_value, state_name]
+    #             result.append(res[0])
+    #         return result
+    #     else:
+    #         return super(task, self).read_group(domain, fields, groupby, offset=offset, limit=limit, orderby=orderby)
 
     active = fields.Boolean( default=True)
     expert_enter = fields.Boolean(string="expert_enter", default=False)
@@ -251,6 +375,17 @@ class task(models.Model):
     ApplicantInfo = fields.Text()
     ApplicantInFace = fields.Char()
     ManufacturerInfo = fields.Text()
+    @api.onchange("ProductType")
+    @api.multi
+    def _onchange_ProductType(self):
+        for r in self:
+            if r.ProductType == 'Serial':
+                r.Part= ''
+                r.Invoice= ''
+
+    app_date= fields.Date(readonly=True,index=True,default=fields.Date.context_today)
+    start_date= fields.Date(default=fields.Date.context_today)
+    end_date= fields.Date(default=fields.Date.context_today)
 
     ProductType = fields.Selection(
         selection=[('Serial', 'Serial'), ('Part', 'Part'), ('Single', 'Single')], default="Serial")
@@ -265,7 +400,7 @@ class task(models.Model):
     ProductIdentificationOther = fields.Char(
         string="Inaya informaciya, identificiruyushchaya produkciyu")
 
-    tnved_ids = fields.Many2many(comodel_name="my_docs.tnved")
+    tnved_ids = fields.Many2many(comodel_name="my_docs.tnved",string='Kod TNVED')
     reglament_ids = fields.Many2many("my_docs.reglament")
 
     DocumentValidity = fields.Char(
@@ -278,7 +413,56 @@ class task(models.Model):
     shema_id = fields.Many2one(
         comodel_name="my_docs.schema",
     )
-    name = fields.Char()
+    name = fields.Char(default=u"Новая задача1")
+
+    task_log_ids= fields.One2many(
+        comodel_name="my_docs.task_log",
+        inverse_name="task_id",
+    )
+    supplement_free_form_ids = fields.One2many(
+        comodel_name="my_docs.supplement_free_form",
+        inverse_name="task_id",
+    )
+
+    @api.multi
+    def _watcher_id(self):
+        for r in self:
+            r.watcher_id = self.env.user
+    @api.multi
+    def _watcher_company_id(self):
+        for r in self:
+            r.watcher_company_id = self.env.user.company_id
+    @api.multi
+    def _my_role(self):
+        for r in self:
+            if r.getter_expert_id == self.env.user:r.my_role = 'getter'
+            elif r.sender_expert_id == self.env.user or r.create_uid == self.env.user :r.my_role  = 'sender'
+            elif r.getter_company_id in self.env.user.company_ids :r.my_role = 'getter_watcher'
+            elif r.sender_company_id in self.env.user.company_ids :r.my_role = 'sender_watcher'
+            else: r.my_role = 'who_i_am'
+
+    watcher_id = fields.Many2one(comodel_name='res.users',compute=_watcher_id )
+    watcher_company_id = fields.Many2one(comodel_name='res.company',compute=_watcher_company_id )
+    @api.multi
+    def open_record(self):
+        return {
+            'type': 'ir.actions.act_window',
+            'res_model': 'my_docs.task',
+            'name': 'Record name',
+            'view_type': 'form',
+            'view_mode': 'form',
+            'res_id': self.id,
+            'target': 'current',
+        }
+
+    my_role=fields.Selection(selection=[
+            ('getter', 'getter'),
+            ('sender', 'sender'),
+            ('sender_watcher', 'sender_watcher'),
+            ('getter_watcher', 'getter_watcher'),
+            ('who_i_am', 'who_i_am????')
+    ],compute=_my_role, default="sender")
+
 
     @api.one
     def first_send(self):
@@ -304,44 +488,221 @@ class task(models.Model):
         self.log_prod(self.state)
 
     @api.multi
+    def create_new_task(self):
+        print 'm0001------------------------------------------'
+        for r in self:
+            r.state = 'new'
+            r.log_prod(r.state)
+            for c in r.message_follower_ids:
+                c.subtype_ids = [(6, 0, [1,2])]
+
+            company_rec = self.env.user.company_id
+            company_rec.sudo().write({'task_count':company_rec.task_count+1})
+            r.name = str(company_rec.task_count+1)
+            print 'm0002------------------------------------------'
+
+    @api.multi
     def state_await_expert(self):
-        self.state = 'await_expert'
-        self.log_prod(self.state)
+        if self.getter_company_id:
+            self.state = 'await_expert'
+            self.log_prod(self.state)
+        else:
+            raise UserError("Pls choose the getter company")
 
     @api.multi
     def state_await_client(self):
-        self.state = 'await_client'
-        self.log_prod(self.state)
+        print 'm00888------------------------------------------'
+        for r in self:
+            r.state = 'await_client'
+            r.log_prod(r.state)
+        print 'm00890------------------------------------------'
 
     @api.multi
     def state_end(self):
         self.state = 'end'
         self.log_prod(self.state)
 
+    @api.multi
     def log_prod(self, action):
-        msg = str(action)
-        return self.message_post(body=msg)
-
-
+        for r in self:
+            msg = ''
+            if action == 'await_client' and r.sender_expert_id:
+                print 'm00892------------------------------------------'
+                msg = u"%s, нужно ваше внимание." % (r.sudo().sender_expert_id.name)
+            elif action == 'await_expert' and r.getter_expert_id:
+                print 'm00893------------------------------------------'
+                msg = u"%s, нужно ваше внимание." % (r.sudo().getter_expert_id.name)
+            elif action == 'end':
+                print 'm00894------------------------------------------'
+                msg = u"Работа закрыта"
+            if msg != '':
+                print 'm00895------------------------------------------'
+                return r.message_post(body=msg)
 
 
 class company(models.Model):
     _name = 'res.company'
     _inherit = 'res.company'
+    task_count = fields.Integer(default=0)
     unic_id = fields.Char()
-    friends_ids = fields.Many2many(
 
+    @api.multi
+    def _test(self):
+        for r in self:
+            r.is_user_company = self.env.user.company_id.id == r.id
+
+    is_user_company =fields.Boolean(compute="_test")
+
+    friends_ids = fields.Many2many(
         comodel_name="my_docs.friends"
     )
 
-class friend(models.Model):
+    def add_friend_wizard(self):
+        view_id = self.env.ref('my_docs.friends_wizard').id
+        return {
+        'type': 'ir.actions.act_window',
+        'view_type': 'form',
+        'view_mode': 'form',
+        'target': 'new',
+        'res_model':'my_docs.friend_wizard',
+        'view_id': view_id,
+        'context': {'default_company_in_id':self.id}
+        }
+
+class task_log(models.Model):
+    _name = 'my_docs.task_log'
+    task_id = fields.Many2one('my_docs.task')
+
+    # @api.multi
+    # def _now(self):
+    #     self.change_time = datetime.datetime.now()
+
+    name=fields.Char()
+    value_before = fields.Char(string='value_before')
+    value_after = fields.Char(string='value_after')
+    # change_time = fields.Datetime(compute='_now')
+    change_user = fields.Char(string='change_user')
+
+    @api.multi
+    def return_change(self):
+        for r in self:
+            vals={}
+            before = r.value_before
+            vals[str(r.name)] = before
+            r.task_id.write(vals)
+
+        view_id = self.env.ref('my_docs.task_form').id
+
+        return {
+        'type': 'ir.actions.act_window',
+        'view_type': 'form',
+        'view_mode': 'form',
+        'res_model':'my_docs.task',
+        'view_id': view_id,
+        'target': 'current',
+        'res_id': self.task_id.id,
+        }
+
+class supplement_free_form(models.Model):
+    _name = 'my_docs.supplement_free_form'
+    task_id = fields.Many2one('my_docs.task')
+    value = fields.Text()
+
+
+class counter(models.Model):
+    _name = 'my_docs.counter'
+    # users_ids = fields.One2many(
+    #     comodel_name="res.users",
+    #     inverse_name="users_busy_id",
+    # )
+    user_id = fields.Many2one(
+        comodel_name="res.users"
+    )
+    @api.multi
+    def _count_of_task(self):
+        for r in self:
+            count_of_task=random.randint(1,30)
+
+    count_of_task =fields.Integer(default=0, compute=_count_of_task)
+
+
+
+class users(models.Model):
+    _name = 'res.users'
+    _inherit = 'res.users'
+    _rec_name = "full_name"
+    company_friends_ids  = fields.Many2many(
+        related='company_id.friends_ids'
+    )
+
+    @api.multi
+    def _count_of_task(self):
+        for r in self:
+            result= self.env['my_docs.task'].search([('getter_expert_id', '=',r.id),('state', 'in',['await_expert'])],count=True)
+            # r.count_of_task=random.randint(1,30)
+            r.count_of_task=result
+
+    @api.depends('count_of_task')
+    @api.multi
+    def _full_name(self):
+        for r in self:
+            if r._context.get('compute_name'):
+                r.full_name= "%s (%d Task)" % (r.name, r.count_of_task)
+            else:
+                r.full_name= "%s" % (r.name)
+
+
+    def choose_expert(self,context=None):
+        vals={}
+        vals['getter_expert_id'] = self.id
+        if not self.partner_id in self.env['my_docs.task'].search([('id', '=',context.get('parent_id'))]).message_follower_ids.mapped('partner_id'):
+            vals['message_follower_ids'] =[(0,0,{
+                      'res_model':'my_docs.task',
+                      'subtype_ids': [(6, 0, [1,2])],
+                      'partner_id':self.partner_id.id})]
+        task = self.env['my_docs.task'].search([('id', '=',context.get('parent_id'))])
+        task.write(vals)
+        task.message_post(body=u"Данной задаче присвоен эксперт %s." % (self.name))
+        return {}
+
+    count_of_task =fields.Integer(compute='_count_of_task')
+    full_name = fields.Char(compute='_full_name')
+
+
+class friends(models.Model):
     _name = 'my_docs.friends'
 
-    def _domain(self):
-        return [('id', '!=', self.env.user.company_id)]
-
-    company_out_id = fields.Many2one(
-
+    company_in_id = fields.Many2one(
         comodel_name="res.company"
     )
-    name = fields.Char(related='company_out_id.name')
+    company_out_unic_id = fields.Char()
+    company_out_id = fields.Many2one(
+        comodel_name="res.company"
+    )
+
+class friend_wizard(models.TransientModel):
+    _name = 'my_docs.friend_wizard'
+    company_out_unic_id = fields.Char()
+
+    company_in_id = fields.Many2one(
+        comodel_name="res.company"
+    )
+    company_out_id = fields.Many2one(
+        comodel_name="res.company"
+    )
+
+    def add_friend(self):
+        if self.company_out_unic_id:
+            result = self.sudo().env['res.company'].search([('unic_id', '=', self.company_out_unic_id )], limit=1)
+            if not result: raise UserError("No company founded")
+            if result.friends_ids.search([('company_out_unic_id', '=', self.company_out_unic_id )], limit=1): raise UserError("U have this company in friend yet!")
+
+            vals={}
+            vals['company_in_id']=self.company_in_id.id
+            vals['company_out_id']=result.id
+            vals['company_out_unic_id']=self.company_out_unic_id
+            rr = self.env['my_docs.friends'].create(vals)
+
+        resvals={}
+        resvals['friends_ids'] = [[4,rr.id]]
+        self.env['res.company'].search([('id', '=', self.company_in_id.id)]).write(resvals)

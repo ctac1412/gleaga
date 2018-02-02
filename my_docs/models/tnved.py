@@ -5,10 +5,10 @@ from odoo import models, fields, api
 
 class tnved(models.Model):
     _name = 'my_docs.tnved'
-
-    name = fields.Text('name')
-    text = fields.Char("text")
-    parent_id =  fields.Char("parent_id")
+    _rec_name = 'name'
+    name =  fields.Char('Code', size=256, required=True, index=True)
+    note =  fields.Text('Tnved Description', required=True, index=True)
+    note_KZ =  fields.Text('Tnved Description', required=True, index=True)
 
 class schema(models.Model):
     _name = 'my_docs.schema'
@@ -27,6 +27,8 @@ class post(models.Model):
     post_im_pad = fields.Char()
     post_rd_pad = fields.Char()
 
+    post_im_pad_KZ = fields.Char()
+    post_rd_pad_KZ = fields.Char()
 
 class country(models.Model):
     _name = 'my_docs.country'

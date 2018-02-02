@@ -6,8 +6,7 @@
       <field name="model">my_docs.partner</field>
       <field name="arch" type="xml">
         <tree>
-
-          <field name="Title" />
+          <field name="Title"/>
           <field name="address"/>
         </tree>
       </field>
@@ -19,16 +18,37 @@
       <field name="arch" type="xml">
         <form string="Card partner">
           <sheet>
-            <group>
+            <group string="Даннные контрагента">
               <field name="Title"/>
-
+              <field name="org_prav_forma" colspan="3"/>
               <field name="type_of_partner"/>
-              <field name="type_ip_id"/>
-
+              <field name="type_ip_id" attrs="{'invisible': [('type_of_partner','not in',['ip'])],'required':[('type_of_partner','in',['ip'])]}"/>
             </group>
             <group>
+              <separator string="Юридический адрес"/>
+              <label for="address"/>
+              <field name="address" nolabel="1"/>
+              <label for="country_id"/>
+              <field name="country_id" nolabel="1"/>
+              <label for="region_id"/>
+              <field name="region_id" nolabel="1"/>
+              <label for="index"/>
+              <field name="index" nolabel="1"/>
+
+              <separator string="Фактический адрес"/>
+              <label for="address_is_same"/>
+              <field name="address_is_same" nolabel="1"/>
+              <label for="address_real"/>
+              <field name="address_real" nolabel="1"/>
+              <label for="country_real_id"/>
+              <field name="country_real_id" nolabel="1"/>
+              <label for="region_real_id"/>
+              <field name="region_real_id" nolabel="1"/>
+              <label for="index_real"/>
+              <field name="index_real" nolabel="1"/>
+
               <group>
-                <field name="org_prav_forma" colspan="3"/>
+
                 <field name="svedeniya_o_gos_reg" colspan="3"/>
                 <field name="ogrn" colspan="3"/>
                 <field name="vidano" colspan="3"/>
@@ -47,24 +67,7 @@
                 <field name="head_doc" colspan="3"/>
                 <field name="head_role_rod_pad" colspan="3"/>
               </group>
-              <group col="4" colspan="4" string="Юридический адрес">
-                <label for="address" colspan="4"/>
-                <field name="address" nolabel="1" colspan="4"/>
-                <label for="country_id" colspan="4"/>
-                <field name="country_id" nolabel="1" colspan="4"/>
-                <label for="region_id" colspan="4"/>
-                <field name="region_id" nolabel="1" colspan="4"/>
-              </group>
-              <group col="4" colspan="4" string="Фактический адрес">
-                <label for="address_real" colspan="4"/>
-                <field name="address_real" nolabel="1" colspan="4"/>
-                <label for="country_real_id" colspan="4"/>
-                <field name="country_real_id" nolabel="1" colspan="4"/>
-                <label for="region_real_id" colspan="4"/>
-                <field name="region_real_id" nolabel="1" colspan="4"/>
-                <label for="address_is_same" colspan="4"/>
-                <field name="address_is_same" nolabel="1" colspan="4"/>
-              </group>
+
             </group>
           </sheet>
         </form>
@@ -77,41 +80,42 @@
       <field name="arch" type="xml">
         <form string="Card partner">
           <sheet>
-              <group >
-            <group string= "Даннные контрагента">
-              <field name="Title"/>
-              <field name="type_of_partner"/>
-              <field name="type_ip_id"/>
-            </group>
-            <group string= "Копирование из базового справочника">
+            <group colspan="4" string="Копирование из базового справочника">
               <field name="partner_id"/>
             </group>
-              </group>
+            <group colspan="4" string="Даннные контрагента">
+              <field name="Title"/>
+              <field name="org_prav_forma"/>
+              <field name="type_of_partner"/>
+              <field name="type_ip_id" attrs="{'invisible': [('type_of_partner','not in',['ip'])],'required':[('type_of_partner','in',['ip'])]}"/>
+            </group>
+
             <group>
-                <separator string="Юридический адрес"/>
-                <label for="address" />
-                <field name="address" nolabel="1" />
-                <label for="country_id" />
-                <field name="country_id" nolabel="1"/>
-                <label for="region_id"/>
-                <field name="region_id" nolabel="1"/>
-                <label for="index"/>
-                <field name="index" nolabel="1"/>
+              <group string="Юридический адрес">
 
-                <separator string="Фактический адрес"/>
-                <label for="address_is_same"/>
-                <field name="address_is_same" nolabel="1" />
-                <label for="address_real" />
-                <field name="address_real" nolabel="1" />
-                <label for="country_real_id"/>
-                <field name="country_real_id" nolabel="1" />
-                <label for="region_real_id" />
-                <field name="region_real_id" nolabel="1" />
-                <label for="index_real"/>
-                <field name="index_real" nolabel="1"/>
+              <field name="address"/>
 
+              <field name="country_id"/>
+
+              <field name="region_id" />
+
+              <field name="index" />
+              </group>
+    <group string="Фактический адрес">
+
+
+              <field name="address_is_same" />
+
+              <field name="address_real"/>
+
+              <field name="country_real_id" />
+
+              <field name="region_real_id" />
+
+              <field name="index_real"/>
+  </group>
               <group>
-                <field name="org_prav_forma" colspan="3"/>
+
                 <field name="svedeniya_o_gos_reg" colspan="3"/>
                 <field name="ogrn" colspan="3"/>
                 <field name="vidano" colspan="3"/>
@@ -149,8 +153,6 @@
       <field name="res_model">my_docs.partner_local</field>
       <field name="view_mode">tree,form</field>
     </record>
-
-
 
   </data>
 </odoo>

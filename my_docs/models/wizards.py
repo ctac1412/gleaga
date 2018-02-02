@@ -6,17 +6,33 @@ from odoo.exceptions import UserError, RedirectWarning, ValidationError
 class set_expert_wizard(models.TransientModel):
     _name = 'my_docs.set_expert_wizard'
 
-    def _get_default_task(self):
-        return self.env['my_docs.task'].browse(self.env.context.get('active_ids'))
-
-    task_ids= fields.Many2many('my_docs.task', string="Tasks", default=_get_default_task)
-    expert_id = fields.Many2one('res.users', string="exper_id")
+    task_id= fields.Many2one('my_docs.task', string="Tasks")
+    getter_expert_id = fields.Many2one('res.users')
     @api.multi
-    def _set_experts(self):
+    def _counter_ids(self):
+        print 'm00010------------------------------------------'
         for r in self:
-            if r.task_ids:
-                for c in r.task_ids:
-                    c.expert_id = self.expert_id
+            result = self.env['res.users'].search([])
+            print result
+            r.user_ids =result
+
+    counter_ids = fields.Many2many(
+        comodel_name="my_docs.counter",compute=_counter_ids
+    )
+    user_ids = fields.Many2many(
+        comodel_name="res.users",default=lambda self: self.env['res.users'].search([])
+    )
+    @api.multi
+    def button_save(self):
+        self.task_id.getter_expert_id=self.getter_expert_id
+        vals={}
+        vals['message_follower_ids'] = [(0,0,{
+                  'res_model':'my_docs.task',
+                  'subtype_ids': [(6, 0, [1,2])],
+                  'partner_id':self.getter_expert_id.partner_id.id})]
+        self.task_id.write(vals)
+        self.task_id.message_post(body=u"Данной задаче присвоен эксперт %s." % (self.getter_expert_id.name))
+        return {}
 
 
 class new_task(models.TransientModel):

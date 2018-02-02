@@ -1,35 +1,27 @@
 <odoo>
   <data>
 
-    <record model="ir.rule" id="task_employ_rule">
-      <field name="name">All task for employ </field>
+    <record model="ir.rule" id="task_manager_rule">
+      <field name="name">View only own tasks</field>
       <field name="model_id" ref="model_my_docs_task" />
-      <field name="domain_force">['|',('create_uid','=', user.id),('expert_id','in',[user.id])]</field>
-      <field name="groups" eval="[(4, ref('group_user_employ') )]" />
+      <field name="domain_force">['|','|',('create_uid','=', user.id),('sender_expert_id','=', user.id),('getter_expert_id','=', user.id)]</field>
+      <field name="groups" eval="[(4, ref('my_docs_group_manager'))]" />
     </record>
 
-    <record model="ir.rule" id="task_manager_rule">
-      <field name="name">All task for super_manager </field>
+    <record model="ir.rule" id="task_top_manager_rule">
+      <field name="name">View all tasks</field>
       <field name="model_id" ref="model_my_docs_task" />
       <field name="domain_force">['|',('getter_company_id','in', user.company_ids.ids),('sender_company_id','in', user.company_ids.ids)]</field>
-      <field name="groups" eval="[(4, ref('group_user_manager') )]" />
+      <field name="groups" eval="[(4, ref('my_docs_group_top_manager'))]" />
     </record>
 
-    <!-- <record model="ir.rule" id="user_admin_of_company_rule">
-      <field name="name">All task for super_manager </field>
-      <field name="model_id" ref="model_my_docs_task" />
-      <field name="domain_force">['|',('getter_company_id','=', user.company_id.id),('sender_company_id','=', user.company_id.id)]</field>
-      <field name="groups" eval="[(4, ref('group_user_manager') )]" />
-    </record> -->
+    <record model="ir.rule" id="task_top_manager_rule">
+      <field name="name">Company in friend</field>
+      <field name="model_id" ref="base.model_res_company" />
+      <field name="domain_force">[('id','in',user.company_id.friends_ids.mapped('company_out_id').ids)]</field>
+      <field name="groups" eval="[(4, ref('my_docs_group_manager') )]" />
+    </record>
 
-
-
-    <!-- <record model="ir.rule" id="client_manager_expert_rule">
-      <field name="name">Our client for manager</field>
-      <field name="model_id" ref="model_handlbook_client" />
-      <field name="domain_force">['|',('create_uid','=', user.id),('manager_gk','in',[user.id])]</field>
-      <field name="groups" eval="[(4, ref('group_user_manager') )]" />
-    </record> -->
 
 
   </data>

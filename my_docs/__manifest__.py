@@ -13,16 +13,18 @@
     'version': '0.1',
     'depends': ['base',"mail"],
     'data': [
+
+        'groups/groups.xml',
         'security/ir.model.access.csv',
         'security/access_rules.xml',
-        'groups/groups.xml',
+
         'views/task.xml',
         'views/reglament.xml',
         'views/partner.xml',
         'views/menu.xml',
         'views/wizards.xml',
-        'views/company.xml'
-
+        'views/company.xml',
+        'views/local_task_kz.xml'
 
         # 'data/client_grouplist.csv'
     ],

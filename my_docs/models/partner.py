@@ -23,6 +23,11 @@ class partner(models.Model):
         comodel_name="my_docs.type_ip"
     )
 
+    @api.onchange("type_of_partner" )
+    def _onchange_type_of_partner(self):
+        if self.type_of_partner !='ip':
+            self.type_ip_id = [5]
+
     Title = fields.Char('Polnoe nazvanie', required=True)
     address = fields.Char('Mesto Nahogdeniya Address')
     country_id = fields.Many2one('my_docs.country', 'Strana')
@@ -62,7 +67,7 @@ class partner(models.Model):
     head_role = fields.Many2one(
         comodel_name="my_docs.post",
     )
-    head_role_rod_pad = fields.Char(related="head_role.post_rd_pad")
+    head_role_rod_pad = fields.Char(related="head_role.post_rd_pad", readonly=True)
     head_doc = fields.Char('Deistvuyushego Na Osnovanii')
 
     @api.onchange('fio_head')
@@ -80,13 +85,14 @@ class partner(models.Model):
                     name, Case.DATIVE) + ' ' + p.middlename(lastname, Case.DATIVE)
 
     @api.multi
-    @api.onchange('address_is_same', 'country_id', 'region_id', 'address')
+    @api.onchange('address_is_same', 'country_id', 'region_id', 'address','index')
     def _change_address_is_same(self):
         for r in self:
             if r.address_is_same:
                 r.address_real = r.address
                 r.country_real_id = r.country_id
                 r.region_real_id = r.region_id
+                r.index_real = r.index
 
 class partner_local(models.Model):
     _name = 'my_docs.partner_local'
@@ -98,12 +104,13 @@ class partner_local(models.Model):
 
     @api.multi
     @api.onchange("partner_id")
-    def _onchange_field(self):
+    def _onchange_partner_id(self):
         fil = ['type_of_partner', 'type_ip_id',
                'Title',
                'address',
                'country_id',
                'region_id',
+               'index',
                'phone',
                'email',
                'faxnum',
@@ -111,6 +118,7 @@ class partner_local(models.Model):
                'address_real',
                'country_real_id',
                'region_real_id',
+               'index_real',
                'org_prav_forma',
                'svedeniya_o_gos_reg',
                'ogrn',

@@ -8,43 +8,86 @@
         <form string="Personal Information">
             <group>
               <field name="type_task"/>
-
             </group>
-
           <footer>
             <button name="next" string="next" type="object" class="oe_highlight"/>
-
             <button special="cancel" string="Cancel" class="oe_link" default_focus="1"/>
           </footer>
         </form>
       </field>
     </record>
 
-    <record id="my_docs.show_new_task" model="ir.actions.act_window">
-      <field name="name">new_task Wizard</field>
-      <field name="res_model">my_docs.new_task</field>
-      <field name="view_type">form</field>
-      <field name="view_mode">form</field>
-      <field name="target">new</field>
+    <record id="my_docs.friends_wizard" model="ir.ui.view">
+      <field name="name">friends</field>
+      <field name="model">my_docs.friend_wizard</field>
+      <field name="type">form</field>
+      <field name="arch" type="xml">
+        <form >
+            <group>
+              <field name="company_out_unic_id"/>
+              <!-- <field name="company_in_id"/>
+              <field name="company_out_id"/> -->
+            </group>
+            <footer>
+              <button name="add_friend" string="add" type="object" class="oe_highlight"/>
+              <button special="cancel" string="Cancel" class="oe_link" default_focus="1"/>
+            </footer>
+
+        </form>
+      </field>
     </record>
 
 
-      <act_window id="task_wizard_action" name="Set expert for many" res_model="my_docs.set_expert_wizard"
-     src_model="my_docs.task" view_mode="form" target="new"/>
+<record id="my_docs.set_expert_wizard_form" model="ir.ui.view">
+  <field name="name">set_expert_wizard form</field>
+  <field name="model">my_docs.set_expert_wizard</field>
+  <field name="type">form</field>
+  <field name="arch" type="xml">
+    <form string="set_expert_wizard">
+        <!-- <group>
+          <field name="getter_expert_id" options='{"no_create":True}' context="{'compute_name': True}"/> -->
+          <field name="task_id" invisible='1'/>
 
-     <record model="ir.ui.view" id="task_tree">
-       <field name="name">my_docs.task.tree</field>
-       <field name="model">my_docs.task</field>
-       <field name="arch" type="xml">
-         <tree >
 
-           <field name="state"/>
-           <field name="expert_id"/>
-           <field name="reglament_ids"/>
+            <!-- <field name="user_ids"  options='{"no_create":True}'  context='{"parent_id":task_id}'>
+              <tree>
+                  <field name="name"/>
+                  <field name="count_of_task"/>
+                  <button name='choose_expert' string="Выбрать эксперта" type='object' />
+              </tree>
+            </field> -->
+            <field name="user_ids"  widget="many2many_kanban"  readonly = '1' options='{"no_create":True}'  context='{"parent_id":task_id}'>
+              <kanban>
+                      <field name="name"/>
+                      <field name="count_of_task"/>
+                      <!-- <field name="choose_expert"/> -->
+                      <!-- <button name='choose_expert' string="Выбрать эксперта" type='object' /> -->
 
-         </tree>
-       </field>
-     </record>
+                      <templates>
+                          <t t-name="kanban-box">
+                            <div t-attf-class="oe_kanban_content">
+
+                              <div class='row'><span>Имя эксперта: <field name="name"/></span></div>
+                              <div class='row'><span>Количество активных работ: <field name="count_of_task"/></span></div>
+                              <div class='row'><button name="choose_expert" type="object" class="btn btn-sm btn-primary">Выбрать эксперта</button></div>
+                            </div>
+
+
+
+                          </t>
+                      </templates>
+                  </kanban>
+                    </field>
+        <!-- </group> -->
+      <footer>
+
+        <button name="button_save" string="Save" type="object" class="oe_highlight"/>
+        <button special="cancel" string="Cancel" class="oe_link" default_focus="1"/>
+      </footer>
+    </form>
+  </field>
+</record>
+
 
   </data>
 </odoo>

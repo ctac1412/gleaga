@@ -1,0 +1,1170 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* my_docs
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 10.0-20170512\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-01-29 15:35+0000\n"
+"PO-Revision-Date: 2018-01-29 18:37+0300\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: \n"
+"Language: ru\n"
+"X-Generator: Poedit 2.0.4\n"
+
+#. module: my_docs
+#: model:ir.actions.act_window,name:my_docs.actual_show_task
+msgid "ACTUAL Task await_client"
+msgstr "Актуальные задачи"
+
+#. module: my_docs
+#: model:ir.model,name:my_docs.model_res_groups
+msgid "Access Groups"
+msgstr "Группы доступа"
+
+#. module: my_docs
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_task_active
+msgid "Active"
+msgstr "Активно"
+
+#. module: my_docs
+#: model:ir.ui.view,arch_db:my_docs.friend_company_form_inheriat
+msgid "Add friend"
+msgstr "Добавить связь с партнером"
+
+#. module: my_docs
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_partner_address_is_same
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_partner_local_address_is_same
+msgid "Address sovpadaet"
+msgstr "Адресс совпадает"
+
+#. module: my_docs
+#: model:res.groups,name:my_docs.my_docs_group_admin
+msgid "Admin"
+msgstr "Администратор"
+
+#. module: my_docs
+#: model:ir.actions.act_window,name:my_docs.show_task
+msgid "All task"
+msgstr "Все задачи"
+
+#. module: my_docs
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_task_Applicant_partner_id
+msgid "Applicant partner id"
+msgstr "Заявитель"
+
+#. module: my_docs
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_task_ApplicantInFace
+msgid "Applicantinface"
+msgstr "В лице"
+
+#. module: my_docs
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_task_ApplicantInfo
+msgid "Applicantinfo"
+msgstr "Данные заявителя"
+
+#. module: my_docs
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_task_ApplicantType
+msgid "Applicanttype"
+msgstr "Тип заявителя"
+
+#. module: my_docs
+#: code:addons/my_docs/models/groups.py:82
+#, python-format
+msgid "Application"
+msgstr "Заявитель"
+
+#. module: my_docs
+#: model:ir.ui.view,arch_db:my_docs.friends_wizard
+#: model:ir.ui.view,arch_db:my_docs.new_task_wizard
+#: model:ir.ui.view,arch_db:my_docs.set_expert_wizard_form
+#: model:ir.ui.view,arch_db:my_docs.task_form
+msgid "Cancel"
+msgstr "Отмена"
+
+#. module: my_docs
+#: model:ir.ui.view,arch_db:my_docs.partner_form
+#: model:ir.ui.view,arch_db:my_docs.partner_local_form
+msgid "Card partner"
+msgstr "Карточка партнера"
+
+#. module: my_docs
+#: model:ir.ui.view,arch_db:my_docs.reglament_form
+msgid "Card reglament"
+msgstr "Карточка регламента"
+
+#. module: my_docs
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_tnved_name
+msgid "Code"
+msgstr "Код"
+
+#. module: my_docs
+#: model:ir.model,name:my_docs.model_res_company
+msgid "Companies"
+msgstr "Компании"
+
+#. module: my_docs
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_friend_wizard_company_in_id
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_friends_company_in_id
+msgid "Company in id"
+msgstr "Company in id"
+
+#. module: my_docs
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_friend_wizard_company_out_id
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_friends_company_out_id
+msgid "Company out id"
+msgstr "Company out id"
+
+#. module: my_docs
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_friend_wizard_company_out_unic_id
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_friends_company_out_unic_id
+msgid "Company out unic id"
+msgstr "Company out unic id"
+
+#. module: my_docs
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_counter_count_of_task
+#: model:ir.model.fields,field_description:my_docs.field_res_users_count_of_task
+msgid "Count of task"
+msgstr "Count of task"
+
+#. module: my_docs
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_set_expert_wizard_counter_ids
+msgid "Counter ids"
+msgstr "Counter ids"
+
+#. module: my_docs
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_country_code
+msgid "Country Code"
+msgstr "Код страны"
+
+#. module: my_docs
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_country_name
+msgid "Country Name"
+msgstr "Название страны"
+
+#. module: my_docs
+#: model:ir.actions.act_window,name:my_docs.create_my_docs_task
+msgid "Create an Opportunity"
+msgstr "Create an Opportunity"
+
+#. module: my_docs
+#: model:ir.ui.view,arch_db:my_docs.task_form
+msgid "Create new task"
+msgstr "Новая задача"
+
+#. module: my_docs
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_counter_create_uid
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_country_create_uid
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_country_region_create_uid
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_friend_wizard_create_uid
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_friends_create_uid
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_new_task_create_uid
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_partner_create_uid
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_partner_local_create_uid
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_post_create_uid
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_reglament_create_uid
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_schema_create_uid
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_set_expert_wizard_create_uid
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_supplement_free_form_create_uid
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_task_create_uid
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_task_log_create_uid
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_tnved_create_uid
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_type_ip_create_uid
+msgid "Created by"
+msgstr "Создал"
+
+#. module: my_docs
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_counter_create_date
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_country_create_date
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_country_region_create_date
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_friend_wizard_create_date
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_friends_create_date
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_new_task_create_date
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_partner_create_date
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_partner_local_create_date
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_post_create_date
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_reglament_create_date
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_schema_create_date
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_set_expert_wizard_create_date
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_supplement_free_form_create_date
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_task_create_date
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_task_log_create_date
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_tnved_create_date
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_type_ip_create_date
+msgid "Created on"
+msgstr "Создано"
+
+#. module: my_docs
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_partner_data_vidachi
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_partner_local_data_vidachi
+msgid "Data Vidachi Svidetelctva"
+msgstr "Дата выдачи свидетельства"
+
+#. module: my_docs
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_partner_head_doc
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_partner_local_head_doc
+msgid "Deistvuyushego Na Osnovanii"
+msgstr "Действительного на основании"
+
+#. module: my_docs
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_counter_display_name
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_country_display_name
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_country_region_display_name
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_friend_wizard_display_name
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_friends_display_name
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_new_task_display_name
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_partner_display_name
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_partner_local_display_name
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_post_display_name
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_reglament_display_name
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_schema_display_name
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_set_expert_wizard_display_name
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_supplement_free_form_display_name
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_task_display_name
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_task_log_display_name
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_tnved_display_name
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_type_ip_display_name
+msgid "Display Name"
+msgstr "Отображаемое имя"
+
+#. module: my_docs
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_schema_doc_type
+msgid "Doc type"
+msgstr "Тип документа"
+
+#. module: my_docs
+#: selection:my_docs.task,state:0
+msgid "Draft"
+msgstr "Создание"
+
+#. module: my_docs
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_partner_email
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_partner_local_email
+msgid "Email"
+msgstr "Email"
+
+#. module: my_docs
+#: model:ir.ui.view,arch_db:my_docs.task_form selection:my_docs.task,state:0
+msgid "End"
+msgstr "Закрыт"
+
+#. module: my_docs
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_partner_fio_head
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_partner_local_fio_head
+msgid "FIO Rukovoditelya"
+msgstr "ФИО руководителя"
+
+#. module: my_docs
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_partner_fio_head_dat_pad
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_partner_local_fio_head_dat_pad
+msgid "FIO Rukovoditelya v Datelnom padege"
+msgstr "ФИО руководителя в дательном падеже"
+
+#. module: my_docs
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_partner_fio_head_rod_pad
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_partner_local_fio_head_rod_pad
+msgid "FIO Rukovoditelya v Roditelnom Padege"
+msgstr "ФИО руководителя в родительном падеже"
+
+#. module: my_docs
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_partner_faxnum
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_partner_local_faxnum
+msgid "Fax"
+msgstr "Факс"
+
+#. module: my_docs
+#: model:ir.model.fields,field_description:my_docs.field_res_company_friends_ids
+#: model:ir.model.fields,field_description:my_docs.field_res_users_company_friends_ids
+msgid "Friends ids"
+msgstr "Партнерские связи"
+
+#. module: my_docs
+#: model:ir.model.fields,field_description:my_docs.field_res_users_full_name
+msgid "Full name"
+msgstr "Full name"
+
+#. module: my_docs
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_task_getter_company_id
+msgid "Getter company id"
+msgstr "Компания получатель"
+
+#. module: my_docs
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_set_expert_wizard_getter_expert_id
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_task_getter_expert_id
+msgid "Getter expert id"
+msgstr "Эксперт по задаче"
+
+#. module: my_docs
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_partner_head_role
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_partner_local_head_role
+msgid "Head role"
+msgstr "Должность"
+
+#. module: my_docs
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_counter_id
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_country_id
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_country_region_id
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_friend_wizard_id
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_friends_id
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_new_task_id
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_partner_id
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_partner_local_id
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_post_id
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_reglament_id
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_schema_id
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_set_expert_wizard_id
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_supplement_free_form_id
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_task_id
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_task_log_id
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_tnved_id
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_type_ip_id
+msgid "ID"
+msgstr "ID"
+
+#. module: my_docs
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_partner_inn
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_partner_local_inn
+msgid "INN"
+msgstr "ИНН"
+
+#. module: my_docs
+#: model:ir.actions.act_window,name:my_docs.input_show_task_await_client
+msgid "INPUT Task await_client"
+msgstr "У клиента"
+
+#. module: my_docs
+#: model:ir.actions.act_window,name:my_docs.input_show_task_await_expert
+msgid "INPUT Task await_expert"
+msgstr "Ожидает"
+
+#. module: my_docs
+#: model:ir.actions.act_window,name:my_docs.input_show_task_end
+msgid "INPUT Task end"
+msgstr "Завершённые "
+
+#. module: my_docs
+#: model:ir.actions.act_window,name:my_docs.input_show_task_no_expert
+msgid "INPUT Task no_expert"
+msgstr "Не назначенные"
+
+#. module: my_docs
+#: model:ir.ui.view,arch_db:my_docs.task_form
+msgid "Id of Task"
+msgstr "Id of Task"
+
+#. module: my_docs
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_task_ProductIdentificationOther
+msgid "Inaya informaciya, identificiruyushchaya produkciyu"
+msgstr "Инная информация идентифицирующая продукцию"
+
+#. module: my_docs
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_task_Invoice
+msgid "Invoice"
+msgstr "инвойс"
+
+#. module: my_docs
+#: model:ir.model.fields,field_description:my_docs.field_res_company_is_user_company
+msgid "Is user company"
+msgstr "Is user company"
+
+#. module: my_docs
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_task_is_user_company_getter_company
+msgid "Is user company getter company"
+msgstr "Is user company getter company"
+
+#. module: my_docs
+#: model:ir.ui.view,arch_db:my_docs.task_form
+msgid "Its see only admin of all group"
+msgstr "Its see only admin of all group"
+
+#. module: my_docs
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_task_tnved_ids
+msgid "Kod TNVED"
+msgstr "Код ТН ВЭД"
+
+#. module: my_docs
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_task_Part
+msgid "Kolichestvo partii"
+msgstr "Количество партии"
+
+#. module: my_docs
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_counter___last_update
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_country___last_update
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_country_region___last_update
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_friend_wizard___last_update
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_friends___last_update
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_new_task___last_update
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_partner___last_update
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_partner_local___last_update
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_post___last_update
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_reglament___last_update
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_schema___last_update
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_set_expert_wizard___last_update
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_supplement_free_form___last_update
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_task___last_update
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_task_log___last_update
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_tnved___last_update
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_type_ip___last_update
+msgid "Last Modified on"
+msgstr "Последний раз изменено"
+
+#. module: my_docs
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_counter_write_uid
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_country_region_write_uid
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_country_write_uid
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_friend_wizard_write_uid
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_friends_write_uid
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_new_task_write_uid
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_partner_local_write_uid
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_partner_write_uid
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_post_write_uid
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_reglament_write_uid
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_schema_write_uid
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_set_expert_wizard_write_uid
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_supplement_free_form_write_uid
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_task_log_write_uid
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_task_write_uid
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_tnved_write_uid
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_type_ip_write_uid
+msgid "Last Updated by"
+msgstr "Последний раз обновил"
+
+#. module: my_docs
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_counter_write_date
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_country_region_write_date
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_country_write_date
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_friend_wizard_write_date
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_friends_write_date
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_new_task_write_date
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_partner_local_write_date
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_partner_write_date
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_post_write_date
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_reglament_write_date
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_schema_write_date
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_set_expert_wizard_write_date
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_supplement_free_form_write_date
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_task_log_write_date
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_task_write_date
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_tnved_write_date
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_type_ip_write_date
+msgid "Last Updated on"
+msgstr "Последний раз обновлено"
+
+#. module: my_docs
+#: model:res.groups,name:my_docs.my_docs_group_manager
+msgid "Manager"
+msgstr "Менеджер"
+
+#. module: my_docs
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_task_Manufacturer_partner_id
+msgid "Manufacturer partner id"
+msgstr "Изготовитель"
+
+#. module: my_docs
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_task_ManufacturerInfo
+msgid "Manufacturerinfo"
+msgstr "Данные изготовителя"
+
+#. module: my_docs
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_partner_address
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_partner_address_real
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_partner_local_address
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_partner_local_address_real
+msgid "Mesto Nahogdeniya Address"
+msgstr "Место нахождения адресс"
+
+#. module: my_docs
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_task_my_role
+msgid "My role"
+msgstr "Моя роль"
+
+#. module: my_docs
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_new_task_name
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_schema_name
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_task_log_name
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_task_name
+msgid "Name"
+msgstr "Имя"
+
+#. module: my_docs
+#: selection:my_docs.task,state:0
+msgid "New"
+msgstr "Черновик"
+
+#. module: my_docs
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_task_DeliveryContract
+msgid "Nomer i data dogovora ili kontrakta o postavke produkcii"
+msgstr "Номер и дата договора или контракто о поставке продукции"
+
+#. module: my_docs
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_partner_local_ogrn
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_partner_ogrn
+msgid "OGRN"
+msgstr "ОГРН"
+
+#. module: my_docs
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_partner_local_okpo
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_partner_okpo
+msgid "OKPO"
+msgstr "OKPO"
+
+#. module: my_docs
+#: model:ir.actions.act_window,name:my_docs.output_show_task_await_client
+msgid "OUTPUT Task await_client"
+msgstr "Ожидает"
+
+#. module: my_docs
+#: model:ir.actions.act_window,name:my_docs.output_show_task_await_expert
+msgid "OUTPUT Task await_expert"
+msgstr "У эксперта"
+
+#. module: my_docs
+#: model:ir.actions.act_window,name:my_docs.output_show_task_end
+msgid "OUTPUT Task end"
+msgstr "Завершённые "
+
+#. module: my_docs
+#: model:ir.actions.act_window,name:my_docs.output_show_task_no_expert
+msgid "OUTPUT Task without expert"
+msgstr "Не назначенные"
+
+#. module: my_docs
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_partner_local_org_prav_forma
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_partner_org_prav_forma
+msgid "Org Prav Forma"
+msgstr "Организационная правовая форма"
+
+#. module: my_docs
+#: code:addons/my_docs/models/groups.py:97
+#, python-format
+msgid "Other"
+msgstr "Прочие"
+
+#. module: my_docs
+#: selection:my_docs.task,ProductType:0
+msgid "Part"
+msgstr "Партия"
+
+#. module: my_docs
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_partner_local_partner_id
+msgid "Partner id"
+msgstr "Партнер"
+
+#. module: my_docs
+#: model:ir.ui.view,arch_db:my_docs.new_task_wizard
+msgid "Personal Information"
+msgstr "Личные данные"
+
+#. module: my_docs
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_partner_local_phone
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_partner_phone
+msgid "Phone"
+msgstr "Телефон"
+
+#. module: my_docs
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_partner_Title
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_partner_local_Title
+msgid "Polnoe nazvanie"
+msgstr "Полное название"
+
+#. module: my_docs
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_post_post_im_pad
+msgid "Post im pad"
+msgstr "Должность в именительном падеже"
+
+#. module: my_docs
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_partner_head_role_rod_pad
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_partner_local_head_role_rod_pad
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_post_post_rd_pad
+msgid "Post rd pad"
+msgstr "Должность в родительном падеже"
+
+#. module: my_docs
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_task_ProductIdentification
+msgid "Productidentification"
+msgstr "Идентификация продукции"
+
+#. module: my_docs
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_task_ProductInfo
+msgid "Productinfo"
+msgstr "Сведения о продукции"
+
+#. module: my_docs
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_task_ProductLocation
+msgid "Productlocation"
+msgstr "Вид продукции"
+
+#. module: my_docs
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_task_ProductType
+msgid "Producttype"
+msgstr "Тип продукции"
+
+#. module: my_docs
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_task_AcceptanceReason
+msgid "Protokol ispitanii"
+msgstr "Протокол испытаний"
+
+#. module: my_docs
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_country_region_name
+msgid "Region Name"
+msgstr "Регион"
+
+#. module: my_docs
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_task_reglament_ids
+msgid "Reglament ids"
+msgstr "Регламенты"
+
+#. module: my_docs
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_reglament_number
+msgid "Reglament number"
+msgstr "Номер регламента"
+
+#. module: my_docs
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_task_ShippingDocumentation
+msgid "Rekvizity tovarosoprovoditel'noj dokumentacii"
+msgstr "Реквезиты товаросопроводительной документации"
+
+#. module: my_docs
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_reglament_name
+msgid "Rglament name"
+msgstr "Название регламента"
+
+#. module: my_docs
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_partner_local_region_id
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_partner_local_region_real_id
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_partner_region_id
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_partner_region_real_id
+msgid "Russian Region"
+msgstr "Регион"
+
+#. module: my_docs
+#: model:ir.ui.view,arch_db:my_docs.set_expert_wizard_form
+msgid "Save"
+msgstr "Сохранить"
+
+#. module: my_docs
+#: model:ir.ui.view,arch_db:my_docs.task_form
+msgid "Send to client"
+msgstr "Отправить клиенту"
+
+#. module: my_docs
+#: model:ir.ui.view,arch_db:my_docs.task_form
+msgid "Send to expert"
+msgstr "Отправить эксперту"
+
+#. module: my_docs
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_task_sender_company_id
+msgid "Sender company id"
+msgstr "Компания отправитель"
+
+#. module: my_docs
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_task_sender_expert_id
+msgid "Sender expert id"
+msgstr "Клиент"
+
+#. module: my_docs
+#: selection:my_docs.task,ProductType:0
+msgid "Serial"
+msgstr "Серийный выпуск"
+
+#. module: my_docs
+#: model:ir.ui.view,arch_db:my_docs.task_form
+msgid "Set a new expert"
+msgstr "Назначить эксперта"
+
+#. module: my_docs
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_task_shema_id
+msgid "Shema id"
+msgstr "Схема"
+
+#. module: my_docs
+#: model:ir.actions.act_window,name:my_docs.show_task_all_task
+msgid "Show task all task"
+msgstr "Все задачи"
+
+#. module: my_docs
+#: selection:my_docs.task,ProductType:0
+msgid "Single"
+msgstr "Единичное изделие"
+
+#. module: my_docs
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_task_DocumentValidity
+msgid "Srok dejstviya deklaracii o sootvetstvii:"
+msgstr "Срок действия декларации о соответствии"
+
+#. module: my_docs
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_task_state
+msgid "State"
+msgstr "Статус"
+
+#. module: my_docs
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_partner_country_id
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_partner_country_real_id
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_partner_local_country_id
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_partner_local_country_real_id
+msgid "Strana"
+msgstr "Страна"
+
+#. module: my_docs
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_task_supplement_free_form_ids
+msgid "Supplement free form ids"
+msgstr "Приложение свободной формы"
+
+#. module: my_docs
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_partner_local_svedeniya_o_gos_reg
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_partner_svedeniya_o_gos_reg
+msgid "Svedeniya O Gos Reg"
+msgstr "Сведения о гос. Регистрации"
+
+#. module: my_docs
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_partner_local_vidano
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_partner_vidano
+msgid "Svidetelctvo o Registracii Vidano"
+msgstr "Свидетельство о регистрации выдано "
+
+#. module: my_docs
+#: model:ir.model.fields,field_description:my_docs.field_res_company_task_count
+msgid "Task count"
+msgstr "Количество задач"
+
+#. module: my_docs
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_supplement_free_form_task_id
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_task_log_task_id
+msgid "Task id"
+msgstr "Task id"
+
+#. module: my_docs
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_task_task_log_ids
+msgid "Task log ids"
+msgstr "Логи изменений"
+
+#. module: my_docs
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_task_task_my_button_fill
+msgid "Task my button fill"
+msgstr "Task my button fill"
+
+#. module: my_docs
+#: model:ir.actions.act_window,name:my_docs.show_task_new_item
+msgid "Task new_item"
+msgstr "Новая Зачада"
+
+#. module: my_docs
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_set_expert_wizard_task_id
+msgid "Tasks"
+msgstr "Все задачи"
+
+#. module: my_docs
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_tnved_note
+msgid "Tnved Description"
+msgstr "ТН ВЭД описание"
+
+#. module: my_docs
+#: model:res.groups,name:my_docs.my_docs_group_top_manager
+msgid "Top manager"
+msgstr "Топ менеджер"
+
+#. module: my_docs
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_partner_local_type_ip_id
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_partner_type_ip_id
+msgid "Type ip id"
+msgstr "Тип ИП"
+
+#. module: my_docs
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_partner_local_type_of_partner
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_partner_type_of_partner
+msgid "Type of partner"
+msgstr "Тип заявителя"
+
+#. module: my_docs
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_new_task_type_task
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_task_type_task
+msgid "Type task"
+msgstr "Тип задачи"
+
+#. module: my_docs
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_type_ip_name
+msgid "Type_form"
+msgstr "Тип формы"
+
+#. module: my_docs
+#: model:ir.model.fields,field_description:my_docs.field_res_company_unic_id
+msgid "Unic id"
+msgstr "Уникальный номер"
+
+#. module: my_docs
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_counter_user_id
+msgid "User id"
+msgstr "User id"
+
+#. module: my_docs
+#: model:ir.model,name:my_docs.model_res_users
+msgid "Users"
+msgstr "Пользователи"
+
+#. module: my_docs
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_supplement_free_form_value
+msgid "Value"
+msgstr "Значение"
+
+#. module: my_docs
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_task_watcher_company_id
+msgid "Watcher company id"
+msgstr "Компания смотрящего"
+
+#. module: my_docs
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_task_watcher_id
+msgid "Watcher id"
+msgstr "Смотритель"
+
+#. module: my_docs
+#: model:ir.ui.view,arch_db:my_docs.friends_wizard
+msgid "add"
+msgstr "Добавить"
+
+#. module: my_docs
+#: selection:my_docs.task,state:0
+msgid "await_client"
+msgstr "Ожидает клиента"
+
+#. module: my_docs
+#: selection:my_docs.task,state:0
+msgid "await_expert"
+msgstr "Ожидает эксперта"
+
+#. module: my_docs
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_task_log_change_user
+msgid "change_user"
+msgstr "Юзер"
+
+#. module: my_docs
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_task_client_enter
+msgid "client_enter"
+msgstr "Отправить клиенту"
+
+#. module: my_docs
+#: selection:my_docs.new_task,type_task:0 selection:my_docs.schema,doc_type:0
+#: selection:my_docs.task,type_task:0
+msgid "ds"
+msgstr "Декларация"
+
+#. module: my_docs
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_task_expert_enter
+msgid "expert_enter"
+msgstr "Отправить эксперту"
+
+#. module: my_docs
+#: selection:my_docs.partner,type_of_partner:0
+#: selection:my_docs.partner_local,type_of_partner:0
+msgid "fizlico"
+msgstr "Физическое лицо"
+
+#. module: my_docs
+#: selection:my_docs.partner,type_of_partner:0
+#: selection:my_docs.partner_local,type_of_partner:0
+msgid "foreign"
+msgstr "Иностранное лицо"
+
+#. module: my_docs
+#: selection:my_docs.task,my_role:0
+msgid "getter"
+msgstr "Получатель"
+
+#. module: my_docs
+#: selection:my_docs.task,my_role:0
+msgid "getter_watcher"
+msgstr "Получатель_смотритель"
+
+#. module: my_docs
+#: selection:my_docs.task,ProductLocation:0
+msgid "importnaya"
+msgstr "Импортная"
+
+#. module: my_docs
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_partner_index
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_partner_index_real
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_partner_local_index
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_partner_local_index_real
+msgid "index"
+msgstr "Индекс"
+
+#. module: my_docs
+#: model:ir.ui.menu,name:my_docs.menu_input_task_await_client
+msgid "input_task_await_client"
+msgstr "У клиента"
+
+#. module: my_docs
+#: model:ir.ui.menu,name:my_docs.menu_input_task_await_expert
+msgid "input_task_await_expert"
+msgstr "Ожидает"
+
+#. module: my_docs
+#: model:ir.ui.menu,name:my_docs.menu_input_task_end
+msgid "input_task_end"
+msgstr "Завершённые"
+
+#. module: my_docs
+#: model:ir.ui.menu,name:my_docs.menu_input_task_no_expert
+msgid "input_task_no_expert"
+msgstr "Не назначенные"
+
+#. module: my_docs
+#: selection:my_docs.partner,type_of_partner:0
+#: selection:my_docs.partner_local,type_of_partner:0
+msgid "ip"
+msgstr "Индивидуальный предприниматель"
+
+#. module: my_docs
+#: model:ir.ui.menu,name:my_docs.menu_root
+msgid "my_docs"
+msgstr "my_docs"
+
+#. module: my_docs
+#: model:ir.model,name:my_docs.model_my_docs_counter
+msgid "my_docs.counter"
+msgstr "my_docs.counter"
+
+#. module: my_docs
+#: model:ir.model,name:my_docs.model_my_docs_country
+msgid "my_docs.country"
+msgstr "my_docs.country"
+
+#. module: my_docs
+#: model:ir.model,name:my_docs.model_my_docs_country_region
+msgid "my_docs.country_region"
+msgstr "my_docs.country_region"
+
+#. module: my_docs
+#: model:ir.model,name:my_docs.model_my_docs_friend_wizard
+msgid "my_docs.friend_wizard"
+msgstr "my_docs.friend_wizard"
+
+#. module: my_docs
+#: model:ir.model,name:my_docs.model_my_docs_friends
+msgid "my_docs.friends"
+msgstr "my_docs.friends"
+
+#. module: my_docs
+#: model:ir.model,name:my_docs.model_my_docs_new_task
+msgid "my_docs.new_task"
+msgstr "my_docs.new_task"
+
+#. module: my_docs
+#: model:ir.model,name:my_docs.model_my_docs_partner
+msgid "my_docs.partner"
+msgstr "my_docs.partner"
+
+#. module: my_docs
+#: model:ir.model,name:my_docs.model_my_docs_partner_local
+msgid "my_docs.partner_local"
+msgstr "my_docs.partner_local"
+
+#. module: my_docs
+#: model:ir.model,name:my_docs.model_my_docs_post
+msgid "my_docs.post"
+msgstr "my_docs.post"
+
+#. module: my_docs
+#: model:ir.model,name:my_docs.model_my_docs_reglament
+msgid "my_docs.reglament"
+msgstr "my_docs.reglament"
+
+#. module: my_docs
+#: model:ir.model,name:my_docs.model_my_docs_schema
+msgid "my_docs.schema"
+msgstr "my_docs.schema"
+
+#. module: my_docs
+#: model:ir.model,name:my_docs.model_my_docs_set_expert_wizard
+msgid "my_docs.set_expert_wizard"
+msgstr "my_docs.set_expert_wizard"
+
+#. module: my_docs
+#: model:ir.model,name:my_docs.model_my_docs_supplement_free_form
+msgid "my_docs.supplement_free_form"
+msgstr "my_docs.supplement_free_form"
+
+#. module: my_docs
+#: model:ir.model,name:my_docs.model_my_docs_task
+msgid "my_docs.task"
+msgstr "Задача"
+
+#. module: my_docs
+#: model:ir.model,name:my_docs.model_my_docs_task_log
+msgid "my_docs.task_log"
+msgstr "my_docs.task_log"
+
+#. module: my_docs
+#: model:ir.model,name:my_docs.model_my_docs_tnved
+msgid "my_docs.tnved"
+msgstr "my_docs.tnved"
+
+#. module: my_docs
+#: model:ir.model,name:my_docs.model_my_docs_type_ip
+msgid "my_docs.type_ip"
+msgstr "my_docs.type_ip"
+
+#. module: my_docs
+#: model:ir.model,name:my_docs.model_my_docs_users_busy
+msgid "my_docs.users_busy"
+msgstr "my_docs.users_busy"
+
+#. module: my_docs
+#: model:ir.ui.menu,name:my_docs.menu_lc
+msgid "my_docs_lc"
+msgstr "my_docs_lc"
+
+#. module: my_docs
+#: model:ir.ui.view,arch_db:my_docs.new_task_wizard
+msgid "next"
+msgstr "Следующий"
+
+#. module: my_docs
+#: model:ir.ui.view,arch_db:my_docs.kanban_my_docs_task_input
+#: model:ir.ui.view,arch_db:my_docs.kanban_my_docs_task_output
+msgid "open"
+msgstr "Открыть"
+
+#. module: my_docs
+#: selection:my_docs.task,ProductLocation:0
+msgid "otechestvennaya"
+msgstr "Отечественная"
+
+#. module: my_docs
+#: model:ir.ui.menu,name:my_docs.menu_output_task_await_client
+msgid "output_task_await_client"
+msgstr "Ожидает"
+
+#. module: my_docs
+#: model:ir.ui.menu,name:my_docs.menu_output_task_await_expert
+msgid "output_task_await_expert"
+msgstr "У эксперта"
+
+#. module: my_docs
+#: model:ir.ui.menu,name:my_docs.menu_output_task_end
+msgid "output_task_end"
+msgstr "Завершённые"
+
+#. module: my_docs
+#: model:ir.ui.menu,name:my_docs.menu_output_task_no_expert
+msgid "output_task_no_expert"
+msgstr "Не назначенные"
+
+#. module: my_docs
+#: model:ir.actions.act_window,name:my_docs.show_partner
+msgid "partner"
+msgstr "Партнер"
+
+#. module: my_docs
+#: model:ir.actions.act_window,name:my_docs.show_partner_local
+msgid "partner_local"
+msgstr "Локальный партнер"
+
+#. module: my_docs
+#: model:ir.actions.act_window,name:my_docs.show_reglament
+#: model:ir.ui.menu,name:my_docs.menu_reglament
+msgid "reglament"
+msgstr "Регламент"
+
+#. module: my_docs
+#: selection:my_docs.new_task,type_task:0 selection:my_docs.task,type_task:0
+msgid "request"
+msgstr "Запрос"
+
+#. module: my_docs
+#: selection:my_docs.task,my_role:0
+msgid "sender"
+msgstr "Отправитель"
+
+#. module: my_docs
+#: selection:my_docs.task,my_role:0
+msgid "sender_watcher"
+msgstr "Отправитель_смотритель"
+
+#. module: my_docs
+#: model:ir.ui.view,arch_db:my_docs.set_expert_wizard_form
+msgid "set_expert_wizard"
+msgstr "Назначение эксперта"
+
+#. module: my_docs
+#: selection:my_docs.new_task,type_task:0 selection:my_docs.schema,doc_type:0
+#: selection:my_docs.task,type_task:0
+msgid "ss"
+msgstr "Сертификат Соответствия"
+
+#. module: my_docs
+#: model:ir.actions.act_window,name:my_docs.show_expert_mail_in_all
+#: model:ir.ui.menu,name:my_docs.menu_task
+#: model:ir.ui.view,arch_db:my_docs.task_form
+msgid "task"
+msgstr "Задача"
+
+#. module: my_docs
+#: model:ir.ui.menu,name:my_docs.menu_task_actual_parent
+msgid "task_actual_parent"
+msgstr "Актуальные"
+
+#. module: my_docs
+#: model:ir.ui.menu,name:my_docs.menu_task_all_output_task_canban
+msgid "task_all_output_task_canban"
+msgstr "Исходящие"
+
+#. module: my_docs
+#: model:ir.ui.menu,name:my_docs.menu_task_all_task
+msgid "task_all_task"
+msgstr "task_all_task"
+
+#. module: my_docs
+#: model:ir.ui.menu,name:my_docs.menu_task_all_input_task_canban
+msgid "task_all_task_canban"
+msgstr "task_all_task_canban"
+
+#. module: my_docs
+#: model:ir.ui.menu,name:my_docs.menu_task_in_point
+msgid "task_in_point"
+msgstr "Меню в пунтакх"
+
+#. module: my_docs
+#: model:ir.ui.menu,name:my_docs.menu_task_input_parent
+msgid "task_input_parent"
+msgstr "Входящие"
+
+#. module: my_docs
+#: model:ir.ui.menu,name:my_docs.menu_task_in_kanbans
+msgid "task_kanbans"
+msgstr "Меню канбаном"
+
+#. module: my_docs
+#: model:ir.ui.menu,name:my_docs.menu_task_new_item
+msgid "task_new_item"
+msgstr "Новая задача"
+
+#. module: my_docs
+#: model:ir.ui.menu,name:my_docs.menu_task_output_parent
+msgid "task_output_parent"
+msgstr "Исходящие"
+
+#. module: my_docs
+#: selection:my_docs.partner,type_of_partner:0
+#: selection:my_docs.partner_local,type_of_partner:0
+msgid "urlico"
+msgstr "Юридическое лицо"
+
+#. module: my_docs
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_task_log_value_after
+msgid "value_after"
+msgstr "Стало"
+
+#. module: my_docs
+#: model:ir.model.fields,field_description:my_docs.field_my_docs_task_log_value_before
+msgid "value_before"
+msgstr "Было"
+
+#. module: my_docs
+#: selection:my_docs.task,my_role:0
+msgid "who_i_am????"
+msgstr "Кто есть я и жизнь моя"

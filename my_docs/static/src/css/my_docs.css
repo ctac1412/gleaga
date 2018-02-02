@@ -1,0 +1,11 @@
+.card_sheet{
+    min-width: 150px !important;
+    min-height: 450px !important;
+}
+.separator_centr .o_horizontal_separator{
+  text-align: center;
+}
+
+.modal-lg {
+  width:90% !important;
+}

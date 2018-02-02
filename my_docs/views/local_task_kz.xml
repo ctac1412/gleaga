@@ -1,0 +1,109 @@
+<odoo>
+  <data>
+
+    <record model="ir.actions.act_window" id="my_docs.show_local_task_kz">
+      <field name="name">local_task_kz</field>
+      <field name="res_model">my_docs.local_task_kz</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <record model="ir.ui.view" id="local_task_kz_form_kz">
+      <field name="name">my_docs.local_task_kz.form</field>
+      <field name="model">my_docs.local_task_kz</field>
+      <field name="arch" type="xml">
+        <form string="task">
+          <sheet >
+            <field required="1" name="name"/>
+            <field required="1" name="type_task"/>
+            <button name='qqqqqqqqqqqqqqqq' type='object' string='test' ></button>
+          </sheet>
+          <group>
+            <group>
+              <sheet class='card_sheet'>
+                <group string="Заявитель">
+                  <field name="ApplicantType"/>
+                  <field name="Applicant_partner_id" domain="[('id','in',[Applicant_partner_id,Manufacturer_partner_id])]"/>
+                  <field name="ApplicantInfo"/>
+                  <field name="ApplicantInFace"/>
+                </group>
+                <group string="Изготовитель">
+                  <field name="Manufacturer_partner_id" domain="[('id','in',[Applicant_partner_id,Manufacturer_partner_id])]"/>
+                  <field name="ManufacturerInfo"/>
+                  <field name="ProductLocation"/>
+                </group>
+                <group string="Продукция">
+                  <field name="ProductType" widget='radio' options="{'horizontal': true}"/>
+                  <field name="ProductInfo"/>
+                  <field name="ProductIdentification"/>
+                  <field name="Part" attrs="{'invisible': [('ProductType','=','Serial')]}"/>
+                  <field name="Invoice" attrs="{'invisible': [('ProductType','=','Serial')]}"/>
+                  <field name="ShippingDocumentation" attrs="{'invisible': [('ProductType','=','Serial')]}"/>
+                  <field name="DeliveryContract" attrs="{'invisible': [('ProductType','=','Serial')]}"/>
+
+                </group>
+                <group>
+                  <field name="ProductIdentificationOther"/>
+                  <field name="DocumentValidity"/>
+                  <field name="AcceptanceReason"/>
+                </group>
+              </sheet>
+            </group>
+            <group>
+              <sheet class='card_sheet'>
+                <group string="Өтініш беруші мемлекеттік тілде">
+                  <field name="ApplicantType_kz"/>
+                  <field name="Applicant_partner_id_kz" domain="[('id','in',[Applicant_partner_id,Manufacturer_partner_id])]"/>
+                  <field name="ApplicantInfo_kz"/>
+                  <field name="ApplicantInFace_kz"/>
+                </group>
+                <group string="Дайындаушы мемлекеттік тілде">
+                  <field name="Manufacturer_partner_id_kz" domain="[('id','in',[Applicant_partner_id,Manufacturer_partner_id])]"/>
+                  <field name="ManufacturerInfo_kz"/>
+                  <field name="ProductLocation_kz"/>
+                </group>
+                <group string="Өнім мемлекеттік тілде">
+                  <field name="ProductType_kz" widget='radio' options="{'horizontal': true}"/>
+                  <field name="ProductInfo_kz"/>
+                  <field name="ProductIdentification_kz"/>
+                  <field name="Part_kz" attrs="{'invisible': [('ProductType','=','Serial')]}"/>
+                  <field name="Invoice_kz" attrs="{'invisible': [('ProductType','=','Serial')]}"/>
+                  <field name="ShippingDocumentation_kz" attrs="{'invisible': [('ProductType','=','Serial')]}"/>
+                  <field name="DeliveryContract_kz" attrs="{'invisible': [('ProductType','=','Serial')]}"/>
+
+                </group>
+                <group>
+                  <field name="ProductIdentificationOther_kz"/>
+                  <field name="DocumentValidity_kz"/>
+                  <field name="AcceptanceReason_kz"/>
+                  <field name="app_date"/>
+                  <field name="start_date"/>
+                  <field name="end_date"/>
+                </group>
+              </sheet>
+            </group>
+          </group>
+          <sheet>
+            <group string='Общие данные'>
+              <field name="reglament_ids"/>
+              <field name="shema_id"/>
+              <field name="tnved_ids" widget="many2many"/>
+            </group>
+          </sheet>
+          <sheet class='card_sheet'>
+            <group string="История изменений" class='separator_centr'>
+              <field nolabel='1' name="task_log_ids">
+                <tree limit='4'>
+                  <field name="name"/>
+                  <field name="value_before"/>
+                  <field name="value_after"/>
+                  <field name="change_user"/>
+                  <button name="return_change" type="object" string="Cancel"/>
+                </tree>
+              </field>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+  </data>
+</odoo>
