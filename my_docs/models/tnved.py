@@ -40,7 +40,6 @@ class country_region(models.Model):
     _name = 'my_docs.country_region'
     name = fields.Char('Region Name', required=True, index=True)
 
-
 class type_ip(models.Model):
     _name = 'my_docs.type_ip'
     name = fields.Char('Type_form', required=True)

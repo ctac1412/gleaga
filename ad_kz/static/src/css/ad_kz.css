@@ -1,0 +1,20 @@
+.card_sheet{
+    /* min-width: 150px !important; */
+    min-height: 450px !important;
+}
+.separator_centr .o_horizontal_separator{
+  text-align: center;
+}
+.o_form_view .o_form_sheet_bg .o_horizontal_separator .separator_centr{
+  text-align: center !important;
+}
+.modal-lg {
+  width:90% !important;
+}
+.o_form_view .o_group .o_td_label .o_form_label{
+  min-height: 36.15px;
+}
+
+.o_form_sheet.card_sheet.kz_side{
+  background-color:#f2f7ee !important;
+}

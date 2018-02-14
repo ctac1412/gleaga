@@ -1,0 +1,164 @@
+<odoo>
+  <data>
+    <template id="assets_backend" name="ad_kz assets" inherit_id="web.assets_backend">
+      <xpath expr="." position="inside">
+        <link rel="stylesheet" href="/ad_kz/static/src/css/ad_kz.css"/>
+      </xpath>
+    </template>
+
+    <record model="ir.actions.act_window" id="ad_kz.show_task_kz">
+      <field name="name">task_kz</field>
+      <field name="res_model">ad_kz.task_kz</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+    <record model="ir.ui.view" id="task_kz_treee">
+      <field name="name">ad_kz.task_kz.tree</field>
+      <field name="model">ad_kz.task_kz</field>
+      <field name="arch" type="xml">
+        <tree >
+            <field name="name"/>
+            <field name="type_task"/>
+            <field name="ProductType"/>
+            <field name="ProductInfo"/>
+            <field name="Applicant_partner_id"/>
+            <field name="Manufacturer_partner_id"/>
+            <field  name="comment"/>
+            <field name="app_date"/>
+            <field name="start_date"/>
+            <field name="end_date"/>
+
+        </tree>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="task_kz_form">
+      <field name="name">ad_kz.task_kz.form</field>
+      <field name="model">ad_kz.task_kz</field>
+      <field name="arch" type="xml">
+        <form string="task">
+          <header>
+            <field name="state" widget="statusbar" statusbar_visible="maket,zaregistrirovan,upload"/>
+          </header>
+          <sheet >
+            <group>
+              <group>
+                <field required="1" name="name"/>
+                <field required="1" name="type_task"/>
+                <field  name="comment"/>
+                <!-- <field  name="last_file"/> -->
+
+                <!-- <button name='test' string='test' type='object'/> -->
+              </group>
+              <group>
+                <field name="app_date"/>
+                <field name="start_date"/>
+                <field name="end_date"/>
+              </group>
+              <group>
+                <field name="reg_number_id"/>
+                <field name="app_number_id"/>
+              </group>
+              <group>
+                <field  name="expert_person_ids">
+                  <tree limit='2'>
+                    <field name="name"/>
+                  </tree>
+                </field>
+
+              </group>
+            </group>
+
+          </sheet>
+          <group>
+            <group>
+              <sheet class='card_sheet'>
+                <div class="oe_right oe_button_box" name="button_box">
+                  <button string="Печать" class="oe_stat_button" icon="fa-print" type="object" name="get_print_report"  />
+                </div>
+                <group string="Заявитель">
+                  <field name="ApplicantType"/>
+                  <field name="Applicant_partner_id" domain="[('id','in',[Applicant_partner_id,Manufacturer_partner_id])]"/>
+                  <field name="ApplicantInfo"/>
+                  <field name="ApplicantInFace"/>
+                </group>
+                <group string="Изготовитель">
+                  <field name="Manufacturer_partner_id" domain="[('id','in',[Applicant_partner_id,Manufacturer_partner_id])]"/>
+                  <field name="ManufacturerInfo"/>
+                  <field name="ProductLocation"/>
+                </group>
+                <group string="Продукция">
+                  <field name="ProductType" widget='radio' options="{'horizontal': true}"/>
+                  <field name="ProductInfo"/>
+                  <field name="ProductIdentification"/>
+                  <field name="Part" attrs="{'invisible': [('ProductType','=','Serial')]}"/>
+                  <field name="Invoice" attrs="{'invisible': [('ProductType','=','Serial')]}"/>
+                  <field name="ShippingDocumentation" attrs="{'invisible': [('ProductType','=','Serial')]}"/>
+                  <field name="DeliveryContract" attrs="{'invisible': [('ProductType','=','Serial')]}"/>
+                </group>
+                <group>
+                  <field name="ProductIdentificationOther"/>
+                  <field name="DocumentValidity"/>
+                  <field name="AcceptanceReason"/>
+                  <field name="dop_svedeniya"/>
+                </group>
+              </sheet>
+            </group>
+            <group>
+              <sheet class='card_sheet kz_side'>
+                <div class="oe_right oe_button_box" name="button_box">
+                  <button string="Печать" class="oe_stat_button" icon="fa-print" type="object" name="get_print_report_kz"  />
+                </div>
+                <group string="Заявитель на национальном языке">
+                  <field name="ApplicantType_kz"/>
+                  <field name="Applicant_partner_id_kz" domain="[('id','in',[Applicant_partner_id,Manufacturer_partner_id])]"/>
+                  <field name="ApplicantInfo_kz"/>
+                  <field name="ApplicantInFace_kz"/>
+                </group>
+                <group string="Изготовитель на национальном языке">
+                  <field name="Manufacturer_partner_id_kz" domain="[('id','in',[Applicant_partner_id,Manufacturer_partner_id])]"/>
+                  <field name="ManufacturerInfo_kz"/>
+                  <field name="ProductLocation_kz"/>
+                </group>
+                <group string="Продукция на национальном языке">
+                  <field name="ProductType_kz" widget='radio' options="{'horizontal': true}"/>
+                  <field name="ProductInfo_kz"/>
+                  <field name="ProductIdentification_kz"/>
+                  <field name="Part_kz" attrs="{'invisible': [('ProductType','=','Serial')]}"/>
+                  <field name="Invoice_kz" attrs="{'invisible': [('ProductType','=','Serial')]}"/>
+                  <field name="ShippingDocumentation_kz" attrs="{'invisible': [('ProductType','=','Serial')]}"/>
+                  <field name="DeliveryContract_kz" attrs="{'invisible': [('ProductType','=','Serial')]}"/>
+
+                </group>
+                <group>
+                  <field name="ProductIdentificationOther_kz"/>
+                  <field name="DocumentValidity_kz"/>
+                  <field name="AcceptanceReason_kz"/>
+                  <field name="dop_svedeniya_kz"/>
+                </group>
+              </sheet>
+            </group>
+          </group>
+          <sheet>
+            <group string='Общие данные'>
+              <field name="reglament_ids"/>
+              <field name="shema_id"/>
+              <field name="tnved_ids" widget="many2many"/>
+            </group>
+          </sheet>
+          <sheet attrs="{'invisible': [('id','=',False)]}">
+            <field name="id" invisible='1'/>
+            <div class="oe_chatter">
+              <field name="message_follower_ids" widget="mail_followers"/>
+              <field name="message_ids" widget="mail_thread"/>
+            </div>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+
+
+
+
+  </data>
+</odoo>

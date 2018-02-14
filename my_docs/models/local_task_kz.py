@@ -10,6 +10,7 @@ translate = YandexTranslate('trnsl.1.1.20180202T132838Z.3c46e5ba934244c9.0562367
 class local_task_kz(models.Model):
     _name = 'my_docs.local_task_kz'
     _inherit = ['my_docs.task']
+    local_task_id = fields.Many2one('my_docs.local_task_kz')
     @api.multi
     @api.onchange("ProductInfo","ProductIdentification" )
     def _onchange_ProductInfo_kz(self):
@@ -17,10 +18,15 @@ class local_task_kz(models.Model):
             if r.ProductInfo : r.ProductInfo_kz = translate.translate(r.ProductInfo, 'ru-kk')['text'][0]
             if r.ProductIdentification :r.ProductIdentification_kz  = translate.translate(r.ProductIdentification, 'ru-kk')['text'][0]
 
+    @api.multi
+    def write(self, vals={}):
+        print 'm0099999999------------------------------------------'
+        super(local_task_kz, self).write(vals)
+        return True
 
     def qqqqqqqqqqqqqqqq(self):
         for r in self:
-             r.ProductInfo_kz = 'asdasd'
+            print r
             # if r.ProductInfo : r.ProductInfo_kz = translate.translate(r.ProductInfo, 'ru-kk')['text']
             # if r.ProductIdentification :r.ProductIdentification_kz  = translate.translate(r.ProductIdentification, 'ru-kk')['text']
         # print('Languages:', translate.langs)

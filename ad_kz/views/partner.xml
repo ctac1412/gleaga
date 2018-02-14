@@ -1,0 +1,531 @@
+<odoo>
+  <data>
+
+    <record model="ir.ui.view" id="partner_tree">
+      <field name="name">ad_kz.partner_local_kz.tree</field>
+      <field name="model">ad_kz.partner_local_kz</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="title"/>
+          <field name="address"/>
+        </tree>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="partner_form">
+      <field name="name">ad_kz.partner_local_kz.form</field>
+      <field name="model">ad_kz.partner_kz</field>
+      <field name="arch" type="xml">
+        <form string="Card partner">
+          <sheet >
+            <separator colspan="4" string="Даннные контрагента" class='separator_centr'></separator>
+            <group colspan="4">
+              <group string='Русский язык'>
+                <field name="title"/>
+                <field name="org_prav_forma"/>
+                <field name="fio_item_id"/>
+                <!-- <field name="type_of_partner"/> <field name="type_ip_id" attrs="{'invisible': [('type_of_partner','not in',['ip'])],'required':[('type_of_partner','in',['ip'])]}"/> -->
+              </group>
+              <group string='Национальный язык'>
+                <field name="title_kz"/>
+                <field name="org_prav_forma_kz"/>
+                <field name="fio_item_id_kz"/>
+                <!-- <field name="type_of_partner"/> <field name="type_ip_id" attrs="{'invisible': [('type_of_partner','not in',['ip'])],'required':[('type_of_partner','in',['ip'])]}"/> -->
+              </group>
+              <group colspan="4">
+                <group >
+                  <field name="phone"/>
+                  <field name="email"/>
+                </group>
+
+                <group >
+                  <field name="faxnum"/>
+                  <field name="address_is_same"/>
+                </group>
+
+              </group>
+            </group>
+            <group>
+              <group string="Юридический адрес">
+                <field name="address"/>
+                <field name="country_id"/>
+                <field name="region_id"/>
+                <field name="index"/>
+                <separator colspan='4' string="Фактический адрес"></separator>
+                <field name="address_real"/>
+                <field name="country_real_id"/>
+                <field name="region_real_id"/>
+                <field name="index_real"/>
+
+                <separator colspan='4' string="Данные"></separator>
+                <field name="ogrn"/>
+                <field name="data_vidachi"/>
+                <field name="inn"/>
+                <field name="okpo"/>
+                <field name="svedeniya_o_gos_reg"/>
+                <field name="head_doc"/>
+                <field name="vidano"/>
+
+                <field name="fio_head" invisible='1'/>
+                <field name="fio_head_rod_pad" invisible='1'/>
+                <field name="fio_head_dat_pad" invisible='1'/>
+                <field name="head_role" invisible='1'/>
+                <field name="head_role_rod_pad" invisible='1'/>
+
+              </group>
+
+              <group string="Юридический адрес (Н/Я)">
+                <field name="address_kz"/>
+                <field name="country_id_kz"/>
+                <field name="region_id_kz"/>
+                <field name="index_kz"/>
+                <separator colspan='4' string="Фактический адрес (Н/Я)"></separator>
+
+                <field name="address_real_kz"/>
+                <field name="country_real_id_kz"/>
+                <field name="region_real_id_kz"/>
+                <field name="index_real_kz"/>
+
+                <separator colspan='4' string="Данные (Н/Я)"></separator>
+
+                <field name="ogrn_kz"/>
+                <field name="data_vidachi_kz"/>
+                <field name="inn_kz"/>
+                <field name="okpo_kz"/>
+                <field name="svedeniya_o_gos_reg_kz"/>
+                <field name="head_doc_kz"/>
+                <field name="vidano_kz"/>
+
+                <field name="fio_head_kz" invisible='1'/>
+                <field name="fio_head_rod_pad_kz" invisible='1'/>
+                <field name="fio_head_dat_pad_kz" invisible='1'/>
+                <field name="head_role_kz" invisible='1'/>
+                <field name="head_role_rod_pad_kz" invisible='1'/>
+
+              </group>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="partner_local_form">
+      <field name="name">ad_kz.partner_local_kz.form</field>
+      <field name="model">ad_kz.partner_local_kz</field>
+      <field name="arch" type="xml">
+        <form string="Card partner">
+          <sheet >
+            <group colspan="4" string="Копирование из базового справочника">
+              <field name="partner_id"/>
+              <button string='replicate_to_kz' name='replicate_to_kz' type='object'/>
+            </group>
+            <separator colspan="4" string="Даннные контрагента" class='separator_centr'></separator>
+            <group colspan="4">
+              <group string='Русский язык'>
+                <field name="title"/>
+                <field name="org_prav_forma"/>
+                <field name="fio_item_id"/>
+                <!-- <field name="type_of_partner"/> <field name="type_ip_id" attrs="{'invisible': [('type_of_partner','not in',['ip'])],'required':[('type_of_partner','in',['ip'])]}"/> -->
+              </group>
+              <group string='Национальный язык'>
+                <field name="title_kz"/>
+                <field name="org_prav_forma_kz"/>
+                <field name="fio_item_id_kz"/>
+                <!-- <field name="type_of_partner"/> <field name="type_ip_id" attrs="{'invisible': [('type_of_partner','not in',['ip'])],'required':[('type_of_partner','in',['ip'])]}"/> -->
+              </group>
+              <group colspan="4">
+                <group >
+                  <field name="phone"/>
+                  <field name="email"/>
+                </group>
+
+                <group >
+                  <field name="faxnum"/>
+                  <field name="address_is_same"/>
+                </group>
+
+              </group>
+            </group>
+            <group>
+              <group string="Юридический адрес">
+                <field name="address"/>
+                <field name="country_id"/>
+                <field name="region_id"/>
+                <field name="index"/>
+                <separator colspan='4' string="Фактический адрес"></separator>
+                <field name="address_real"/>
+                <field name="country_real_id"/>
+                <field name="region_real_id"/>
+                <field name="index_real"/>
+
+                <separator colspan='4' string="Данные"></separator>
+                <field name="ogrn"/>
+                <field name="data_vidachi"/>
+                <field name="inn"/>
+                <field name="okpo"/>
+                <field name="svedeniya_o_gos_reg"/>
+                <field name="head_doc"/>
+                <field name="vidano"/>
+
+                <field name="fio_head" invisible='1'/>
+                <field name="fio_head_rod_pad" invisible='1'/>
+                <field name="fio_head_dat_pad" invisible='1'/>
+                <field name="head_role" invisible='1'/>
+                <field name="head_role_rod_pad" invisible='1'/>
+
+              </group>
+
+              <group string="Юридический адрес (Н/Я)">
+                <field name="address_kz"/>
+                <field name="country_id_kz"/>
+                <field name="region_id_kz"/>
+                <field name="index_kz"/>
+                <separator colspan='4' string="Фактический адрес (Н/Я)"></separator>
+
+                <field name="address_real_kz"/>
+                <field name="country_real_id_kz"/>
+                <field name="region_real_id_kz"/>
+                <field name="index_real_kz"/>
+
+                <separator colspan='4' string="Данные (Н/Я)"></separator>
+
+                <field name="ogrn_kz"/>
+                <field name="data_vidachi_kz"/>
+                <field name="inn_kz"/>
+                <field name="okpo_kz"/>
+                <field name="svedeniya_o_gos_reg_kz"/>
+                <field name="head_doc_kz"/>
+                <field name="vidano_kz"/>
+
+                <field name="fio_head_kz" invisible='1'/>
+                <field name="fio_head_rod_pad_kz" invisible='1'/>
+                <field name="fio_head_dat_pad_kz" invisible='1'/>
+                <field name="head_role_kz" invisible='1'/>
+                <field name="head_role_rod_pad_kz" invisible='1'/>
+
+              </group>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="show_partner">
+      <field name="name">partner</field>
+      <field name="res_model">ad_kz.partner_local_kz</field>
+      <field name="view_mode">tree,form</field>
+      <field name="view_id" ref="partner_tree"></field>
+    </record>
+
+    <record model="ir.actions.act_window" id="show_partner_local">
+      <field name="name">partner_local</field>
+      <field name="res_model">ad_kz.partner_local_kz</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <record model="ir.ui.view" id="country_form">
+      <field name="name">ad_kz.country_form.form</field>
+      <field name="model">ad_kz.country</field>
+      <field name="arch" type="xml">
+        <form>
+          <sheet>
+            <group>
+              <field name="name"/>
+              <field name="name_kz"/>
+              <field name="code"/>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="proove_form">
+      <field name="name">ad_kz.proove_form.form</field>
+      <field name="model">ad_kz.proove_form</field>
+      <field name="arch" type="xml">
+        <form>
+          <sheet>
+            <group>
+              <field name="name"/>
+              <field name="name_kz"/>
+              <field name="country_id"/>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="fio_item_form">
+      <field name="name">ad_kz.fio_item_form.form</field>
+      <field name="model">ad_kz.fio_item</field>
+      <field name="arch" type="xml">
+        <form>
+          <sheet>
+            <group>
+              <field name="name"/>
+              <field name="name_rod_pad"/>
+              <field name="name_dat_pad"/>
+              <field name="name_kz"/>
+              <field name="name_rod_pad_kz"/>
+              <field name="name_dat_pad_kz"/>
+              <field name="post_id"/>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="post_form">
+      <field name="name">ad_kz.post_form.form</field>
+      <field name="model">ad_kz.post</field>
+      <field name="arch" type="xml">
+        <form>
+          <sheet>
+            <group>
+
+              <field name="post_im_pad"/>
+              <field name="post_rd_pad"/>
+              <field name="post_im_pad_kz"/>
+              <field name="post_rd_pad_kz"/>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="country_region_form">
+      <field name="name">ad_kz.country_region_form.form</field>
+      <field name="model">ad_kz.country_region</field>
+      <field name="arch" type="xml">
+        <form>
+          <sheet>
+            <group>
+
+              <field name="name"/>
+              <field name="name_kz"/>
+              <field name="country_id"/>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="type_ip_form">
+      <field name="name">ad_kz.type_ip_form.form</field>
+      <field name="model">ad_kz.type_ip</field>
+      <field name="arch" type="xml">
+        <form>
+          <sheet>
+            <group>
+              <field name="name"/>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="app_type_form">
+      <field name="name">ad_kz.app_type_form.form</field>
+      <field name="model">ad_kz.app_type</field>
+      <field name="arch" type="xml">
+        <form>
+          <sheet>
+            <group>
+              <field name="name"/>
+              <field name="name_kz"/>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="reg_number_form">
+      <field name="name">ad_kz.reg_number_form.form</field>
+      <field name="model">ad_kz.reg_number</field>
+      <field name="arch" type="xml">
+        <form>
+          <sheet>
+            <group>
+              <field name="name"/>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="app_number_form">
+      <field name="name">ad_kz.app_number_form.form</field>
+      <field name="model">ad_kz.app_number</field>
+      <field name="arch" type="xml">
+        <form>
+          <sheet>
+            <group>
+              <field name="name"/>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="expert_person_form">
+      <field name="name">ad_kz.expert_person_form.form</field>
+      <field name="model">ad_kz.expert_person</field>
+      <field name="arch" type="xml">
+        <form>
+          <sheet>
+            <group>
+              <field name="name"/>
+              <field name="user_id"/>
+              <field name="reglament_ids"/>
+
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="tnved_form">
+      <field name="name">ad_kz.tnved_form.form</field>
+      <field name="model">ad_kz.tnved</field>
+      <field name="arch" type="xml">
+        <form>
+          <sheet>
+            <group>
+              <field name="name"/>
+              <field name="note"/>
+              <field name="note_kz"/>
+
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="schema_form">
+      <field name="name">ad_kz.schema_form.form</field>
+      <field name="model">ad_kz.schema</field>
+      <field name="arch" type="xml">
+        <form>
+          <sheet>
+            <group>
+              <field name="name"/>
+              <field name="doc_type"/>
+
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="reglament_form">
+      <field name="name">ad_kz.reglament_form.form</field>
+      <field name="model">ad_kz.reglament</field>
+      <field name="arch" type="xml">
+        <form>
+          <sheet>
+            <group>
+              <field name="name"/>
+              <field name="number"/>
+              <field name="name_kz"/>
+              <field name="number_kz"/>
+
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <record model="ir.actions.act_window" id='show_partner_kz_form'>
+      <field name='name'>partner_kz_form</field>
+      <field name='res_model'>ad_kz.partner_kz</field>
+      <field name='view_mode'>tree,form</field>
+    </record>
+    <record model="ir.actions.act_window" id='show_country_form'>
+      <field name='name'>country_form</field>
+      <field name='res_model'>ad_kz.country</field>
+      <field name='view_mode'>tree,form</field>
+    </record>
+    <record model="ir.actions.act_window" id='show_proove_form_form'>
+      <field name='name'>proove_form_form</field>
+      <field name='res_model'>ad_kz.proove_form</field>
+      <field name='view_mode'>tree,form</field>
+    </record>
+    <record model="ir.actions.act_window" id='show_fio_item_form'>
+      <field name='name'>fio_item_form</field>
+      <field name='res_model'>ad_kz.fio_item</field>
+      <field name='view_mode'>tree,form</field>
+    </record>
+    <record model="ir.actions.act_window" id='show_post_form'>
+      <field name='name'>post_form</field>
+      <field name='res_model'>ad_kz.post</field>
+      <field name='view_mode'>tree,form</field>
+    </record>
+    <record model="ir.actions.act_window" id='show_country_region_form'>
+      <field name='name'>country_region_form</field>
+      <field name='res_model'>ad_kz.country_region</field>
+      <field name='view_mode'>tree,form</field>
+    </record>
+    <record model="ir.actions.act_window" id='show_type_ip_form'>
+      <field name='name'>type_ip_form</field>
+      <field name='res_model'>ad_kz.type_ip</field>
+      <field name='view_mode'>tree,form</field>
+    </record>
+    <record model="ir.actions.act_window" id='show_app_type_form'>
+      <field name='name'>app_type_form</field>
+      <field name='res_model'>ad_kz.app_type</field>
+      <field name='view_mode'>tree,form</field>
+    </record>
+    <record model="ir.actions.act_window" id='show_reg_number_form'>
+      <field name='name'>reg_number_form</field>
+      <field name='res_model'>ad_kz.reg_number</field>
+      <field name='view_mode'>tree,form</field>
+    </record>
+    <record model="ir.actions.act_window" id='show_app_number_form'>
+      <field name='name'>app_number_form</field>
+      <field name='res_model'>ad_kz.app_number</field>
+      <field name='view_mode'>tree,form</field>
+    </record>
+    <record model="ir.actions.act_window" id='show_expert_person_form'>
+      <field name='name'>expert_person_form</field>
+      <field name='res_model'>ad_kz.expert_person</field>
+      <field name='view_mode'>tree,form</field>
+    </record>
+    <record model="ir.actions.act_window" id='show_tnved_form'>
+      <field name='name'>tnved_form</field>
+      <field name='res_model'>ad_kz.tnved</field>
+      <field name='view_mode'>tree,form</field>
+    </record>
+    <record model="ir.actions.act_window" id='show_schema_form'>
+      <field name='name'>schema_form</field>
+      <field name='res_model'>ad_kz.schema</field>
+      <field name='view_mode'>tree,form</field>
+    </record>
+    <record model="ir.actions.act_window" id='show_reglament_form'>
+      <field name='name'>reglament_form</field>
+      <field name='res_model'>ad_kz.reglament</field>
+      <field name='view_mode'>tree,form</field>
+    </record>
+
+    <record model="ir.actions.act_window" id='show_task_kz_ds_form'>
+      <field name='name'>task_kz_ds_form</field>
+      <field name='res_model'>ad_kz.task_kz</field>
+      <field name='view_mode'>tree,form</field>
+      <field name="domain">[('type_task', '=','ds')]</field>
+
+    </record>
+    <record model="ir.actions.act_window" id='show_task_kz_ss_form'>
+      <field name='name'>task_kz_ss_form</field>
+      <field name='res_model'>ad_kz.task_kz</field>
+      <field name='view_mode'>tree,form</field>
+      <field name="domain">[('type_task', '=','ss')]</field>
+    </record>
+    <record model="ir.actions.act_window" id='show_task_kz_all_form'>
+      <field name='name'>task_kz_all_form</field>
+      <field name='res_model'>ad_kz.task_kz</field>
+      <field name='view_mode'>tree,form</field>
+    </record>
+
+
+
+  </data>
+</odoo>

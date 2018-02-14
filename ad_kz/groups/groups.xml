@@ -1,0 +1,39 @@
+<odoo>
+  <data>
+
+
+    <record  id="module_" model="ir.module.category">
+      <field name="name">Мои документы</field>
+      <field name="description">Категория пользователей модуля "Мои документы"</field>
+      <field name="sequence">3</field>
+    </record>
+
+    <record id="_group_manager" model="res.groups">
+      <field name="name">Manager</field>
+      <field name="category_id" ref="module_"/>
+      <field name="users" eval="[(4, ref('base.user_root'))]"/>
+    </record>
+
+    <record id="_group_top_manager" model="res.groups">
+      <field name="name">Top manager</field>
+      <field name="category_id" ref="module_"/>
+      <field name="implied_ids" eval="[(4, ref('_group_manager'))]"/>
+    </record>
+
+    <record id="_group_admin" model="res.groups">
+      <field name="name">Admin</field>
+      <field name="category_id" ref="module_"/>
+      <field name="implied_ids" eval="[(4, ref('_group_top_manager'))]"/>
+    </record>
+
+    <!-- <record id="base.module_category_administration" model="ir.module.category">
+      <field name="visible" eval="0" />
+    </record> -->
+
+    <record model="ir.ui.menu" id="base.menu_administration">
+      <field name="groups_id" eval="[(4,ref('_group_admin'))]"/>
+    </record>
+
+
+  </data>
+</odoo>

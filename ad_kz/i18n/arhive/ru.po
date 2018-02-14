@@ -1,0 +1,1089 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* ad_kz
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 10.0-20170512\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-02-14 09:05+0000\n"
+"PO-Revision-Date: 2018-02-14 12:26+0300\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: \n"
+"Language: ru\n"
+"X-Generator: Poedit 2.0.4\n"
+
+#. module: ad_kz
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_task_kz_active
+msgid "Active"
+msgstr "Активно"
+
+#. module: ad_kz
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_partner_kz_address_is_same
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_partner_local_kz_address_is_same
+msgid "Address sovpadaet"
+msgstr "Адресс совпадает"
+
+#. module: ad_kz
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_task_kz_app_date
+msgid "App date"
+msgstr "Дата заявления"
+
+#. module: ad_kz
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_task_kz_app_number_id
+msgid "App number id"
+msgstr "Номер заяления"
+
+#. module: ad_kz
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_task_kz_Applicant_partner_id
+msgid "Applicant partner id"
+msgstr "Заявитель"
+
+#. module: ad_kz
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_task_kz_ApplicantInFace
+msgid "Applicantinface"
+msgstr "В лице"
+
+#. module: ad_kz
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_task_kz_ApplicantInFace_kz
+msgid "Applicantinface kz"
+msgstr "Заявитель"
+
+#. module: ad_kz
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_task_kz_ApplicantInfo
+msgid "Applicantinfo"
+msgstr "Данные заявителя"
+
+#. module: ad_kz
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_task_kz_ApplicantInfo_kz
+msgid "Applicantinfo kz"
+msgstr "Данные заявителя"
+
+#. module: ad_kz
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_task_kz_ApplicantType
+msgid "Applicanttype"
+msgstr "Тип заявителя"
+
+#. module: ad_kz
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_task_kz_ApplicantType_kz
+msgid "Applicanttype kz"
+msgstr "Тип заявителя"
+
+#. module: ad_kz
+#: model:ir.ui.view,arch_db:ad_kz.partner_form
+#: model:ir.ui.view,arch_db:ad_kz.partner_local_form
+msgid "Card partner"
+msgstr "Карточка контрагента"
+
+#. module: ad_kz
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_tnved_name
+msgid "Code"
+msgstr "Код"
+
+#. module: ad_kz
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_task_kz_comment
+msgid "Comment"
+msgstr "Комментарий"
+
+#. module: ad_kz
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_fio_item_compute_name
+msgid "Compute name"
+msgstr "Compute name"
+
+#. module: ad_kz
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_country_code
+msgid "Country Code"
+msgstr "Код страны"
+
+#. module: ad_kz
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_country_name
+msgid "Country Name"
+msgstr "Название страны"
+
+#. module: ad_kz
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_country_name_kz
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_partner_kz_country_id_kz
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_partner_kz_country_real_id_kz
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_partner_local_kz_country_id_kz
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_partner_local_kz_country_real_id_kz
+msgid "Country Name KZ"
+msgstr "Название страны (КЗ)"
+
+#. module: ad_kz
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_country_region_country_id
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_proove_form_country_id
+msgid "Country id"
+msgstr "Страна"
+
+#. module: ad_kz
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_app_number_create_uid
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_app_type_create_uid
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_country_create_uid
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_country_region_create_uid
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_expert_person_create_uid
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_fio_item_create_uid
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_partner_kz_create_uid
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_partner_local_kz_create_uid
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_post_create_uid
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_proove_form_create_uid
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_reg_number_create_uid
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_reglament_create_uid
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_schema_create_uid
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_task_kz_create_uid
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_tnved_create_uid
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_type_ip_create_uid
+msgid "Created by"
+msgstr "Создал"
+
+#. module: ad_kz
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_app_number_create_date
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_app_type_create_date
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_country_create_date
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_country_region_create_date
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_expert_person_create_date
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_fio_item_create_date
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_partner_kz_create_date
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_partner_local_kz_create_date
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_post_create_date
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_proove_form_create_date
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_reg_number_create_date
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_reglament_create_date
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_schema_create_date
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_task_kz_create_date
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_tnved_create_date
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_type_ip_create_date
+msgid "Created on"
+msgstr "Создано"
+
+#. module: ad_kz
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_partner_kz_data_vidachi
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_partner_kz_data_vidachi_kz
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_partner_local_kz_data_vidachi
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_partner_local_kz_data_vidachi_kz
+msgid "Data Vidachi Svidetelctva"
+msgstr "Дата выдачи свидетельства"
+
+#. module: ad_kz
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_partner_kz_head_doc
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_partner_kz_head_doc_kz
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_partner_local_kz_head_doc
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_partner_local_kz_head_doc_kz
+msgid "Deistvuyushego Na Osnovanii"
+msgstr "Дейстувующего на основании"
+
+#. module: ad_kz
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_app_number_display_name
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_app_type_display_name
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_change_class_display_name
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_country_display_name
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_country_region_display_name
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_expert_person_display_name
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_fio_item_display_name
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_partner_kz_display_name
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_partner_local_kz_display_name
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_post_display_name
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_proove_form_display_name
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_reg_number_display_name
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_reglament_display_name
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_schema_display_name
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_task_kz_display_name
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_tnved_display_name
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_type_ip_display_name
+msgid "Display Name"
+msgstr "Отображаемое имя"
+
+#. module: ad_kz
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_schema_doc_type
+msgid "Doc type"
+msgstr "Тип документа"
+
+#. module: ad_kz
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_partner_kz_email
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_partner_local_kz_email
+msgid "Email"
+msgstr "Email"
+
+#. module: ad_kz
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_task_kz_end_date
+msgid "End date"
+msgstr "Дата окончания действия"
+
+#. module: ad_kz
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_task_kz_expert_person_ids
+msgid "Expert person ids"
+msgstr "Эксперты"
+
+#. module: ad_kz
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_fio_item_name
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_partner_kz_fio_head
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_partner_local_kz_fio_head
+msgid "FIO Rukovoditelya"
+msgstr "ФИО"
+
+#. module: ad_kz
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_fio_item_name_kz
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_partner_kz_fio_head_kz
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_partner_local_kz_fio_head_kz
+msgid "FIO Rukovoditelya KZ"
+msgstr "ФИО (КЗ)"
+
+#. module: ad_kz
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_fio_item_name_dat_pad
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_partner_kz_fio_head_dat_pad
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_partner_local_kz_fio_head_dat_pad
+msgid "FIO Rukovoditelya v Datelnom padege"
+msgstr "ФИО в дат.падеже"
+
+#. module: ad_kz
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_fio_item_name_dat_pad_kz
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_partner_kz_fio_head_dat_pad_kz
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_partner_local_kz_fio_head_dat_pad_kz
+msgid "FIO Rukovoditelya v Datelnom padege KZ"
+msgstr "ФИО в дат.падеже (КЗ)"
+
+#. module: ad_kz
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_fio_item_name_rod_pad
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_partner_kz_fio_head_rod_pad
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_partner_local_kz_fio_head_rod_pad
+msgid "FIO Rukovoditelya v Roditelnom Padege"
+msgstr "ФИО в род.падеже"
+
+#. module: ad_kz
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_fio_item_name_rod_pad_kz
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_partner_kz_fio_head_rod_pad_kz
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_partner_local_kz_fio_head_rod_pad_kz
+msgid "FIO Rukovoditelya v Roditelnom Padege KZ"
+msgstr "ФИО в род.падеже (КЗ)"
+
+#. module: ad_kz
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_partner_kz_faxnum
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_partner_local_kz_faxnum
+msgid "Fax"
+msgstr "Факс"
+
+#. module: ad_kz
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_partner_kz_fio_item_id_kz
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_partner_local_kz_fio_item_id_kz
+msgid "Fio KZ"
+msgstr "Руководитель Заявителя"
+
+#. module: ad_kz
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_partner_kz_fio_item_id
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_partner_local_kz_fio_item_id
+msgid "Fio item id"
+msgstr "Руководитель Заявителя"
+
+#. module: ad_kz
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_partner_kz_head_role_kz
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_partner_local_kz_head_role_kz
+msgid "Head role kz"
+msgstr "Должность"
+
+#. module: ad_kz
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_app_number_id
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_app_type_id
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_change_class_id
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_country_id
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_country_region_id
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_expert_person_id
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_fio_item_id
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_partner_kz_id
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_partner_local_kz_id
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_post_id
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_proove_form_id
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_reg_number_id
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_reglament_id
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_schema_id
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_task_kz_id
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_tnved_id
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_type_ip_id
+msgid "ID"
+msgstr "ID"
+
+#. module: ad_kz
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_partner_kz_inn
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_partner_kz_inn_kz
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_partner_local_kz_inn
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_partner_local_kz_inn_kz
+msgid "INN"
+msgstr "ИНН"
+
+#. module: ad_kz
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_task_kz_ProductIdentificationOther
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_task_kz_ProductIdentificationOther_kz
+msgid "Inaya informaciya, identificiruyushchaya produkciyu"
+msgstr "Иная информация идентифицирующая продукцию"
+
+#. module: ad_kz
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_task_kz_Invoice
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_task_kz_Invoice_kz
+msgid "Invoice"
+msgstr "Инвойс"
+
+#. module: ad_kz
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_task_kz_tnved_ids
+msgid "Kod TNVED"
+msgstr "Код ТНВЭД"
+
+#. module: ad_kz
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_task_kz_Part
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_task_kz_Part_kz
+msgid "Kolichestvo partii"
+msgstr "Количество "
+
+#. module: ad_kz
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_app_number___last_update
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_app_type___last_update
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_change_class___last_update
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_country___last_update
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_country_region___last_update
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_expert_person___last_update
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_fio_item___last_update
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_partner_kz___last_update
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_partner_local_kz___last_update
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_post___last_update
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_proove_form___last_update
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_reg_number___last_update
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_reglament___last_update
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_schema___last_update
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_task_kz___last_update
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_tnved___last_update
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_type_ip___last_update
+msgid "Last Modified on"
+msgstr "Последний раз изменено"
+
+#. module: ad_kz
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_app_number_write_uid
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_app_type_write_uid
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_country_region_write_uid
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_country_write_uid
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_expert_person_write_uid
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_fio_item_write_uid
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_partner_kz_write_uid
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_partner_local_kz_write_uid
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_post_write_uid
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_proove_form_write_uid
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_reg_number_write_uid
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_reglament_write_uid
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_schema_write_uid
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_task_kz_write_uid
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_tnved_write_uid
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_type_ip_write_uid
+msgid "Last Updated by"
+msgstr "Последний раз обновил"
+
+#. module: ad_kz
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_app_number_write_date
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_app_type_write_date
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_country_region_write_date
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_country_write_date
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_expert_person_write_date
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_fio_item_write_date
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_partner_kz_write_date
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_partner_local_kz_write_date
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_post_write_date
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_proove_form_write_date
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_reg_number_write_date
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_reglament_write_date
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_schema_write_date
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_task_kz_write_date
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_tnved_write_date
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_type_ip_write_date
+msgid "Last Updated on"
+msgstr "Последний раз обновлено"
+
+#. module: ad_kz
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_task_kz_last_file
+msgid "Last file"
+msgstr "Last file"
+
+#. module: ad_kz
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_task_kz_Manufacturer_partner_id
+msgid "Manufacturer partner id"
+msgstr "Изготовитель"
+
+#. module: ad_kz
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_task_kz_ManufacturerInfo
+msgid "Manufacturerinfo"
+msgstr "Данные изготовителя"
+
+#. module: ad_kz
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_task_kz_ManufacturerInfo_kz
+msgid "Manufacturerinfo kz"
+msgstr "Данные изготовителя"
+
+#. module: ad_kz
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_partner_kz_address
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_partner_kz_address_kz
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_partner_kz_address_real
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_partner_kz_address_real_kz
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_partner_local_kz_address
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_partner_local_kz_address_kz
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_partner_local_kz_address_real
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_partner_local_kz_address_real_kz
+msgid "Mesto Nahogdeniya Address"
+msgstr "Место нахождения адресс"
+
+#. module: ad_kz
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_app_number_name
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_app_type_name
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_expert_person_name
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_reg_number_name
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_schema_name
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_task_kz_name
+msgid "Name"
+msgstr "Имя"
+
+#. module: ad_kz
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_app_type_name_kz
+msgid "Name kz"
+msgstr "Имя"
+
+#. module: ad_kz
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_task_kz_DeliveryContract
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_task_kz_DeliveryContract_kz
+msgid "Nomer i data dogovora ili kontrakta o postavke produkcii"
+msgstr "Номер договора или контракта"
+
+#. module: ad_kz
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_partner_kz_ogrn
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_partner_kz_ogrn_kz
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_partner_local_kz_ogrn
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_partner_local_kz_ogrn_kz
+msgid "OGRN"
+msgstr "ОГРН"
+
+#. module: ad_kz
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_partner_kz_okpo
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_partner_kz_okpo_kz
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_partner_local_kz_okpo
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_partner_local_kz_okpo_kz
+msgid "OKPO"
+msgstr "OKPO"
+
+#. module: ad_kz
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_partner_kz_org_prav_forma
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_partner_local_kz_org_prav_forma
+msgid "Org prav forma"
+msgstr "Правовая форма"
+
+#. module: ad_kz
+#: selection:ad_kz.task_kz,ProductType:0
+msgid "Part"
+msgstr "Партия"
+
+#. module: ad_kz
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_partner_local_kz_partner_id
+msgid "Partner id"
+msgstr "Контрагент"
+
+#. module: ad_kz
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_partner_kz_phone
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_partner_local_kz_phone
+msgid "Phone"
+msgstr "Телефон"
+
+#. module: ad_kz
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_partner_kz_title
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_partner_kz_title_kz
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_partner_local_kz_title
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_partner_local_kz_title_kz
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_task_kz_Applicant_partner_id_kz
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_task_kz_Manufacturer_partner_id_kz
+msgid "Polnoe nazvanie"
+msgstr "Полное название"
+
+#. module: ad_kz
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_fio_item_post_id
+msgid "Post id"
+msgstr "Должность"
+
+#. module: ad_kz
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_partner_kz_head_role
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_partner_local_kz_head_role
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_post_post_im_pad
+msgid "Post im pad"
+msgstr "Должность в им.падеже"
+
+#. module: ad_kz
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_post_post_im_pad_kz
+msgid "Post im pad kz"
+msgstr "Должность в им.падеже (КЗ)"
+
+#. module: ad_kz
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_partner_kz_head_role_rod_pad
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_partner_local_kz_head_role_rod_pad
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_post_post_rd_pad
+msgid "Post rd pad"
+msgstr "Должность в род.падеже"
+
+#. module: ad_kz
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_partner_kz_head_role_rod_pad_kz
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_partner_local_kz_head_role_rod_pad_kz
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_post_post_rd_pad_kz
+msgid "Post rd pad kz"
+msgstr "Должность в род.падеже (КЗ)"
+
+#. module: ad_kz
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_task_kz_ProductIdentification
+msgid "Productidentification"
+msgstr "Идентификация продукции"
+
+#. module: ad_kz
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_task_kz_ProductIdentification_kz
+msgid "Productidentification kz"
+msgstr "Идентификация продукции (КЗ)"
+
+#. module: ad_kz
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_task_kz_ProductInfo
+msgid "Productinfo"
+msgstr "Сведения о продукции"
+
+#. module: ad_kz
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_task_kz_ProductInfo_kz
+msgid "Productinfo kz"
+msgstr "Сведения о продукции"
+
+#. module: ad_kz
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_task_kz_ProductLocation
+msgid "Productlocation"
+msgstr "Вид продукции"
+
+#. module: ad_kz
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_task_kz_ProductLocation_kz
+msgid "Productlocation kz"
+msgstr "Вид продукции"
+
+#. module: ad_kz
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_task_kz_ProductType
+msgid "Producttype"
+msgstr "Тип продукции"
+
+#. module: ad_kz
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_task_kz_ProductType_kz
+msgid "Producttype kz"
+msgstr "Тип продукции"
+
+#. module: ad_kz
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_proove_form_name
+msgid "Proove Name"
+msgstr "Правовая форма"
+
+#. module: ad_kz
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_partner_kz_org_prav_forma_kz
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_partner_local_kz_org_prav_forma_kz
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_proove_form_name_kz
+msgid "Proove Name KZ"
+msgstr "Правовая форма"
+
+#. module: ad_kz
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_task_kz_AcceptanceReason
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_task_kz_AcceptanceReason_kz
+msgid "Protokol ispitanii"
+msgstr "Протокол испытаний"
+
+#. module: ad_kz
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_task_kz_reg_number_id
+msgid "Reg number id"
+msgstr "Регистрационный номер"
+
+#. module: ad_kz
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_country_region_name
+msgid "Region Name"
+msgstr "Регион"
+
+#. module: ad_kz
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_country_region_name_kz
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_partner_kz_region_id_kz
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_partner_kz_region_real_id_kz
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_partner_local_kz_region_id_kz
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_partner_local_kz_region_real_id_kz
+msgid "Region Name KZ"
+msgstr "Регион"
+
+#. module: ad_kz
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_expert_person_reglament_ids
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_task_kz_reglament_ids
+msgid "Reglament ids"
+msgstr "Регламенты"
+
+#. module: ad_kz
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_reglament_number
+msgid "Reglament number"
+msgstr "Номер регламента"
+
+#. module: ad_kz
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_reglament_number_kz
+msgid "Reglament number KZ"
+msgstr "Номер регламента (КЗ)"
+
+#. module: ad_kz
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_task_kz_ShippingDocumentation
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_task_kz_ShippingDocumentation_kz
+msgid "Rekvizity tovarosoprovoditel'noj dokumentacii"
+msgstr "Реквизиты товаросопроводительной документации"
+
+#. module: ad_kz
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_reglament_name
+msgid "Rglament name"
+msgstr "Название регламента"
+
+#. module: ad_kz
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_reglament_name_kz
+msgid "Rglament name KZ"
+msgstr "Название регламента (КЗ)"
+
+#. module: ad_kz
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_partner_kz_region_id
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_partner_kz_region_real_id
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_partner_local_kz_region_id
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_partner_local_kz_region_real_id
+msgid "Russian Region"
+msgstr "Регион"
+
+#. module: ad_kz
+#: selection:ad_kz.task_kz,ProductType:0
+msgid "Serial"
+msgstr "Серийный выпуск"
+
+#. module: ad_kz
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_task_kz_shema_id
+msgid "Shema id"
+msgstr "Схема"
+
+#. module: ad_kz
+#: selection:ad_kz.task_kz,ProductType:0
+msgid "Single"
+msgstr "Единичное изделие"
+
+#. module: ad_kz
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_task_kz_DocumentValidity
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_task_kz_DocumentValidity_kz
+msgid "Srok dejstviya deklaracii o sootvetstvii:"
+msgstr "Срок действия декларации"
+
+#. module: ad_kz
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_task_kz_start_date
+msgid "Start date"
+msgstr "Дата начала действия"
+
+#. module: ad_kz
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_task_kz_state
+msgid "State"
+msgstr "Регион"
+
+#. module: ad_kz
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_partner_kz_country_id
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_partner_kz_country_real_id
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_partner_local_kz_country_id
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_partner_local_kz_country_real_id
+msgid "Strana"
+msgstr "Страна"
+
+#. module: ad_kz
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_partner_kz_svedeniya_o_gos_reg
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_partner_kz_svedeniya_o_gos_reg_kz
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_partner_local_kz_svedeniya_o_gos_reg
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_partner_local_kz_svedeniya_o_gos_reg_kz
+msgid "Svedeniya O Gos Reg"
+msgstr "Сведелия о гос регистрации"
+
+#. module: ad_kz
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_partner_kz_vidano
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_partner_kz_vidano_kz
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_partner_local_kz_vidano
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_partner_local_kz_vidano_kz
+msgid "Svidetelctvo o Registracii Vidano"
+msgstr "Дата выдачи регистрации"
+
+#. module: ad_kz
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_tnved_note
+msgid "Tnved Description"
+msgstr "ТН ВЭД описание"
+
+#. module: ad_kz
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_tnved_name_kz
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_tnved_note_kz
+msgid "Tnved Description KZ"
+msgstr "ТН ВЭД описание (КЗ)"
+
+#. module: ad_kz
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_partner_kz_type_ip_id
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_partner_local_kz_type_ip_id
+msgid "Type ip id"
+msgstr "Тип ИП"
+
+#. module: ad_kz
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_partner_kz_type_of_partner
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_partner_local_kz_type_of_partner
+msgid "Type of partner"
+msgstr "Type of partner"
+
+#. module: ad_kz
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_task_kz_type_task
+msgid "Type task"
+msgstr "Тип работы"
+
+#. module: ad_kz
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_type_ip_name
+msgid "Type_form"
+msgstr "Тип формы"
+
+#. module: ad_kz
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_expert_person_user_id
+msgid "User id"
+msgstr "Ссылка на пользователя"
+
+#. module: ad_kz
+#: model:ir.model,name:ad_kz.model_ad_kz_app_number
+msgid "ad_kz.app_number"
+msgstr "ad_kz.app_number"
+
+#. module: ad_kz
+#: model:ir.model,name:ad_kz.model_ad_kz_app_type
+msgid "ad_kz.app_type"
+msgstr "ad_kz.app_type"
+
+#. module: ad_kz
+#: model:ir.model,name:ad_kz.model_ad_kz_change_class
+msgid "ad_kz.change_class"
+msgstr "ad_kz.change_class"
+
+#. module: ad_kz
+#: model:ir.model,name:ad_kz.model_ad_kz_country
+msgid "ad_kz.country"
+msgstr "ad_kz.country"
+
+#. module: ad_kz
+#: model:ir.model,name:ad_kz.model_ad_kz_country_region
+msgid "ad_kz.country_region"
+msgstr "ad_kz.country_region"
+
+#. module: ad_kz
+#: model:ir.model,name:ad_kz.model_ad_kz_expert_person
+msgid "ad_kz.expert_person"
+msgstr "ad_kz.expert_person"
+
+#. module: ad_kz
+#: model:ir.model,name:ad_kz.model_ad_kz_fio_item
+msgid "ad_kz.fio_item"
+msgstr "ad_kz.fio_item"
+
+#. module: ad_kz
+#: model:ir.model,name:ad_kz.model_ad_kz_partner_kz
+msgid "ad_kz.partner_kz"
+msgstr "ad_kz.partner_kz"
+
+#. module: ad_kz
+#: model:ir.model,name:ad_kz.model_ad_kz_partner_local_kz
+msgid "ad_kz.partner_local_kz"
+msgstr "ad_kz.partner_local_kz"
+
+#. module: ad_kz
+#: model:ir.model,name:ad_kz.model_ad_kz_post
+msgid "ad_kz.post"
+msgstr "ad_kz.post"
+
+#. module: ad_kz
+#: model:ir.model,name:ad_kz.model_ad_kz_proove_form
+msgid "ad_kz.proove_form"
+msgstr "ad_kz.proove_form"
+
+#. module: ad_kz
+#: model:ir.model,name:ad_kz.model_ad_kz_reg_number
+msgid "ad_kz.reg_number"
+msgstr "ad_kz.reg_number"
+
+#. module: ad_kz
+#: model:ir.model,name:ad_kz.model_ad_kz_reglament
+msgid "ad_kz.reglament"
+msgstr "ad_kz.reglament"
+
+#. module: ad_kz
+#: model:ir.model,name:ad_kz.model_ad_kz_schema
+msgid "ad_kz.schema"
+msgstr "ad_kz.schema"
+
+#. module: ad_kz
+#: model:ir.model,name:ad_kz.model_ad_kz_task_kz
+msgid "ad_kz.task_kz"
+msgstr "ad_kz.task_kz"
+
+#. module: ad_kz
+#: model:ir.model,name:ad_kz.model_ad_kz_tnved
+msgid "ad_kz.tnved"
+msgstr "ad_kz.tnved"
+
+#. module: ad_kz
+#: model:ir.model,name:ad_kz.model_ad_kz_type_ip
+msgid "ad_kz.type_ip"
+msgstr "ad_kz.type_ip"
+
+#. module: ad_kz
+#: model:ir.ui.menu,name:ad_kz.menu_app_number
+msgid "app_number"
+msgstr "Номер заявления"
+
+#. module: ad_kz
+#: model:ir.actions.act_window,name:ad_kz.show_app_number_form
+msgid "app_number_form"
+msgstr "Карточка номера заявления"
+
+#. module: ad_kz
+#: model:ir.model,name:ad_kz.model_app_type
+#: model:ir.ui.menu,name:ad_kz.menu_app_type
+msgid "app_type"
+msgstr "Тип заявителя"
+
+#. module: ad_kz
+#: model:ir.actions.act_window,name:ad_kz.show_app_type_form
+msgid "app_type_form"
+msgstr "Карточка типа заявителя"
+
+#. module: ad_kz
+#: model:ir.ui.menu,name:ad_kz.menu_country
+msgid "country"
+msgstr "Страна"
+
+#. module: ad_kz
+#: model:ir.actions.act_window,name:ad_kz.show_country_form
+msgid "country_form"
+msgstr "Карточка страны"
+
+#. module: ad_kz
+#: model:ir.ui.menu,name:ad_kz.menu_country_region
+msgid "country_region"
+msgstr "Регион"
+
+#. module: ad_kz
+#: model:ir.actions.act_window,name:ad_kz.show_country_region_form
+msgid "country_region_form"
+msgstr "Карточка региона"
+
+#. module: ad_kz
+#: selection:ad_kz.schema,doc_type:0 selection:ad_kz.task_kz,type_task:0
+msgid "ds"
+msgstr "Деларация"
+
+#. module: ad_kz
+#: model:ir.ui.menu,name:ad_kz.menu_expert_person
+msgid "expert_person"
+msgstr "Эксперт"
+
+#. module: ad_kz
+#: model:ir.actions.act_window,name:ad_kz.show_expert_person_form
+msgid "expert_person_form"
+msgstr "Карточка эксперта"
+
+#. module: ad_kz
+#: model:ir.ui.menu,name:ad_kz.menu_fio_item
+msgid "fio_item"
+msgstr "ФИО руководитель"
+
+#. module: ad_kz
+#: model:ir.actions.act_window,name:ad_kz.show_fio_item_form
+msgid "fio_item_form"
+msgstr "Карточка ФИО"
+
+#. module: ad_kz
+#: selection:ad_kz.partner_kz,type_of_partner:0
+#: selection:ad_kz.partner_local_kz,type_of_partner:0
+msgid "fizlico"
+msgstr "Физическое лицо"
+
+#. module: ad_kz
+#: selection:ad_kz.partner_kz,type_of_partner:0
+#: selection:ad_kz.partner_local_kz,type_of_partner:0
+msgid "foreign"
+msgstr "Иностранный"
+
+#. module: ad_kz
+#: selection:ad_kz.task_kz,ProductLocation:0
+#: selection:ad_kz.task_kz,ProductLocation_kz:0
+msgid "importnaya"
+msgstr "Импортная"
+
+#. module: ad_kz
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_partner_kz_index
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_partner_kz_index_kz
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_partner_kz_index_real
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_partner_kz_index_real_kz
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_partner_local_kz_index
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_partner_local_kz_index_kz
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_partner_local_kz_index_real
+#: model:ir.model.fields,field_description:ad_kz.field_ad_kz_partner_local_kz_index_real_kz
+msgid "index"
+msgstr "Индекс"
+
+#. module: ad_kz
+#: selection:ad_kz.partner_kz,type_of_partner:0
+#: selection:ad_kz.partner_local_kz,type_of_partner:0
+msgid "ip"
+msgstr "ИП"
+
+#. module: ad_kz
+#: model:ir.ui.menu,name:ad_kz.menu_kontragent
+msgid "kontragent"
+msgstr "Контрагент"
+
+#. module: ad_kz
+#: selection:ad_kz.task_kz,state:0
+msgid "maket"
+msgstr "Макет"
+
+#. module: ad_kz
+#: model:ir.ui.menu,name:ad_kz.open_handlbook
+msgid "open_handlbook"
+msgstr "Справочники"
+
+#. module: ad_kz
+#: selection:ad_kz.task_kz,ProductLocation:0
+#: selection:ad_kz.task_kz,ProductLocation_kz:0
+msgid "otechestvennaya"
+msgstr "отечественная"
+
+#. module: ad_kz
+#: model:ir.ui.menu,name:ad_kz.menu_other
+msgid "other"
+msgstr "Прочие"
+
+#. module: ad_kz
+#: model:ir.actions.act_window,name:ad_kz.show_partner
+msgid "partner"
+msgstr "Контрагент"
+
+#. module: ad_kz
+#: model:ir.ui.menu,name:ad_kz.menu_partner_kz
+msgid "partner_kz"
+msgstr "Контрагент"
+
+#. module: ad_kz
+#: model:ir.actions.act_window,name:ad_kz.show_partner_kz_form
+msgid "partner_kz_form"
+msgstr "Карточка контрагента"
+
+#. module: ad_kz
+#: model:ir.actions.act_window,name:ad_kz.show_partner_local
+msgid "partner_local"
+msgstr "Контрагент локальная версия"
+
+#. module: ad_kz
+#: model:ir.ui.menu,name:ad_kz.menu_post
+msgid "post"
+msgstr "Должность"
+
+#. module: ad_kz
+#: model:ir.actions.act_window,name:ad_kz.show_post_form
+msgid "post_form"
+msgstr "Карточка должности"
+
+#. module: ad_kz
+#: model:ir.ui.menu,name:ad_kz.menu_proove_form
+msgid "proove_form"
+msgstr "Правовая форма"
+
+#. module: ad_kz
+#: model:ir.actions.act_window,name:ad_kz.show_proove_form_form
+msgid "proove_form_form"
+msgstr "Карточка правовой формы"
+
+#. module: ad_kz
+#: model:ir.ui.menu,name:ad_kz.menu_reg_number
+msgid "reg_number"
+msgstr "Регистрационный номер"
+
+#. module: ad_kz
+#: model:ir.actions.act_window,name:ad_kz.show_reg_number_form
+msgid "reg_number_form"
+msgstr "Карточка регистрационного номера"
+
+#. module: ad_kz
+#: model:ir.ui.menu,name:ad_kz.menu_reglament
+msgid "reglament"
+msgstr "Регламент"
+
+#. module: ad_kz
+#: model:ir.actions.act_window,name:ad_kz.show_reglament_form
+msgid "reglament_form"
+msgstr "Карточка регламента"
+
+#. module: ad_kz
+#: model:ir.ui.view,arch_db:ad_kz.partner_local_form
+msgid "replicate_to_kz"
+msgstr "перенессти в поля национального языка"
+
+#. module: ad_kz
+#: selection:ad_kz.task_kz,type_task:0
+msgid "request"
+msgstr "Запрос"
+
+#. module: ad_kz
+#: model:ir.ui.menu,name:ad_kz.menu_schema
+msgid "schema"
+msgstr "Схема"
+
+#. module: ad_kz
+#: model:ir.actions.act_window,name:ad_kz.show_schema_form
+msgid "schema_form"
+msgstr "Карточка схемы"
+
+#. module: ad_kz
+#: selection:ad_kz.schema,doc_type:0 selection:ad_kz.task_kz,type_task:0
+msgid "ss"
+msgstr "Сертификат соответствия"
+
+#. module: ad_kz
+#: model:ir.ui.view,arch_db:ad_kz.task_kz_form
+msgid "task"
+msgstr "Задача"
+
+#. module: ad_kz
+#: model:ir.actions.act_window,name:ad_kz.show_task_kz
+#: model:ir.ui.menu,name:ad_kz.menu_task_kz
+msgid "task_kz"
+msgstr "Задача Казахстан"
+
+#. module: ad_kz
+#: model:ir.ui.view,arch_db:ad_kz.task_kz_form
+msgid "test"
+msgstr "Тест"
+
+#. module: ad_kz
+#: model:ir.ui.menu,name:ad_kz.menu_tnved
+msgid "tnved"
+msgstr "ТН ВЭД"
+
+#. module: ad_kz
+#: model:ir.actions.act_window,name:ad_kz.show_tnved_form
+msgid "tnved_form"
+msgstr "Карточка ТН ВЭД"
+
+#. module: ad_kz
+#: model:ir.ui.menu,name:ad_kz.menu_type_ip
+msgid "type_ip"
+msgstr "ИП"
+
+#. module: ad_kz
+#: model:ir.actions.act_window,name:ad_kz.show_type_ip_form
+msgid "type_ip_form"
+msgstr "Тип ИП"
+
+#. module: ad_kz
+#: selection:ad_kz.task_kz,state:0
+msgid "upload"
+msgstr "Загрузка"
+
+#. module: ad_kz
+#: selection:ad_kz.partner_kz,type_of_partner:0
+#: selection:ad_kz.partner_local_kz,type_of_partner:0
+msgid "urlico"
+msgstr "Юридическое лица"
+
+#. module: ad_kz
+#: selection:ad_kz.task_kz,state:0
+msgid "zaregistrirovan"
+msgstr "zaregistrirovan"

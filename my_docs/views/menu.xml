@@ -3,6 +3,7 @@
     <menuitem id="my_docs.menu_root" name="my_docs" sequence="1" groups='base.group_erp_manager'/>
 
     <menuitem id="menu_task" name="task" parent="my_docs.menu_root" action="my_docs.show_task"/>
+    <menuitem id="menu_report_page" name="report_page"  action="my_docs.show_report_page"/>
 
 
     <!-- in POINT -->
@@ -12,7 +13,9 @@
     <!-- kanban -->
     <menuitem id="menu_task_in_kanbans" name="task_kanbans" />
     <menuitem id="menu_task_all_task" parent="menu_task_in_kanbans" name="task_all_task" action="my_docs.show_task_all_task"/>
+
     <menuitem id="menu_task_all_input_task_canban" parent="menu_task_in_kanbans"  name="task_all_input_task_canban" action="my_docs.show_task_all_input_task_canban"/>
+
     <menuitem id="menu_task_all_output_task_canban" parent="menu_task_in_kanbans" name="task_all_output_task_canban" action="my_docs.show_task_all_output_task_canban"/>
     <!-- kanban -->
 

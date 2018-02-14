@@ -3,7 +3,9 @@
 from odoo import models, fields, api
 from rddata import *
 from odoo.exceptions import UserError, RedirectWarning, ValidationError
-import datetime
+from datetime import datetime, date, time
+import json
+
 
 class task(models.Model):
     _name = 'my_docs.task'
@@ -19,7 +21,7 @@ class task(models.Model):
 
     @api.multi
     def copy_to_child(self):
-        new_vals={}
+        new_vals = {}
         for r in self:
             child = r.task_child_id
             if child:
@@ -46,7 +48,7 @@ class task(models.Model):
 
     @api.multi
     def copy_to_parent(self):
-        new_vals={}
+        new_vals = {}
         for r in self:
             parent = r.task_parent_id
             if parent:
@@ -74,24 +76,24 @@ class task(models.Model):
     @api.multi
     def resent(self):
         for r in self:
-            default={
-            'name':'Replicate of ' + r.name,
-            'sender_expert_id':self.env.user.id,
-            'sender_company_id':self.env.user.company_id.id,
-            'getter_expert_id':[],
-            'getter_company_id':[],
-            'task_parent_id' :r.id,
+            default = {
+                'name': 'Replicate of ' + r.name,
+                'sender_expert_id': self.env.user.id,
+                'sender_company_id': self.env.user.company_id.id,
+                'getter_expert_id': [],
+                'getter_company_id': [],
+                'task_parent_id': r.id,
             }
 
             res = r.copy(default=default)
-            r.write({'task_child_id':res.id})
+            r.write({'task_child_id': res.id})
             return {
-            'type': 'ir.actions.act_window',
-            'view_type': 'form',
-            'view_mode': 'form',
-            'target': 'current',
-            'res_model':'my_docs.task',
-            'res_id': res.id,
+                'type': 'ir.actions.act_window',
+                'view_type': 'form',
+                'view_mode': 'form',
+                'target': 'current',
+                'res_model': 'my_docs.task',
+                'res_id': res.id,
             }
         # return res
 
@@ -100,38 +102,45 @@ class task(models.Model):
         for r in self:
             r.is_user_company_getter_company = self.env.user.company_id.id == r.getter_company_id.id
 
-    is_user_company_getter_company =fields.Boolean(compute="_is_user_company_getter_company")
+    is_user_company_getter_company = fields.Boolean(
+        compute="_is_user_company_getter_company")
 
     @api.multi
-    def write(self, vals):
-        print 'm00900------------------------------------------write'
-        new_recodrs=[]
-        block_list=['task_log_ids','state','message_follower_ids','supplement_free_form_ids','getter_company_id','getter_expert_id']
+    def write(self, vals={}):
 
-        for i in vals:
-            if  i not in block_list and getattr(self,i) != vals[i]  :
-                new_recodrs.append((0,0,{'task_id':self.id, 'name':i, 'value_before':getattr(self,i), 'value_after':vals[i], 'change_user':self.env.user.name}))
-        if new_recodrs : vals['task_log_ids'] = new_recodrs
+        if self._name == 'my_docs.task':
+            new_recodrs = []
+            block_list = ['task_log_ids', 'state', 'message_follower_ids',
+                          'supplement_free_form_ids', 'getter_company_id', 'getter_expert_id']
+            for i in vals:
+                if i not in block_list and getattr(self, i) != vals[i]:
+                    # if 'local_task' in self._name:
+                    #     new_recodrs.append((0,0,{'local_task_id':self.id, 'name':i, 'value_before':getattr(self,i), 'value_after':vals[i], 'change_user':self.env.user.name}))
+                    # else:
+                    new_recodrs.append((0, 0, {'task_id': self.id, 'name': i, 'value_before': getattr(
+                        self, i), 'value_after': vals[i], 'change_user': self.env.user.name}))
+            if new_recodrs:
+                vals['task_log_ids'] = new_recodrs
 
         super(task, self).write(vals)
-        print 'm00901------------------------------------------write'
         return True
 
     def set_new_expert(self):
         view_id = self.env.ref('my_docs.set_expert_wizard_form').id
         return {
-        'type': 'ir.actions.act_window',
-        'view_type': 'form',
-        'view_mode': 'form',
-        'target': 'new',
-        'res_model':'my_docs.set_expert_wizard',
-        'view_id': view_id,
-        'context': {'default_task_id':self.id}
+            'type': 'ir.actions.act_window',
+            'view_type': 'form',
+            'view_mode': 'form',
+            'target': 'new',
+            'res_model': 'my_docs.set_expert_wizard',
+            'view_id': view_id,
+            'context': {'default_task_id': self.id}
         }
 
-    def generate_adress(self, record,vid_partner):
+    def generate_adress(self, record, vid_partner):
         for r in record:
             res = []
+
             def _manufacturer_adress_generator():
                 if not r.address_is_same and r.address != r.address_real:
                     if r.type_of_partner in ['urlico', 'fizlico', 'foreign']:
@@ -139,44 +148,52 @@ class task(models.Model):
                     elif r.type_of_partner in ['ip']:
                         res.append(u'Место жительства: ')
 
-                    if r.country_id.code == 'RU' : res.append(r.country_id.name)
+                    if r.country_id.code == 'RU':
+                        res.append(r.country_id.name)
                     if r.region_id:
                         res.append(r.region_id.name)
                     if r.index:
                         res.append(r.index)
                     if r.address:
                         res.append(r.address)
-                    if r.country_id.code != 'RU' : res.append(r.country_id.name)
+                    if r.country_id.code != 'RU':
+                        res.append(r.country_id.name)
 
-                    res.append(u'адрес места осуществления деятельности по изготовлению продукции: ')
-                    if r.country_real_id.code == 'RU' : res.append(r.country_real_id.name)
+                    res.append(
+                        u'адрес места осуществления деятельности по изготовлению продукции: ')
+                    if r.country_real_id.code == 'RU':
+                        res.append(r.country_real_id.name)
                     if r.region_real_id:
                         res.append(r.region_real_id.name)
                     if r.index_real:
                         res.append(r.index_real)
                     if r.address_real:
                         res.append(r.address_real)
-                    if r.country_real_id.code != 'RU' : res.append(r.country_real_id.name)
+                    if r.country_real_id.code != 'RU':
+                        res.append(r.country_real_id.name)
 
                 else:
                     if r.type_of_partner in ['urlico', 'fizlico', 'foreign']:
                         res.append(
                             u'Место нахождения и адрес места осуществления деятельности по изготовлению продукции: ')
                     elif r.type_of_partner in ['ip']:
-                        res.append(u'Место жительства и адрес места осуществления деятельности по изготовлению продукции: ')
+                        res.append(
+                            u'Место жительства и адрес места осуществления деятельности по изготовлению продукции: ')
 
-                    if r.country_id.code == 'RU' : res.append(r.country_id.name)
+                    if r.country_id.code == 'RU':
+                        res.append(r.country_id.name)
                     if r.region_id:
                         res.append(r.region_id.name)
                     if r.index:
                         res.append(r.index)
                     if r.address:
                         res.append(r.address)
-                    if r.country_id.code != 'RU' : res.append(r.country_id.name)
+                    if r.country_id.code != 'RU':
+                        res.append(r.country_id.name)
 
             def _ogrn_generator():
                 if r.type_of_partner in ['urlico', 'fizlico', 'foreign']:
-                    if r.country_id.code == '_kz':
+                    if r.country_id.code == 'KZ':
                         return u'бизнес-идентификационный номер: ' + r.ogrn
                     elif r.country_id.code in ['BY', 'AR']:
                         return u'учетный номер плательщика: ' + r.ogr
@@ -187,7 +204,7 @@ class task(models.Model):
                     else:
                         return u'основной государственный регистрационный номер: ' + r.ogrn
                 elif r.type_of_partner in ['ip']:
-                    if r.country_id.code == '_kz':
+                    if r.country_id.code == 'KZ':
                         # индивидуальный Идентификационный Номер
                         return u'бизнес-идентификационный номер: ' + r.ogrn
                     elif r.country_id.code in ['BY']:
@@ -200,6 +217,7 @@ class task(models.Model):
                         return u'основной государственный регистрационный номер: ' + r.ogrn
                     else:
                         return u'основной государственный регистрационный номер: ' + r.ogrn
+
             def _applicant_adress_generator():
                 if not r.address_is_same and r.address != r.address_real:
                     if r.type_of_partner in ['urlico', 'fizlico', 'foreign']:
@@ -225,7 +243,8 @@ class task(models.Model):
                         res.append(
                             u'Место нахождения и адрес места осуществления деятельности: ' + r.country_id.name)
                     elif r.type_of_partner in ['ip']:
-                        res.append(u'Место жительства и адрес места осуществления деятельности: '+ r.country_id.name)
+                        res.append(
+                            u'Место жительства и адрес места осуществления деятельности: ' + r.country_id.name)
                     if r.region_id:
                         res.append(r.region_id.name)
                     if r.index:
@@ -250,8 +269,8 @@ class task(models.Model):
                 _manufacturer_adress_generator()
 
             result = ", ".join(res)
-            result = result.replace(': ,',': ')
-            result = result.replace('  ',' ')
+            result = result.replace(': ,', ': ')
+            result = result.replace('  ', ' ')
             return result
 
     @api.multi
@@ -261,15 +280,18 @@ class task(models.Model):
             self.Manufacturer_partner_id = self.Applicant_partner_id
 
     @api.multi
-    @api.onchange("Applicant_partner_id","Manufacturer_partner_id")
+    @api.onchange("Applicant_partner_id", "Manufacturer_partner_id")
     def _onchange_applicant(self):
         if self.Applicant_partner_id:
-            self.ApplicantInfo = self.generate_adress(self.Applicant_partner_id,vid_partner='applicant')
-            self.ApplicantInFace = self.Applicant_partner_id.head_role_rod_pad + " " +  self.Applicant_partner_id.fio_head_rod_pad
+            self.ApplicantInfo = self.generate_adress(
+                self.Applicant_partner_id, vid_partner='applicant')
+            self.ApplicantInFace = self.Applicant_partner_id.head_role_rod_pad + \
+                " " + self.Applicant_partner_id.fio_head_rod_pad
 
         if self.Manufacturer_partner_id:
-            self.ManufacturerInfo = self.generate_adress(self.Manufacturer_partner_id,vid_partner='manufacturer')
-            if self.Manufacturer_partner_id.country_id.code in ['RU','_kz','AR','BY','KY'] and self.Applicant_partner_id.country_id.code in ['RU','_kz','AR','BY','KY'] and self.Manufacturer_partner_id.country_id.code == self.Applicant_partner_id.country_id.code:
+            self.ManufacturerInfo = self.generate_adress(
+                self.Manufacturer_partner_id, vid_partner='manufacturer')
+            if self.Manufacturer_partner_id.country_id.code in ['RU', 'KZ', 'AR', 'BY', 'KY'] and self.Applicant_partner_id.country_id.code in ['RU', 'KZ', 'AR', 'BY', 'KY'] and self.Manufacturer_partner_id.country_id.code == self.Applicant_partner_id.country_id.code:
                 self.ProductLocation = "Local"
             else:
                 self.ProductLocation = "Foreign"
@@ -283,9 +305,7 @@ class task(models.Model):
                 re.ProductInfo = d['production']
 
     type_task = fields.Selection(selection=[(
-        'ss', 'ss'), ('ds', 'ds'), ('request', 'request')],default='ds')
-
-
+        'ss', 'ss'), ('ds', 'ds'), ('request', 'request')], default='ds')
 
     getter_expert_id = fields.Many2one(
         comodel_name="res.users",
@@ -351,7 +371,7 @@ class task(models.Model):
     #     else:
     #         return super(task, self).read_group(domain, fields, groupby, offset=offset, limit=limit, orderby=orderby)
 
-    active = fields.Boolean( default=True)
+    active = fields.Boolean(default=True)
     expert_enter = fields.Boolean(string="expert_enter", default=False)
     client_enter = fields.Boolean(string="client_enter", default=False)
 
@@ -375,17 +395,19 @@ class task(models.Model):
     ApplicantInfo = fields.Text()
     ApplicantInFace = fields.Char()
     ManufacturerInfo = fields.Text()
+
     @api.onchange("ProductType")
     @api.multi
     def _onchange_ProductType(self):
         for r in self:
             if r.ProductType == 'Serial':
-                r.Part= ''
-                r.Invoice= ''
+                r.Part = ''
+                r.Invoice = ''
 
-    app_date= fields.Date(readonly=True,index=True,default=fields.Date.context_today)
-    start_date= fields.Date(default=fields.Date.context_today)
-    end_date= fields.Date(default=fields.Date.context_today)
+    app_date = fields.Date(readonly=True, index=True,
+                           default=fields.Date.context_today)
+    start_date = fields.Date(default=fields.Date.context_today)
+    end_date = fields.Date(default=fields.Date.context_today)
 
     ProductType = fields.Selection(
         selection=[('Serial', 'Serial'), ('Part', 'Part'), ('Single', 'Single')], default="Serial")
@@ -400,7 +422,8 @@ class task(models.Model):
     ProductIdentificationOther = fields.Char(
         string="Inaya informaciya, identificiruyushchaya produkciyu")
 
-    tnved_ids = fields.Many2many(comodel_name="my_docs.tnved",string='Kod TNVED')
+    tnved_ids = fields.Many2many(
+        comodel_name="my_docs.tnved", string='Kod TNVED')
     reglament_ids = fields.Many2many("my_docs.reglament")
 
     DocumentValidity = fields.Char(
@@ -413,9 +436,9 @@ class task(models.Model):
     shema_id = fields.Many2one(
         comodel_name="my_docs.schema",
     )
-    name = fields.Char(default=u"Новая задача1")
+    name = fields.Char(default=u"Новая задача")
 
-    task_log_ids= fields.One2many(
+    task_log_ids = fields.One2many(
         comodel_name="my_docs.task_log",
         inverse_name="task_id",
     )
@@ -428,21 +451,30 @@ class task(models.Model):
     def _watcher_id(self):
         for r in self:
             r.watcher_id = self.env.user
+
     @api.multi
     def _watcher_company_id(self):
         for r in self:
             r.watcher_company_id = self.env.user.company_id
+
     @api.multi
     def _my_role(self):
         for r in self:
-            if r.getter_expert_id == self.env.user:r.my_role = 'getter'
-            elif r.sender_expert_id == self.env.user or r.create_uid == self.env.user :r.my_role  = 'sender'
-            elif r.getter_company_id in self.env.user.company_ids :r.my_role = 'getter_watcher'
-            elif r.sender_company_id in self.env.user.company_ids :r.my_role = 'sender_watcher'
-            else: r.my_role = 'who_i_am'
+            if r.getter_expert_id == self.env.user:
+                r.my_role = 'getter'
+            elif r.sender_expert_id == self.env.user or r.create_uid == self.env.user:
+                r.my_role = 'sender'
+            elif r.getter_company_id in self.env.user.company_ids:
+                r.my_role = 'getter_watcher'
+            elif r.sender_company_id in self.env.user.company_ids:
+                r.my_role = 'sender_watcher'
+            else:
+                r.my_role = 'who_i_am'
 
-    watcher_id = fields.Many2one(comodel_name='res.users',compute=_watcher_id )
-    watcher_company_id = fields.Many2one(comodel_name='res.company',compute=_watcher_company_id )
+    watcher_id = fields.Many2one(comodel_name='res.users', compute=_watcher_id)
+    watcher_company_id = fields.Many2one(
+        comodel_name='res.company', compute=_watcher_company_id)
+
     @api.multi
     def open_record(self):
         return {
@@ -455,14 +487,13 @@ class task(models.Model):
             'target': 'current',
         }
 
-    my_role=fields.Selection(selection=[
-            ('getter', 'getter'),
-            ('sender', 'sender'),
-            ('sender_watcher', 'sender_watcher'),
-            ('getter_watcher', 'getter_watcher'),
-            ('who_i_am', 'who_i_am????')
-    ],compute=_my_role, default="sender")
-
+    my_role = fields.Selection(selection=[
+        ('getter', 'getter'),
+        ('sender', 'sender'),
+        ('sender_watcher', 'sender_watcher'),
+        ('getter_watcher', 'getter_watcher'),
+        ('who_i_am', 'who_i_am????')
+    ], compute=_my_role, default="sender")
 
     @api.one
     def first_send(self):
@@ -494,11 +525,12 @@ class task(models.Model):
             r.state = 'new'
             r.log_prod(r.state)
             for c in r.message_follower_ids:
-                c.subtype_ids = [(6, 0, [1,2])]
+                c.subtype_ids = [(6, 0, [1, 2])]
 
             company_rec = self.env.user.company_id
-            company_rec.sudo().write({'task_count':company_rec.task_count+1})
-            r.name = str(company_rec.task_count+1)
+            company_rec.sudo().write(
+                {'task_count': company_rec.task_count + 1})
+            r.name = str(company_rec.task_count + 1)
             print 'm0002------------------------------------------'
 
     @api.multi
@@ -528,10 +560,12 @@ class task(models.Model):
             msg = ''
             if action == 'await_client' and r.sender_expert_id:
                 print 'm00892------------------------------------------'
-                msg = u"%s, нужно ваше внимание." % (r.sudo().sender_expert_id.name)
+                msg = u"%s, нужно ваше внимание." % (
+                    r.sudo().sender_expert_id.name)
             elif action == 'await_expert' and r.getter_expert_id:
                 print 'm00893------------------------------------------'
-                msg = u"%s, нужно ваше внимание." % (r.sudo().getter_expert_id.name)
+                msg = u"%s, нужно ваше внимание." % (
+                    r.sudo().getter_expert_id.name)
             elif action == 'end':
                 print 'm00894------------------------------------------'
                 msg = u"Работа закрыта"
@@ -551,7 +585,7 @@ class company(models.Model):
         for r in self:
             r.is_user_company = self.env.user.company_id.id == r.id
 
-    is_user_company =fields.Boolean(compute="_test")
+    is_user_company = fields.Boolean(compute="_test")
 
     friends_ids = fields.Many2many(
         comodel_name="my_docs.friends"
@@ -560,24 +594,25 @@ class company(models.Model):
     def add_friend_wizard(self):
         view_id = self.env.ref('my_docs.friends_wizard').id
         return {
-        'type': 'ir.actions.act_window',
-        'view_type': 'form',
-        'view_mode': 'form',
-        'target': 'new',
-        'res_model':'my_docs.friend_wizard',
-        'view_id': view_id,
-        'context': {'default_company_in_id':self.id}
+            'type': 'ir.actions.act_window',
+            'view_type': 'form',
+            'view_mode': 'form',
+            'target': 'new',
+            'res_model': 'my_docs.friend_wizard',
+            'view_id': view_id,
+            'context': {'default_company_in_id': self.id}
         }
+
 
 class task_log(models.Model):
     _name = 'my_docs.task_log'
     task_id = fields.Many2one('my_docs.task')
-
+    local_task_id = fields.Many2one('my_docs.local_task_kz')
     # @api.multi
     # def _now(self):
     #     self.change_time = datetime.datetime.now()
 
-    name=fields.Char()
+    name = fields.Char()
     value_before = fields.Char(string='value_before')
     value_after = fields.Char(string='value_after')
     # change_time = fields.Datetime(compute='_now')
@@ -586,7 +621,7 @@ class task_log(models.Model):
     @api.multi
     def return_change(self):
         for r in self:
-            vals={}
+            vals = {}
             before = r.value_before
             vals[str(r.name)] = before
             r.task_id.write(vals)
@@ -594,14 +629,15 @@ class task_log(models.Model):
         view_id = self.env.ref('my_docs.task_form').id
 
         return {
-        'type': 'ir.actions.act_window',
-        'view_type': 'form',
-        'view_mode': 'form',
-        'res_model':'my_docs.task',
-        'view_id': view_id,
-        'target': 'current',
-        'res_id': self.task_id.id,
+            'type': 'ir.actions.act_window',
+            'view_type': 'form',
+            'view_mode': 'form',
+            'res_model': 'my_docs.task',
+            'view_id': view_id,
+            'target': 'current',
+            'res_id': self.task_id.id,
         }
+
 
 class supplement_free_form(models.Model):
     _name = 'my_docs.supplement_free_form'
@@ -618,54 +654,56 @@ class counter(models.Model):
     user_id = fields.Many2one(
         comodel_name="res.users"
     )
+
     @api.multi
     def _count_of_task(self):
         for r in self:
-            count_of_task=random.randint(1,30)
+            count_of_task = random.randint(1, 30)
 
-    count_of_task =fields.Integer(default=0, compute=_count_of_task)
-
+    count_of_task = fields.Integer(default=0, compute=_count_of_task)
 
 
 class users(models.Model):
     _name = 'res.users'
     _inherit = 'res.users'
     _rec_name = "full_name"
-    company_friends_ids  = fields.Many2many(
+    company_friends_ids = fields.Many2many(
         related='company_id.friends_ids'
     )
 
     @api.multi
     def _count_of_task(self):
         for r in self:
-            result= self.env['my_docs.task'].search([('getter_expert_id', '=',r.id),('state', 'in',['await_expert'])],count=True)
+            result = self.env['my_docs.task'].search(
+                [('getter_expert_id', '=', r.id), ('state', 'in', ['await_expert'])], count=True)
             # r.count_of_task=random.randint(1,30)
-            r.count_of_task=result
+            r.count_of_task = result
 
     @api.depends('count_of_task')
     @api.multi
     def _full_name(self):
         for r in self:
             if r._context.get('compute_name'):
-                r.full_name= "%s (%d Task)" % (r.name, r.count_of_task)
+                r.full_name = "%s (%d Task)" % (r.name, r.count_of_task)
             else:
-                r.full_name= "%s" % (r.name)
+                r.full_name = "%s" % (r.name)
 
-
-    def choose_expert(self,context=None):
-        vals={}
+    def choose_expert(self, context=None):
+        vals = {}
         vals['getter_expert_id'] = self.id
-        if not self.partner_id in self.env['my_docs.task'].search([('id', '=',context.get('parent_id'))]).message_follower_ids.mapped('partner_id'):
-            vals['message_follower_ids'] =[(0,0,{
-                      'res_model':'my_docs.task',
-                      'subtype_ids': [(6, 0, [1,2])],
-                      'partner_id':self.partner_id.id})]
-        task = self.env['my_docs.task'].search([('id', '=',context.get('parent_id'))])
+        if not self.partner_id in self.env['my_docs.task'].search([('id', '=', context.get('parent_id'))]).message_follower_ids.mapped('partner_id'):
+            vals['message_follower_ids'] = [(0, 0, {
+                'res_model': 'my_docs.task',
+                'subtype_ids': [(6, 0, [1, 2])],
+                'partner_id':self.partner_id.id})]
+        task = self.env['my_docs.task'].search(
+            [('id', '=', context.get('parent_id'))])
         task.write(vals)
-        task.message_post(body=u"Данной задаче присвоен эксперт %s." % (self.name))
+        task.message_post(
+            body=u"Данной задаче присвоен эксперт %s." % (self.name))
         return {}
 
-    count_of_task =fields.Integer(compute='_count_of_task')
+    count_of_task = fields.Integer(compute='_count_of_task')
     full_name = fields.Char(compute='_full_name')
 
 
@@ -680,6 +718,7 @@ class friends(models.Model):
         comodel_name="res.company"
     )
 
+
 class friend_wizard(models.TransientModel):
     _name = 'my_docs.friend_wizard'
     company_out_unic_id = fields.Char()
@@ -693,16 +732,278 @@ class friend_wizard(models.TransientModel):
 
     def add_friend(self):
         if self.company_out_unic_id:
-            result = self.sudo().env['res.company'].search([('unic_id', '=', self.company_out_unic_id )], limit=1)
-            if not result: raise UserError("No company founded")
-            if result.friends_ids.search([('company_out_unic_id', '=', self.company_out_unic_id )], limit=1): raise UserError("U have this company in friend yet!")
+            result = self.sudo().env['res.company'].search(
+                [('unic_id', '=', self.company_out_unic_id)], limit=1)
+            if not result:
+                raise UserError("No company founded")
+            if result.friends_ids.search([('company_out_unic_id', '=', self.company_out_unic_id)], limit=1):
+                raise UserError("U have this company in friend yet!")
 
-            vals={}
-            vals['company_in_id']=self.company_in_id.id
-            vals['company_out_id']=result.id
-            vals['company_out_unic_id']=self.company_out_unic_id
+            vals = {}
+            vals['company_in_id'] = self.company_in_id.id
+            vals['company_out_id'] = result.id
+            vals['company_out_unic_id'] = self.company_out_unic_id
             rr = self.env['my_docs.friends'].create(vals)
 
-        resvals={}
-        resvals['friends_ids'] = [[4,rr.id]]
-        self.env['res.company'].search([('id', '=', self.company_in_id.id)]).write(resvals)
+        resvals = {}
+        resvals['friends_ids'] = [[4, rr.id]]
+        self.env['res.company'].search(
+            [('id', '=', self.company_in_id.id)]).write(resvals)
+
+
+class report_page(models.Model):
+    _name = 'my_docs.report_page'
+    name = fields.Char()
+    select_report =  fields.Selection(
+        selection=[
+                ('actual_task_for_person', 'actual_task_for_person'),
+                ('task_of_date', 'task_of_date'),
+                ('count_of_sender', 'count_of_sender')
+        ]
+    )
+
+    @api.model
+    def sql_select(self,select_text=''):
+        cr = self.env.cr
+        cr.execute(select_text)
+        return cr.dictfetchall()
+# cr.execute("SELECT to_char(create_date,'YYYY-MM-DD') as cr_d, count(*) as numofwork FROM public.my_docs_task  group by cr_d")
+    @api.model
+    def count_of_sender(self):
+        result = self.sql_select(select_text="SELECT sender_company_id as cr_d, count(*) as numofwork FROM public.my_docs_task  group by cr_d")
+
+        def chItem(item):
+            sender_company = item['cr_d']
+            if sender_company == None:
+                sender_company = u'Не определенные'
+            else:
+                sender_company = self.env['res.company'].search(
+                    [('id', '=', sender_company)], limit=1)[0].name
+            return {
+                "category": sender_company,
+                "column-1": item['numofwork']
+            }
+
+        new_result = map(lambda a: chItem(a), result)
+
+        test = 	{
+        'otherDate' : {'divname':'my_chart'},
+        'data': {
+								"type": "pie",
+					"angle": 12,
+					"balloonText": "[[title]]<br><span style='font-size:14px'><b>[[value]]</b> ([[percents]]%)</span>",
+					"depth3D": 15,
+					"titleField": "category",
+					"valueField": "column-1",
+					"allLabels": [],
+					"balloon": {},
+					"legend": {
+						"enabled": True,
+						"align": "center",
+						"markerType": "circle"
+					},
+					"titles": [],
+					"dataProvider": new_result
+                    # [
+					# 	{
+					# 		"category": "category 1",
+					# 		"column-1": 8
+					# 	},
+					# 	{
+					# 		"category": "category 2",
+					# 		"column-1": 6
+					# 	},
+					# 	{
+					# 		"category": "category 3",
+					# 		"column-1": 2
+					# 	}
+					# ]
+				}
+                }
+
+        return json.dumps(test)
+
+    @api.model
+    def task_of_date(self):
+        result = self.sql_select(select_text="SELECT to_char(create_date,'YYYY-MM-DD') as cr_d, count(*) as numofwork FROM public.my_docs_task  group by cr_d")
+
+        def chItem(item):
+            return {
+                "category": item['cr_d'],
+                "column-1": item['numofwork'],
+                "color": "#d0c398",
+            }
+        new_result = map(lambda a: chItem(a), result)
+        print 'm00key------------------------------------------'
+        print new_result
+        test = 	{
+        'otherDate' : {'divname':'my_chart'},
+        'data': {
+					"type": "serial",
+					"categoryField": "category",
+					"dataDateFormat": "YYYY-MM-DD",
+					"startDuration": 1,
+					"categoryAxis": {
+						"gridPosition": "start",
+						"parseDates": True
+					},
+					"chartCursor": {
+						"enabled": True
+					},
+					"chartScrollbar": {
+						"enabled": True
+					},
+					"trendLines": [],
+					"graphs": [
+						{
+							"fillAlphas": 1,
+							"id": "AmGraph-1",
+							"title": "graph 1",
+							"type": "column",
+							"valueField": "column-1"
+						}
+					],
+					"guides": [],
+					"valueAxes": [
+						{
+							"id": "ValueAxis-1",
+							"title": "Axis title"
+						}
+					],
+					"allLabels": [],
+					"balloon": {},
+					"titles": [
+						{
+							"id": "Title-1",
+							"size": 15,
+							"text": "Chart Title"
+						}
+					],
+					"dataProvider": [
+						{
+							"category": "2014-03-01",
+							"column-1": 8
+						},
+						{
+							"category": "2014-03-02",
+							"column-1": 16
+						},
+						{
+							"category": "2014-03-03",
+							"column-1": 2
+						},
+						{
+							"category": "2014-03-04",
+							"column-1": 7
+						},
+						{
+							"category": "2014-03-05",
+							"column-1": 5
+						},
+						{
+							"category": "2014-03-06",
+							"column-1": 9
+						},
+						{
+							"category": "2014-03-07",
+							"column-1": 4
+						},
+						{
+							"category": "2014-03-08",
+							"column-1": 15
+						},
+						{
+							"category": "2014-03-09",
+							"column-1": 12
+						},
+						{
+							"category": "2014-03-10",
+							"column-1": 17
+						},
+						{
+							"category": "2014-03-11",
+							"column-1": 18
+						},
+						{
+							"category": "2014-03-12",
+							"column-1": 21
+						},
+						{
+							"category": "2014-03-13",
+							"column-1": 24
+						},
+						{
+							"category": "2014-03-14",
+							"column-1": 23
+						},
+						{
+							"category": "2014-03-15",
+							"column-1": 24
+						}
+					]
+				}
+                }
+
+        return json.dumps(test)
+
+    @api.model
+    def actual_task_for_person(self):
+        result = self.sql_select(select_text='SELECT getter_expert_id as expert_id, count(*) as numofwork FROM public.my_docs_task group by expert_id')
+
+        def chItem(item):
+            expert = item['expert_id']
+            if expert == None:
+                expert = u'Не определенные'
+            else:
+                expert = self.env['res.users'].search(
+                    [('id', '=', expert)], limit=1)[0].name
+            return {
+                "category": expert,
+                "column-1": item['numofwork']
+            }
+        new_result = map(lambda a: chItem(a), result)
+        test = {
+            'otherDate' : {'divname':'my_chart'},
+            'data': {"type": "serial",
+            "categoryField": "category",
+            "startDuration": 1,
+            "categoryAxis": {
+                "gridPosition": "start"
+            },
+            "trendLines": [],
+            "graphs": [
+                {
+                    "colorField": "color",
+                    "fillAlphas": 1,
+                    "id": "AmGraph-1",
+                    "title": "graph 1",
+                    "type": "column",
+                    "valueField": "column-1",
+                    "labelText": "[[value]]",
+                    "labelPosition": "top",
+                }
+            ],
+            "guides": [],
+            "valueAxes": [
+                {
+                    "id": "ValueAxis-1",
+                    "title": "Количество задач"
+                }
+            ],
+            "allLabels": [],
+            "balloon": {},
+            "titles": [
+                {
+                    "id": "Title-1",
+                    "size": 15,
+                    "text": "Распределение задач"
+                }
+            ],
+            "dataProvider": new_result}
+
+        }
+        return json.dumps(test)
+
+    @api.model
+    def getCalc(self, *args, **kwargs):
+        return json.dumps(self.actual_task_for_person())

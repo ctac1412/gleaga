@@ -7,7 +7,6 @@ from petrovich.enums import Case, Gender
 
 
 
-
 class partner(models.Model):
     _name = 'my_docs.partner'
     _rec_name = 'Title'
@@ -93,6 +92,40 @@ class partner(models.Model):
                 r.country_real_id = r.country_id
                 r.region_real_id = r.region_id
                 r.index_real = r.index
+
+class partner_kz(models.Model):
+    _name = 'my_docs.partnerr_kz'
+    _inherit = 'my_docs.partner'
+
+    title_kz = fields.Char('Polnoe nazvanie', required=True)
+    address_kz = fields.Char('Mesto Nahogdeniya Address')
+    country_id_kz = fields.Many2one('my_docs.country', 'Strana')
+    region_id_kz = fields.Many2one('my_docs.country_region', 'Russian Region')
+    index_kz =  fields.Char('index')
+
+    address_real_kz = fields.Char('Mesto Nahogdeniya Address')
+    country_real_id_kz = fields.Many2one('my_docs.country', 'Strana')
+    region_real_id_kz = fields.Many2one(
+        'my_docs.country_region', 'Russian Region')
+    index_real_kz = fields.Char('index')
+
+    org_prav_forma_kz = fields.Char('Org Prav Forma')
+    svedeniya_o_gos_reg_kz = fields.Char('Svedeniya O Gos Reg')
+    ogrn_kz = fields.Char('OGRN')
+    vidano_kz = fields.Char('Svidetelctvo o Registracii Vidano')
+    data_vidachi_kz = fields.Date('Data Vidachi Svidetelctva')
+
+    inn_kz = fields.Char('INN')
+    okpo_kz = fields.Char('OKPO')
+
+    fio_head_kz = fields.Char('FIO Rukovoditelya')
+    fio_head_rod_pad_kz = fields.Char('FIO Rukovoditelya v Roditelnom Padege')
+    fio_head_dat_pad_kz = fields.Char('FIO Rukovoditelya v Datelnom padege')
+    head_role_kz = fields.Many2one(
+        comodel_name="my_docs.post",
+    )
+    head_role_rod_pad_kz = fields.Char(related="head_role.post_rd_pad", readonly=True)
+    head_doc_kz = fields.Char('Deistvuyushego Na Osnovanii')
 
 class partner_local(models.Model):
     _name = 'my_docs.partner_local'

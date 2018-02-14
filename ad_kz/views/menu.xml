@@ -1,0 +1,28 @@
+<odoo>
+  <data>
+        <menuitem id="menu_task_kz" name="task_kz" action="ad_kz.show_task_kz" sequence="0"/>
+        <menuitem parent='menu_task_kz' action='ad_kz.show_task_kz_ds_form' id='menu_task_kz_ds' name='task_kz_ds'/>
+        <menuitem parent='menu_task_kz' action='ad_kz.show_task_kz_ss_form' id='menu_task_kz_ss' name='task_kz_ss'/>
+        <menuitem parent='menu_task_kz' action='ad_kz.show_task_kz_all_form' id='menu_task_kz_all' name='task_kz_all'/>
+
+        <menuitem id="open_handlbook" name="open_handlbook" sequence="1"/>
+        <menuitem id="menu_kontragent" parent = 'open_handlbook' name="kontragent"/>
+        <menuitem parent='menu_kontragent' action='ad_kz.show_partner_kz_form' id='menu_partner_kz' name='partner_kz'/>
+        <menuitem parent='menu_kontragent' action='ad_kz.show_country_form' id='menu_country' name='country'/>
+        <menuitem parent='menu_kontragent' action='ad_kz.show_proove_form_form' id='menu_proove_form' name='proove_form'/>
+        <menuitem parent='menu_kontragent' action='ad_kz.show_fio_item_form' id='menu_fio_item' name='fio_item'/>
+        <menuitem parent='menu_kontragent' action='ad_kz.show_post_form' id='menu_post' name='post'/>
+        <menuitem parent='menu_kontragent' action='ad_kz.show_country_region_form' id='menu_country_region' name='country_region'/>
+        <menuitem parent='menu_kontragent' action='ad_kz.show_type_ip_form' id='menu_type_ip' name='type_ip'/>
+
+        <menuitem id="menu_other" parent = 'open_handlbook' name="other" />
+        <menuitem parent='menu_other' action='ad_kz.show_app_type_form' id='menu_app_type' name='app_type'/>
+        <menuitem parent='menu_other' action='ad_kz.show_reg_number_form' id='menu_reg_number' name='reg_number'/>
+        <menuitem parent='menu_other' action='ad_kz.show_app_number_form' id='menu_app_number' name='app_number'/>
+        <menuitem parent='menu_other' action='ad_kz.show_expert_person_form' id='menu_expert_person' name='expert_person'/>
+        <menuitem parent='menu_other' action='ad_kz.show_tnved_form' id='menu_tnved' name='tnved'/>
+        <menuitem parent='menu_other' action='ad_kz.show_schema_form' id='menu_schema' name='schema'/>
+        <menuitem parent='menu_other' action='ad_kz.show_reglament_form' id='menu_reglament' name='reglament'/>
+
+  </data>
+</odoo>

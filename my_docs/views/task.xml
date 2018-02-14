@@ -200,16 +200,16 @@
                 <field required="1" name="type_task"/>
               </group>
               <div attrs="{'invisible': [('my_role','not in',['sender','sender_watcher'])]}">
-                <button name="create_new_task" type="object" attrs="{'invisible': [('id','!=',False)]}" string="Create new task" class="oe_highlight oe_edit_only"/>
-                <button name="state_await_expert" attrs="{'invisible': [('state','not in',['new','await_client'])]}" type="object" string="Send to expert" class="oe_highlight oe_edit_only"/>
+                <button name="create_new_task" type="object" attrs="{'invisible': [('id','!=',False)]}" string="Создать задачу" class="oe_highlight oe_edit_only"/>
+                <button name="state_await_expert" attrs="{'invisible': [('state','not in',['new','await_client'])]}" type="object" string="Отправить эксперту" class="oe_highlight oe_edit_only"/>
               </div>
 
               <div attrs="{'invisible': [('my_role','not in',['getter','getter_watcher'])]}">
                 <button name="set_new_expert" groups='my_docs.my_docs_group_top_manager' type="object" string="Set a new expert" class="btn btn-sm oe_highlight"/>
                 <button name="resent" type="object" string="Переслать" class="oe_highlight oe_edit_only"/>
 
-                <button name="state_await_client" attrs="{'invisible': [('state','!=','await_expert')]}" type="object" string="Send to client" class="oe_highlight oe_edit_only"/>
-                <button name="state_end" attrs="{'invisible': [('expert_enter','!=',True),('client_enter','!=',True)]}" type="object" string="End" class="oe_highlight oe_edit_only"/>
+                <button name="state_await_client" attrs="{'invisible': [('state','!=','await_expert')]}" type="object" string="Отправить клиенту" class="oe_highlight oe_edit_only"/>
+                <button name="state_end" attrs="{'invisible': [('expert_enter','!=',True),('client_enter','!=',True)]}" type="object" string="Завершить" class="oe_highlight oe_edit_only"/>
               </div>
             </sheet>
             <sheet class='card_sheet'>
@@ -464,6 +464,50 @@
       <field name="res_model">my_docs.task</field>
       <field name="view_mode">form</field>
     </record>
+
+    <record model="ir.ui.view" id="report_page_form">
+      <field name="name">my_docs.report_page.form</field>
+      <field name="model">my_docs.report_page</field>
+      <field name="arch" type="xml">
+        <form string="Card reglament">
+          <sheet>
+              <field name="name"/>
+              <field class='select_report' name="select_report"/>
+
+              <div id="my_chart" style="width: 100%; height: 400px; background-color: #FFFFFF;" ></div>
+        </sheet>
+        <script type="text/javascript">
+          <!-- console.log(window.py.dict.toJSON)
+          console.log(window) -->
+          document.querySelector('.select_report').onchange=update_chart
+
+          function update_chart(){
+          var model=new openerp.web.Model('my_docs.report_page');
+          if (document.querySelector('.select_report').value == 'false' ) {
+          console.log("no chart")
+          return
+          }
+          model.call(document.querySelector('.select_report').value.replace(/\"/g,''),[],{})
+              .then(function(data){
+              console.log(data)
+              var a = JSON.parse(data)
+              console.log(a)
+              console.log(a.data)
+              AmCharts.makeChart(a.otherDate.divname,a.data);
+              });
+          }
+  		</script>
+        </form>
+
+      </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="my_docs.show_report_page">
+      <field name="name">Task report_page</field>
+      <field name="res_model">my_docs.report_page</field>
+      <field name="view_mode">form</field>
+    </record>
+
 
   </data>
 </odoo>

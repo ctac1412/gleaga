@@ -13,9 +13,11 @@
       <field name="arch" type="xml">
         <form string="task">
           <sheet >
+            <group>
             <field required="1" name="name"/>
             <field required="1" name="type_task"/>
-            <button name='qqqqqqqqqqqqqqqq' type='object' string='test' ></button>
+            </group>
+            <!-- <button name='qqqqqqqqqqqqqqqq' type='object' string='test' ></button> -->
           </sheet>
           <group>
             <group>
@@ -50,18 +52,18 @@
             </group>
             <group>
               <sheet class='card_sheet'>
-                <group string="Өтініш беруші мемлекеттік тілде">
+                <group string="Заявитель на национальном языке">
                   <field name="ApplicantType_kz"/>
                   <field name="Applicant_partner_id_kz" domain="[('id','in',[Applicant_partner_id,Manufacturer_partner_id])]"/>
                   <field name="ApplicantInfo_kz"/>
                   <field name="ApplicantInFace_kz"/>
                 </group>
-                <group string="Дайындаушы мемлекеттік тілде">
+                <group string="Изготовитель на национальном языке">
                   <field name="Manufacturer_partner_id_kz" domain="[('id','in',[Applicant_partner_id,Manufacturer_partner_id])]"/>
                   <field name="ManufacturerInfo_kz"/>
                   <field name="ProductLocation_kz"/>
                 </group>
-                <group string="Өнім мемлекеттік тілде">
+                <group string="Продукция на национальном языке">
                   <field name="ProductType_kz" widget='radio' options="{'horizontal': true}"/>
                   <field name="ProductInfo_kz"/>
                   <field name="ProductIdentification_kz"/>
@@ -75,9 +77,6 @@
                   <field name="ProductIdentificationOther_kz"/>
                   <field name="DocumentValidity_kz"/>
                   <field name="AcceptanceReason_kz"/>
-                  <field name="app_date"/>
-                  <field name="start_date"/>
-                  <field name="end_date"/>
                 </group>
               </sheet>
             </group>
@@ -87,6 +86,9 @@
               <field name="reglament_ids"/>
               <field name="shema_id"/>
               <field name="tnved_ids" widget="many2many"/>
+              <field name="app_date"/>
+              <field name="start_date"/>
+              <field name="end_date"/>
             </group>
           </sheet>
           <sheet class='card_sheet'>
@@ -105,5 +107,10 @@
         </form>
       </field>
     </record>
+
+
+
+
+
   </data>
 </odoo>
